@@ -1,9 +1,10 @@
 <x-guest-layout>
+<div class="min-h-screen flex items-center justify-center"> 
     <div class="mb-4 text-sm text-gray-600">
         {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
     </div>
 
-    <form method="POST" action="{{ route('password.confirm') }}">
+    <form method="POST" action="{{ route('password.confirm') }}" class="login-container">
         @csrf
 
         <!-- Password -->
@@ -24,4 +25,5 @@
             </x-primary-button>
         </div>
     </form>
+</div>
 </x-guest-layout>

@@ -1,0 +1,183 @@
+body, html {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: rgba(245, 248, 245, 0.5);
+    background: url('/images/fondo1.jpg') no-repeat center center/cover;
+}
+
+.login-container {
+    background: rgba(145, 167, 164, 0.279);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 1 4px 6px rgba(47, 94, 81, 0.1);
+    max-width: 400px;
+    width: 100%;
+    backdrop-filter: blur(6px);
+    border: 1.8px solid rgba(92, 100, 100, 0.6);
+}
+.custom-login-container {
+    max-width: 600px;  /* Ancho máximo */
+    /* max-height: 500px; Altura máxima */
+}
+
+.login-title {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+.lavel-sub {
+    color: #000000;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.login-input {
+    background-color: #5a5a5b56;
+    color: #000000;
+    border: 2px solid rgba(82, 100, 98, 0.867);
+    padding: 8px;
+    border-radius: 5px;
+    width: 100%;
+    transition: border-color 0.4s ease-in-out;  /* Suaviza el cambio de color del borde */
+}
+
+.login-input:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+/* 2. Cuando el usuario hace clic en el input */
+.login-input:focus {
+    border-color: #3ef1dfe0;  /* Cambia el borde a rojo */
+    outline: none;  /* Elimina el borde azul por defecto */
+    box-shadow: 0 0 5px rgba(51, 70, 66, 0.841);  /* Agrega una sombra roja */
+}
+
+.login-button {
+    width: 50%;
+    background: #213a28;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-align: center;
+    display: flex; /* Activa Flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    appearance: none;
+    text-decoration: none;
+}
+
+.login-button:hover {
+    background: rgba(255, 255, 255, 0.442);
+    border: 2px solid rgba(82, 100, 98, 0.867);
+    color: rgb(0, 0, 0);
+}
+
+.login-butto:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(51, 70, 66, 0.841);
+}
+
+.remember-me {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:#000000;
+
+}
+
+.forgot-password {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    align-items: center; 
+}
+
+.forgot-password:hover {
+    color: white;
+}
+.forgot-password:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(51, 70, 66, 0.841);
+}
+/*---*/
+.custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000; 
+    background-color: #fff; /* Fondo blanco */
+    border: 2px solid rgba(82, 100, 98, 0.867);
+    border-radius: 6px; /* Bordes redondeados */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.custom-button:hover {
+    background-color: #213a28; /* Fondo al pasar el mouse */
+    color: white; /* Texto blanco */
+}
+
+/*-ojito--*/
+/* Posicionar y estilizar el icono del ojo */
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #000000; /* Color negro del icono */
+    font-size: 18px;
+}
+
+
+/*SELECT*/
+/* Estilizar el select */
+.select-custom {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #202225; /* Gris oscuro */
+    border: 1px solid #CBD5E0; /* Borde gris */
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    appearance: none; /* Oculta el estilo nativo */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+}
+
+/* Estilos de las opciones (algunos navegadores no permiten estilos en <option>) EJ: CHROME*/
+.select-custom option {
+    font-size: 16px;
+    color: #333;
+    background-color: rgba(145, 167, 164, 0.279);
+    backdrop-filter: blur(6px);
+    border: 1.8px solid rgba(92, 100, 100, 0.6);
+}
+.select-custom option:focus{
+    border-color: #3ef1dfe0;  
+    outline: none;  
+    box-shadow: 0 0 5px rgba(51, 70, 66, 0.841);
+}
+/* Estilizar opciones específicas OPCIONAL
+.select-custom option[value="male"] {
+    color: blue;
+}
+.select-custom option[value="female"] {
+    color: pink;
+}
+.select-custom option[value="other"] {
+    color: green;
+}
+*/
