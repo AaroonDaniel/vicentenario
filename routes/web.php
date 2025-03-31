@@ -5,7 +5,6 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\Auth\RegisteredUserController; 
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,10 +14,20 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+
 
 Route::get('/', function () {
     return view('welcome');
+});
+*/
+// Ruta de principal
+Route::get('/', function () {
+    return view('principal');
+});
+
+// Ruta de revista
+Route::get('/revista', function () {
+    return view('revista');
 });
 
 // Ruta de registro
@@ -43,3 +52,5 @@ Route::middleware('auth')->group(function () {
 
 // Rutas de autenticación (login, registro, etc.)
 require __DIR__.'/auth.php';
+
+
