@@ -581,7 +581,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					 <img src="https://i.pinimg.com/474x/09/ac/bc/09acbcf19596c3750eaec2cb82b95f32.jpg" class="banner_skin_impression banner_skin_click_right" data-id="Enterprice_5mar2025_fixed" data-gtm-vis-recent-on-screen32626292_26="299" data-gtm-vis-first-on-screen32626292_26="299" data-gtm-vis-total-visible-time32626292_26="100" data-gtm-vis-has-fired32626292_26="1">
    			</a>
    			<a href="https://a2.adform.net/C/?bn=79416784;gdpr=${gdpr};gdpr_consent=${gdpr_consent_50}" target="blank" rel="noopener" class="rayabtn left">
-					 <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/ERAC-lateral-marzo-200x1000-1.gif" class="banner_skin_click_left" data-id="Enterprice_5mar2025_fixed">
+					 <img src="https://images.pexels.com/photos/27872783/pexels-photo-27872783/free-photo-of-ciudad-paisaje-naturaleza-soleado.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="banner_skin_click_left" data-id="Enterprice_5mar2025_fixed">
    			</a>
    		</div>
     <section class="content">
