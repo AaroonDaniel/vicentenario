@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,10 +23,9 @@
     <nav class="nav_open">
 
         <section class="inner">
-            <img class="logo ready"
-                data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/mexicodesconocido_w.svg"
-                alt="México Desconocido" title="México Desconocido"
-                src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/mexicodesconocido_w.svg">
+            <img class="logo ready" src="{{ asset('images/Bolivialetra.png') }}" alt="Vicentenario Bolivia"
+                title="Vicentenario Bolivia">
+
             <a href="#close" class="close"><span></span></a>
 
             <section class="nav_content">
@@ -998,7 +998,8 @@
                             width="970" height="90" scrolling="no" marginwidth="0" marginheight="0"
                             frameborder="0" aria-label="Advertisement" tabindex="0"
                             allow="private-state-token-redemption;attribution-reporting" data-load-complete="true"
-                            data-google-container-id="7" style="border: 0px; vertical-align: bottom;"></iframe></div>
+                            data-google-container-id="7" style="border: 0px; vertical-align: bottom;"></iframe>
+                    </div>
                 </div>
             </div>
 
@@ -1138,16 +1139,14 @@
                         <a href="https://g21.com.mx" rel="noreferrer" target="_blank" class="g21"><img
                                 data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/g21.svg"
                                 alt="g21 Comunicación" width="1px" height="1px"></a>
-                        <a href="https://www.altonivel.com.mx" rel="noreferrer" target="_blank"
-                            class="an"><img
+                        <a href="https://www.altonivel.com.mx" rel="noreferrer" target="_blank" class="an"><img
                                 data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/altonivel.svg"
                                 alt="Alto Nivel" width="1px" height="1px"></a>
                         <a href="https://www.cinepremiere.com.mx" rel="noreferrer" target="_blank"
                             class="cp"><img
                                 data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/cinepremiere.svg"
                                 alt="Cine PREMIERE" width="1px" height="1px"></a>
-                        <a href="https://www.emprendedor.com" rel="noreferrer" target="_blank"
-                            class="en"><img
+                        <a href="https://www.emprendedor.com" rel="noreferrer" target="_blank" class="en"><img
                                 data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/emprendedor.svg"
                                 alt="Emprendedor.com" width="1px" height="1px"></a>
                         <a href="https://www.nupciasmagazine.com" rel="noreferrer" target="_blank"
@@ -1179,11 +1178,9 @@
     </script>
 
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" id="raya-css"
-        href="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/css/raya.css?ver=1.4.4.21"
-        media="all">
+        href="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/css/raya.css?ver=1.4.4.21" media="all">
     <link rel="stylesheet" id="fontawesome-css"
         href="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/css/font-awesome-all.css?ver=6.7.2"
         media="all">
@@ -1379,10 +1376,10 @@
                 },
                 ba = g.atob(
                     "aHR0cHM6Ly93d3cuZ3N0YXRpYy5jb20vaW1hZ2VzL2ljb25zL21hdGVyaWFsL3N5c3RlbS8xeC93YXJuaW5nX2FtYmVyXzI0ZHAucG5n"
-                    ),
+                ),
                 ca = g.atob(
                     "WW91IGFyZSBzZWVpbmcgdGhpcyBtZXNzYWdlIGJlY2F1c2UgYWQgb3Igc2NyaXB0IGJsb2NraW5nIHNvZnR3YXJlIGlzIGludGVyZmVyaW5nIHdpdGggdGhpcyBwYWdlLg\x3d\x3d"
-                    ),
+                ),
                 da = g.atob("RGlzYWJsZSBhbnkgYWQgb3Igc2NyaXB0IGJsb2NraW5nIHNvZnR3YXJlLCB0aGVuIHJlbG9hZCB0aGlzIHBhZ2Uu"),
                 ea = function(a, b, c) {
                     this.b = a;
@@ -1736,7 +1733,7 @@
         }).call(this);
         window.__d3lUW8vwsKlB__(
             "WyI0NmYzOGE0ZTM2ODAzNzg5IixbbnVsbCxudWxsLG51bGwsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2YvQUdTS1d4VjFEVzR6cVVxNkw4bVNwTU95RWktZzNBQXlDdXAtd0x6eXBsSjhpc0htNzZfMFRoa3FxS1k0a3p5ampzMzNSaG1jdU1RZjhoY0o2T0xBWXV6OGVjUVx1MDAzZCJdCixbMjAsImRpdi1ncHQtYWQiLDEwMCwiTkRabU16aGhOR1V6Tmpnd016YzRPUVx1MDAzZFx1MDAzZCIsW251bGwsbnVsbCxudWxsLCJodHRwczovL3d3dy5nc3RhdGljLmNvbS8wZW1uL2YvcC80NmYzOGE0ZTM2ODAzNzg5LmpzP3VzcXBcdTAwM2RDQTQiXQpdCiwiaHR0cHM6Ly9mdW5kaW5nY2hvaWNlc21lc3NhZ2VzLmdvb2dsZS5jb20vbC9BR1NLV3hWLTJsZDlyd291MDJWQ2NZeG9fcGZROUlaeW14akxORmw2V0RqMnFMc1BLOEYtdGJSbHhSVkc0VDJXWUl5bzVvR3NjalhOZkR0WWc4Y1JYUFp0P2FiXHUwMDNkMSIsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2wvQUdTS1d4VUNoWjFGT2xOeXZVZ0R1ckowQmljaHp6R1pVdV9ZUHY2UWc4R0NpbjN6bm5WUUlKV0k4X2RhQlBmVFVIemhBLU1VR3Z3WVg2QVVYUnFvOXFvTz9hYlx1MDAzZDJcdTAwMjZzYmZcdTAwM2QxIiwiaHR0cHM6Ly9mdW5kaW5nY2hvaWNlc21lc3NhZ2VzLmdvb2dsZS5jb20vbC9BR1NLV3hVbkdFVk1wRjFhV0ViQmNyVThiRlluanZLbkZiZC1xSWlSMXVESEViZk8zWmFfbl9tNzNJYjFRSGVTTnpOSm1GNFJoaWNsbG5uSGtOS3V2VjdwP3NiZlx1MDAzZDIiXQo\x3d"
-            );
+        );
     </script><iframe id="_hjSafeContext_59620545" title="_hjSafeContext" tabindex="-1"
         aria-hidden="true" src="about:blank"
         style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe><iframe
@@ -1746,18 +1743,17 @@
         style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe
         name="googlefcLoaded" src="about:blank"
         style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe
-        allow="join-ad-interest-group" data-tagging-id="G-T3B0083M2F" data-load-time="1743343817925"
-        height="0" width="0"
+        allow="join-ad-interest-group" data-tagging-id="G-T3B0083M2F" data-load-time="1743343817925" height="0"
+        width="0"
         src="https://td.doubleclick.net/td/ga/rul?tid=G-T3B0083M2F&amp;gacid=678449483.1743259765&amp;gtm=45je53q1v876670991z8832626292za200zb832626292&amp;dma=0&amp;gcs=G1--&amp;gcd=13l3l3l3l5l1&amp;npa=0&amp;pscdl=noapi&amp;aip=1&amp;fledge=1&amp;frm=0&amp;tag_exp=102482433~102788824~102803279~102813109~102887800~102926062~102976415&amp;z=832337835"
         style="display: none; visibility: hidden;"></iframe><iframe name="google_ads_top_frame"
         id="google_ads_top_frame"
         style="display: none; position: fixed; left: -999px; top: -999px; width: 0px; height: 0px;"></iframe><iframe
-        allow="join-ad-interest-group" data-tagging-id="G-T3B0083M2F" data-load-time="1743344678592"
-        height="0" width="0"
+        allow="join-ad-interest-group" data-tagging-id="G-T3B0083M2F" data-load-time="1743344678592" height="0"
+        width="0"
         src="https://td.doubleclick.net/td/ga/rul?tid=G-T3B0083M2F&amp;gacid=678449483.1743259765&amp;gtm=45je53q1v876670991z8832626292za200zb832626292&amp;dma=0&amp;gcs=G1--&amp;gcd=13l3l3l3l5l1&amp;npa=0&amp;pscdl=noapi&amp;aip=1&amp;fledge=1&amp;frm=0&amp;tag_exp=102482433~102788824~102803279~102813109~102887800~102926062~102976415&amp;z=1642880736"
-        style="display: none; visibility: hidden;"></iframe><iframe
-        src="https://www.google.com/recaptcha/api2/aframe" width="0" height="0"
-        style="display: none;"></iframe>
+        style="display: none; visibility: hidden;"></iframe><iframe src="https://www.google.com/recaptcha/api2/aframe"
+        width="0" height="0" style="display: none;"></iframe>
 </body><iframe name="goog_topics_frame" src="https://securepubads.g.doubleclick.net/static/topics/topics_frame.html"
     style="display: none;"></iframe><ins id="gpt_unit_/1016237/STICKY_DESKTOP_0"
     style="display: block; width: 100% !important; height: 95px !important; bottom: 0px; clear: none !important; float: none !important; left: 0px; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1; overflow: visible !important; padding: 0px !important; position: fixed; right: auto !important; top: auto !important; vertical-align: baseline !important; visibility: visible !important; z-index: 2147483647; background: rgb(250, 250, 250) !important;"
