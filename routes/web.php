@@ -20,9 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+
 // Ruta de principal
 Route::get('/', function () {
-    return view('principal');
+    return view('index');
 });
 
 // Ruta de revista
@@ -54,3 +55,8 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
+
+// Ruta para historia
+Route::get('/historia', function () {
+    return view('historia.historia');
+});
