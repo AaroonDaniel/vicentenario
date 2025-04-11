@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\Auth\RegisteredUserController; 
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +58,6 @@ require __DIR__.'/auth.php';
 
 
 // Ruta para historia
-Route::get('/historia', function () {
-    return view('historia.historia');
-});
+
+
+Route::get('/historia', [UsuarioController::class, 'index'])->name('historia');
