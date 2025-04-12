@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\Auth\RegisteredUserController; 
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Expr\FuncCall;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+
+
+
+//Rutas de administrador
+Route::get('/inicio', [AdminController::class, 'index'])->name('admin.index');
+
+
 
 // Ruta de principal
 Route::get('/', function () {
@@ -61,3 +70,12 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/historia', [UsuarioController::class, 'index'])->name('historia');
+
+//Ruta de middleware
+Route::get('prueba', function(){
+    return "Has accedido correctamente a esta ruta";
+})->middleware('age');
+
+Route::get('no-autorizado', function(){
+    return "Usted no es mayor de edad";
+});
