@@ -4,14 +4,25 @@
 <head>
     @include('partials.head') <!-- Metadatos y enlaces CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome para iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Tailwind CSS CDN (para pruebas rápidas) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Alpine.js PARA EDITAR -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    @stack('styles')
 </head>
 
 <body>
     @include('partials.header') <!-- Header visual -->
 
-    <main>
-        @yield('content') <!-- Contenido dinámico -->
-    </main>
+
+    @yield('content') <!-- Contenido dinámico -->
+
 
     @include('partials.footer') <!-- Footer -->
 
@@ -151,6 +162,9 @@
             },
         });
     </script>
+
+<!------------------------------------------------->
+    @stack('scripts')
 </body>
 
 </html>

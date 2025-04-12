@@ -7,7 +7,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\Auth\RegisteredUserController; 
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\FuncCall;
-
+use App\Http\Controllers\CulturaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -79,3 +79,7 @@ Route::get('prueba', function(){
 Route::get('no-autorizado', function(){
     return "Usted no es mayor de edad";
 });
+
+// ruta cultura
+Route::resource('culturas', CulturaController::class);
+Route::delete('/culturas/{id}', [CulturaController::class, 'destroy'])->name('culturas.destroy');
