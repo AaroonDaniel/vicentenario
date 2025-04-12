@@ -143,7 +143,7 @@
             </section>
         </section>
     </header>
-
+<!-- 
     <div class="raya">
         <a href="https://a2.adform.net/C/?bn=79416784;gdpr=${gdpr};gdpr_consent=${gdpr_consent_50}" target="blank"
             rel="noopener" class="rayabtn right">
@@ -157,5 +157,6 @@
             <img src="https://images.pexels.com/photos/27872783/pexels-photo-27872783/free-photo-of-ciudad-paisaje-naturaleza-soleado.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 class="banner_skin_click_left" data-id="Enterprice_5mar2025_fixed">
         </a>
+        -->
     </div>
 

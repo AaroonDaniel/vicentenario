@@ -5,6 +5,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\Auth\RegisteredUserController; 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CulturaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,3 +61,6 @@ require __DIR__.'/auth.php';
 Route::get('/historia', function () {
     return view('historia.historia');
 });
+
+Route::resource('culturas', CulturaController::class);
+Route::delete('/culturas/{id}', [CulturaController::class, 'destroy'])->name('culturas.destroy');

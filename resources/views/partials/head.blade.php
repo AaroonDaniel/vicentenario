@@ -10,3 +10,4 @@
 <meta property="og:description"
     content="Descubre México y sus destinos: ciudades, pueblos mágicos, playas, zonas arqueológicas, gastronomía y cultura..">
 <link rel="stylesheet" href="{{ asset('css/md2020-style.css') }}">
+
