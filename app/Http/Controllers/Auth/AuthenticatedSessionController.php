@@ -15,9 +15,9 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function create()
     {
-        return view('auth.login');
+        return view('auth.login'); // Muestra la vista de login
     }
 
     /**
@@ -25,11 +25,19 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // Autentica al usuario
         $request->authenticate();
 
+        // Regenera la sesión para evitar ataques de fijación de sesión
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        // Verifica si el usuario es administrador
+        if (auth()->user()->email === "admin@gmail.com") {
+            return redirect('/admin'); // Redirige al panel de administración
+        }
+
+        // Si no es administrador, redirige a la página principal
+        return redirect('/'); // Redirige a la página principal
     }
 
     /**
@@ -43,6 +51,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/'); // Redirige a la página principal después del logout
     }
 }
