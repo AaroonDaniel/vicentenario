@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\FuncCall;
 use App\Http\Controllers\CulturaController;
+use App\Http\Controllers\HistoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,9 +54,6 @@ Route::middleware('auth')->group(function () {
 // Rutas de autenticación (login, registro, etc.)
 require __DIR__.'/auth.php';
 
-// Ruta para historia
-Route::get('/historia', [UsuarioController::class, 'index'])->name('historia');
-
 //Ruta de middleware
 Route::get('prueba', function(){
     return "Has accedido correctamente a esta ruta";
@@ -68,3 +66,10 @@ Route::get('no-autorizado', function(){
 // ruta cultura
 Route::resource('culturas', CulturaController::class);
 Route::delete('/culturas/{id}', [CulturaController::class, 'destroy'])->name('culturas.destroy');
+
+// Ruta para historia
+Route::resource('historias', HistoriaController::class);
+Route::delete('/historias/{id}', [HistoriaController::class, 'destroy'])->name('historias.destroy');
+
+
+
