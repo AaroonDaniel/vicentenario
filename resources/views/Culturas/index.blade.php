@@ -16,7 +16,7 @@
             {{ session('success') }}
         </div>
     @endif
-
+    @can('Usuario cultural')
     <div class="overflow-x-auto">
         <table id="culturasTable" class="min-w-full bg-white text-sm text-left text-gray-800 rounded-lg shadow">
             <thead class="bg-gray-100 text-gray-600 uppercase text-xs font-semibold">
@@ -89,6 +89,7 @@
             </tbody>
         </table>
     </div>
+    @endcan
 </div>
 
 <!-- MODAL EDITAR -->
