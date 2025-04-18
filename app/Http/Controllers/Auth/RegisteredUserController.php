@@ -16,6 +16,7 @@ use Illuminate\View\View;
 use WisdomDiala\Countrypkg\Models\Country;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -61,6 +62,8 @@ class RegisteredUserController extends Controller
             'captcha' => ['required', 'numeric'], // Validación para el CAPTCHA
         ];
 
+
+
         $validator = Validator::make($request->all(), $rules);
 
         // Validar el CAPTCHA
@@ -81,6 +84,8 @@ class RegisteredUserController extends Controller
             'country' => $request->country, // Nuevo campo
             'city' => $request->city, // Nuevo campo
         ]);
+
+        $user->assignRole('Usuario casual');
 
         // Disparar el evento de registro
         event(new Registered($user));

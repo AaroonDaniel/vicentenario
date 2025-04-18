@@ -1,13 +1,17 @@
 <?php
 
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\AsignarController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\FuncCall;
 use App\Http\Controllers\CulturaController;
+use App\Http\Controllers\PermisoController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\HistoriaController;
 
 /*
@@ -27,8 +31,19 @@ Route::get('/', function () {
 });
 
 // Ruta del panel de administración
-Route::middleware(['auth', 'age'])->group(function () {
-    Route::get('/admin', [HomeController::class, 'index'])->name('admin.index');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin.index');
+    })->name('Administrador');
+
+    Route::get('/profile', [UsuarioController::class,'profile']);
+    Route::resource('/client', ClienteController::class)->names('cliente');
+    Route::resource('/roles', RoleController::class)->names('roles');
+    Route::resource('/permisos', PermisoController::class)->names('permisos');
+    Route::post('/roles/{id}/switch-guard', [RoleController::class, 'switchGuard'])->name('roles.switchGuard');
+    Route::resource('/usuarios', AsignarController::class)->names('asignar');
+    
+
 });
 
 // Ruta de registro

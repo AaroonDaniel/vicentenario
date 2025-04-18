@@ -320,24 +320,44 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
-        [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
+        
+        ['header' => 'USUARIOS',
+            'can' => 'Administrador configuracion'
         ],
-        ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url' => 'admin/settings',
+            'text' => 'Roles',
+            'route' => 'roles.index',
+            'icon' => 'fas fa-fw fa-user',
+            'can' => 'Administrador configuracion'
+
+        ],  
+        [
+            'text' => 'Permisos',
+            'route' => 'permisos.index',
+            'icon' => 'fas fa-fw fa-user',
+            'can' => 'Administrador configuracion'
+
+        ],  
+        [
+            'text' => 'Usurios',
+            'route' => 'asignar.index',
+            'icon' => 'fas fa-fw fa-user',
+            'can' => 'Administrador configuracion'
+
+        ], 
+        
+        ['header' => 'Clientes'],
+        [
+            'text' => 'Lista de cientes',
+            'route' => 'cliente.index',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
+            'text' => 'Nuevo Cliente',
+            'route' => 'cliente.create',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        /*
         [
             'text' => 'multilevel',
             'icon' => 'fas fa-fw fa-share',
@@ -375,7 +395,7 @@ return [
                     'url' => '#',
                 ],
             ],
-        ],
+        ],*/
         ['header' => 'labels'],
         [
             'text' => 'important',
@@ -430,7 +450,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -475,12 +495,12 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11',
                 ],
             ],
         ],
