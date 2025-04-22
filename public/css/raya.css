@@ -1,0 +1,89 @@
+.top_home{background:none!important;}
+.top_home:before{display:none;}
+.content{/* background:#212121; */ max-width: calc(100% - 230px);margin: 0 auto;}
+main{/* background:#212121!important; */}
+.publicidadbflotante{background: transparent;}
+.raya{position:fixed;padding: 0 10px;width: 100%; }
+.raya a{position:absolute;}
+.raya a.left{left:0}
+.raya a.right{right:0; }
+.nice{color:#fff!important;}
+.especial figcaption{background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,.8) 70%)!important}
+.publicidadbflotante{padding:0 4%!important;}
+/* .publicidad img{ width:700px;} */
+.publicidadbflotante img{ width:100%; height: 100%;}
+.publicidadbflotante > * {
+    display: flex;
+}
+
+.raya a.left img{max-width: 100px;}
+.raya a.right img{max-width: 100px; }
+
+#stickytypeheader{
+    display: flex;
+    flex-direction: column;
+    top: 60px;
+    position: sticky;
+    position: -webkit-sticky;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+}
+
+.billboard{
+    display: flex;
+    justify-content: center;
+    /* max-width: 1500px; */
+    width: 100%;
+    /* background: #031032; */
+}
+.fijo{
+    top: 60px;
+    z-index: 100;
+    margin: 0px auto;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fijo i{
+    font-size: 25px;
+}
+
+#publicidadclose{
+    display: flex;
+    width: 70px;
+    height: 35px;
+    border-radius: 0px 0px 30px 30px;
+    background: #eb008b;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: sticky;
+    cursor: pointer;
+}
+/* mobile portrait */
+
+/* @media only screen and (max-width: 1000px) {
+    .publicidad img{ width:500px;}
+} */
+
+@media only screen and (max-width: 799px) {
+    .content{max-width:100%!important;}
+    .publicidadbflotante > * {
+        width: 100%;
+        
+    }
+    .publicidadbflotante img{ width:100%; height: 100%;}
+    #stickytypeheader{
+        top: 55px;
+        margin: 0;
+        padding: 0 !important;
+    }
+    .raya a.right {
+        display: none;
+    }
+    .raya a.left {
+        display: none;
+    }
+}

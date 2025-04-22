@@ -85,4 +85,10 @@ class User extends Authenticatable
                     ->withPivot('puntuacion')
                     ->withTimestamps();
     }
+    // agenda
+    public function agenda()
+    {
+        return $this->hasMany(UserAgenda::class);
+    }
+
 }

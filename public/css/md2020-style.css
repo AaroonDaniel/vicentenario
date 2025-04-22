@@ -10,7 +10,7 @@
   License: g21 Comunicacion
   License URI: https://g21.com.mx/aviso-privacidad
 */
-
+@charset "UTF-8";
 :root {
   
   --hoteles: #007bff;
@@ -21,7 +21,7 @@
   --restaurantes: #fd7e14;
   --entretenimiento: #a7dd00;;
 }
-@charset "UTF-8";
+
 
 /* reset */
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,main{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}em{ font-style:italic;}
@@ -171,6 +171,7 @@ main{width:100%;top: 0px;background:#fff;left:0;z-index: 1;position: relative;tr
 .col_3{width: 30%;}
 .col_4{width: 20%;}
 .col_5{ width:18%;}
+
 .col_3f{width: 64%;}
 .col_4f{width: 52%;}
 .text_right{ text-align:right;}
@@ -180,24 +181,24 @@ aside{display:block;width:300px;margin: 0 0 0 0;vertical-align: top;background: 
 .inner[data-author="advertorial-md"] .publicidad{display:none;}
 
 /* header */
-header{position: sticky;width: 100%;background: #fff;margin: 0 auto;box-shadow: 0 5px 5px rgba(0,0,0,.05);top: 0;z-index: 2;position: -webkit-sticky;position: fixed;}
+header{position: sticky;width: 100%;background: #ffffff;margin: 0 auto;box-shadow: 0 5px 5px rgba(0, 0, 0, 0.192);top: 0;z-index: 2;position: -webkit-sticky;position: fixed;}
 header a{ transition:0s;}
 header .inner{align-items:center;max-width: inherit;flex-wrap: nowrap;}
-header .logo{width: 130px;display: flex;height: 60px;align-items: center;justify-content: center;}
-header .logo img{width:100%;height: 80%;object-fit: contain;}
+header .logo{width: 130px;display: flex;height: 80px;align-items: center;justify-content: center;}
+header .logo img{width:100%;height: 100%;object-fit: contain;}
 header .header_btns{position:relative;display:flex;align-items: center;}
-header .header_btns .btn{height:30px;margin:0 4px;box-shadow: none;}
-header .header_btns .btn i{ font-size:.8em}
+header .header_btns .btn{height:30px;margin:0 6px;box-shadow: none;}
+header .header_btns .btn i{ font-size:.9em }
 header menu{display: flex;align-items: center;}
 header menu ul{ display:flex;}
 header menu ul li{display: flex;align-items: center;justify-content: center;}
 header menu ul li a{display:block;font: 100 1em 'Poppins';letter-spacing: 1px;text-transform: uppercase;padding: 20px; position:relative;} 
 header menu ul li a:after{height:3px;content:'';position:absolute;width:0%;bottom:0;background: #00cdff;left: 50%; transition:.4s}
 header menu ul li a:hover:after{ left:0; width:100%}
-
+/* despliegue del buscador */
 .search_module{position:fixed;background: #ededed;width:100%;z-index: 999;top: 60px;max-height: calc(100% - 60px);overflow: auto;height: 0px;display: none;}
 .search_module.nav_open{ display:block;}
-.search_module .title{font-size: 2.2em;font-weight:900;margin: 0 0 3%;opacity: 0;transition: .4s;color: #333;}
+.search_module .title{font-size: 2.2em;font-weight:900;margin: 0 0 3%;opacity: 0;transition: .4s;color: #000000;}
 .search_module .inner{padding: 4% 0 0;}
 .search{overflow:hidden;width: 100%;opacity: 1;display: flex;margin: 0 0 8%;position: relative;top: 100px;opacity: 0;transition: .4s;}
 .search input{color: #333;float:left;width: 100%;background:transparent;height: 70px;border-bottom: 1px solid #ef2f90;font-weight: 600;font-size: 1.4em;}
@@ -575,8 +576,8 @@ nav .close span:before,nav .close span:after{background:#fff}
 .video_top .secondary{ margin:0 0 10%}
 
 
-.especiales_home{background: #000;padding: 2% 0 2%;position: relative;}
-.especiales_home .cover{opacity: .1;}
+.especiales_home{background: #000000;padding: 2% 0 2%;position: relative;}
+.especiales_home .cover{opacity: .3;}
 
 .destinations{position:relative;padding: 5% 0;background: #e4e4e4;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;}
 .destinations .cover{opacity:.8}
@@ -589,7 +590,12 @@ nav .close span:before,nav .close span:after{background:#fff}
 .destinations .destaination_carousel .place{ height:100%;}
 
 .ultimas{padding: 2% 0;}
-.title_home{ font-size:1.8em}
+.title_home{ font-size:1.8em;font-family:'Poppins', serif;
+  color: #333;
+  margin-bottom: 1%;
+  font-weight: 900;
+  padding: 0.5% 0;
+}
 .scroll_notes{width:100%;}
 .scroll_notes article{display:grid;grid-template-columns:1fr 1fr 1fr;width: 100%;grid-gap: 20px;}
 .scroll_notes.apps article{grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;grid-gap: 12px;}

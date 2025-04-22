@@ -1,50 +1,45 @@
 <div id="hs-web-interactives-top-push-anchor" class="go3670563033"></div>
 
-<nav class="nav_open">
+<nav class="nav_close">
 
     <section class="inner">
-        <img class="logo ready" src="{{ asset('images/Bolivialetra.png') }}" alt="Vicentenario Bolivia"
-            title="Vicentenario Bolivia">
+        <img class="logo ready" src="{{ asset('images/Bolivialetra.png') }}" alt="Bicentenario Bolivia"
+            title="Bicentenario Bolivia">
 
         <a href="#close" class="close"><span></span></a>
 
         <section class="nav_content">
-
             <ul>
                 <li id="menu-item-66044"
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-66044">
-                    <a href="https://www.mexicodesconocido.com.mx/escapadas">Descubre Destinos</a>
+                    <a href="{{ 'historias' }}">Historia</a>
                     <ul class="sub-menu">
                         <li id="menu-item-66045"
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66045"><a
-                                href="https://pueblosmagicos.mexicodesconocido.com.mx/">Pueblos Mágicos</a></li>
+                                href="https://pueblosmagicos.mexicodesconocido.com.mx/">Batallas</a></li>
                         <li id="menu-item-66046"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66046"><a
-                                href="https://www.mexicodesconocido.com.mx/estados">Estados</a></li>
+                                href="https://www.mexicodesconocido.com.mx/estados">Independencias</a></li>
                         <li id="menu-item-66047"
                             class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66047"><a
-                                href="https://www.mexicodesconocido.com.mx/descubre-destinos/ciudades-de-mexico">Ciudades
-                                de México</a></li>
-                        <li id="menu-item-66049"
-                            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66049"><a
-                                href="https://www.mexicodesconocido.com.mx/descubre-destinos/playas">Playas</a>
+                                href="https://www.mexicodesconocido.com.mx/descubre-destinos/ciudades-de-mexico">Personajes
+                            </a>
                         </li>
-                        <li id="menu-item-66048"
-                            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66048"><a
-                                href="https://www.mexicodesconocido.com.mx/descubre-destinos/zonas-arqueologicas">Zonas
-                                Arqueólogicas</a></li>
                     </ul>
                 </li>
+
                 <li id="menu-item-66050"
-                    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66050"><a
-                        href="https://www.mexicodesconocido.com.mx/conoce-mexico/actualidad">Actualidad</a></li>
+                    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66050">
+                    <a href="https://www.mexicodesconocido.com.mx/conoce-mexico/actualidad">Presidentes</a>
+                </li>
+                
                 <li id="menu-item-66051"
                     class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-66051">
-                    <a href="https://www.mexicodesconocido.com.mx/conoce-mexico/cultura-mexicana">Cultura</a>
+                    <a href="{{ 'culturas' }}">Cultura</a>
                     <ul class="sub-menu">
                         <li id="menu-item-66052"
                             class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66052"><a
-                                href="/resources/views/historia/historia.blade.php">Historia</a>
+                                href="/resources/views/historia/historia.blade.php">Etnias e idiomas</a>
                         </li>
                         <li id="menu-item-66053"
                             class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66053"><a
@@ -59,19 +54,23 @@
                                 href="https://www.mexicodesconocido.com.mx/museos">Museos</a></li>
                     </ul>
                 </li>
-                <li id="menu-item-66056"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66056"><a
-                        href="https://www.mexicodesconocido.com.mx/expediciones">Expediciones</a></li>
-                <li id="menu-item-66057"
-                    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66057"><a
-                        href="https://www.mexicodesconocido.com.mx/vive-experiencias/especiales">Especiales</a>
-                </li>
-                <li id="menu-item-66437"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66437"><a
-                        href="https://www.mexicodesconocido.com.mx/videos-mexico">Videos</a></li>
                 <li id="menu-item-66059"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66059"><a
-                        href="https://www.mexicodesconocido.com.mx/eventos">Eventos</a></li>
+                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66059">
+                    <a href="https://www.mexicodesconocido.com.mx/eventos">Eventos</a>
+                    <ul class="sub-menu">
+                        <li id="menu-item-66045"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66045"><a
+                                href="https://pueblosmagicos.mexicodesconocido.com.mx/">Agenda</a></li>
+                        <li id="menu-item-66046"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66046"><a
+                                href="{{ 'videos' }}">Multimedia</a></li>
+                        <li id="menu-item-66047"
+                            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66047"><a
+                                href="https://www.mexicodesconocido.com.mx/descubre-destinos/ciudades-de-mexico">Expositores
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
 
             <section class="links">
@@ -132,31 +131,64 @@
 <main>
     <header>
         <section class="inner">
+            <!-- Logo -->
             <a href="{{ route('login') }}" class="logo"><img data-src="/images/logoOficial.png"
-                    alt="México Desconocido" title="México Desconocido" src="/images/logoOficial.png"
+                    alt="Bicentenario Bolivia" title="Bicentenario Bolivia" src="/images/logoOficial.png"
                     class="ready"></a>
+            <!-- Botones del Header -->
             <section class="header_btns">
-                <a href="{{ 'login' }}" target="_blank" rel="noopener" class="btn secondary susc"><i
-                        class="fas fa-user"></i> <span>Login</span></a>
+                <!--
+                <a href="{{ 'login' }}" target="_blank" rel="noopener" class="btn secondary susc">
+                    <i class="fas fa-user"></i> 
+                    <span>Iniciar Sesión</span>
+                </a>-->
+                <!-- Botón de Login o Nombre de Usuario -->
+                @if (Auth::check())
+                    <!-- Si el usuario está autenticado -->
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="userDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i> <span>{{ Auth::user()->name }}</span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="{{ route('profile.edit') }}"><i
+                                        class="fas fa-user-circle"></i> Perfil</a></li>
+                            <li><a class="dropdown-item" href="{{ route('agenda.index') }}"><i class="fa-solid fa-calendar-days"></i> Agenda</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item-logout">
+                                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                @else
+                    <!-- Si el usuario no está autenticado -->
+                    <a href="{{ route('login') }}" target="_blank" rel="noopener" class="btn secondary susc">
+                        <i class="fas fa-user"></i> <span>Login</span>
+                    </a>
+                @endif
+                <!-- Botón de Búsqueda -->
                 <a href="#open_search" class="open_search"><span></span></a>
+                <!-- Botón de Menú -->
                 <a href="#open_nav" class="open_nav"><span></span></a>
             </section>
         </section>
     </header>
 
-    <!--
     <div class="raya">
-        <a href="https://a2.adform.net/C/?bn=79416784;gdpr=${gdpr};gdpr_consent=${gdpr_consent_50}" target="blank"
-            rel="noopener" class="rayabtn right">
-            <img src="https://i.pinimg.com/474x/09/ac/bc/09acbcf19596c3750eaec2cb82b95f32.jpg"
-                class="banner_skin_impression banner_skin_click_right" data-id="Enterprice_5mar2025_fixed"
-                data-gtm-vis-recent-on-screen32626292_26="299" data-gtm-vis-first-on-screen32626292_26="299"
-                data-gtm-vis-total-visible-time32626292_26="100" data-gtm-vis-has-fired32626292_26="1">
+        <a href="https://bit.ly/4kNLXLD" target="blank" rel="noopener" class="rayabtn right">
+                    <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/lateral-skin-LMDM-2025-der.jpg" class="banner_skin_impression banner_skin_click_right" data-id="lomejormexico2025_22marz_2025" width="100" height="500" alt="banner promo izq" data-gtm-vis-recent-on-screen32626292_26="337" data-gtm-vis-first-on-screen32626292_26="337" data-gtm-vis-total-visible-time32626292_26="100" data-gtm-vis-has-fired32626292_26="1">
         </a>
-        <a href="https://a2.adform.net/C/?bn=79416784;gdpr=${gdpr};gdpr_consent=${gdpr_consent_50}" target="blank"
-            rel="noopener" class="rayabtn left">
-            <img src="https://images.pexels.com/photos/27872783/pexels-photo-27872783/free-photo-of-ciudad-paisaje-naturaleza-soleado.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                class="banner_skin_click_left" data-id="Enterprice_5mar2025_fixed">
+        <a href="https://bit.ly/4kNLXLD" target="blank" rel="noopener" class="rayabtn left">
+                    <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/lateral-skin-LMDM-2025-izq.jpg" class="banner_skin_click_left" data-id="lomejormexico2025_22marz_2025" width="100" height="500" alt="banner promo izq">
         </a>
     </div>
--->
+
+

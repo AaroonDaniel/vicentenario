@@ -317,32 +317,29 @@ return [
         ],
         [
             'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
+            'url' => 'admin/blog'
         ],
         
         ['header' => 'USUARIOS',
-            'can' => 'Administrador configuracion'
+            
         ],
         [
             'text' => 'Roles',
             'route' => 'roles.index',
-            'icon' => 'fas fa-fw fa-user',
-            'can' => 'Administrador configuracion'
+            'icon' => 'fas fa-fw fa-user'
 
         ],  
         [
             'text' => 'Permisos',
             'route' => 'permisos.index',
             'icon' => 'fas fa-fw fa-user',
-            'can' => 'Administrador configuracion'
+            
 
         ],  
         [
             'text' => 'Usurios',
             'route' => 'asignar.index',
             'icon' => 'fas fa-fw fa-user',
-            'can' => 'Administrador configuracion'
 
         ], 
         

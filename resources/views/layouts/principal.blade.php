@@ -2,36 +2,31 @@
 <html lang="es">
 
 <head>
-    @include('partials.head') <!-- Metadatos y enlaces CSS -->
+    
+    @include('partials.head')
+    <!-- Metadatos y enlaces CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
 
     <!-- Font Awesome para iconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <!-- Tailwind CSS CDN (para pruebas rápidas) -->
     <script src="https://cdn.tailwindcss.com"></script>
-<!-- estilos css -->
+    <!-- estilos css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"> 
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
     <!-- Alpine.js PARA EDITAR -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
     @stack('styles')
 </head>
 
 <body>
     @include('partials.header') <!-- Header visual -->
-
-
     @yield('content') <!-- Contenido dinámico -->
-
-
     @include('partials.footer') <!-- Footer -->
-
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    
     <!-- Desplegador de menu -->
     <script type="text/javascript"
         src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/jquery.min.js?ver=2.1.0" id="jquerymin-js">
@@ -40,9 +35,11 @@
         src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/assets.js?ver=3.3.3.2.32" id="assets-js">
     </script>
 
+    <!-- VUE
     <script type="text/javascript"
         src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/descubrev2.js?ver=1.34"
         id="my_vuecode_descubrev2-js"></script>
+    -->
     <script type="text/javascript"
         src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/owl.carousel.min.js?ver=1.0.0"
         id="carousel-js"></script>

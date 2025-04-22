@@ -1,6 +1,5 @@
 <!-- resources/views/index.blade.php -->
 @extends('layouts.principal')
-
 @section('title', 'Vicentenario Bolivia')
 
 @section('content')
@@ -225,98 +224,98 @@
                     <h2 class="title_home">Lo último</h2>
                 </div>
                 <div class="cuadricula">
-                    <a href="https://www.mexicodesconocido.com.mx/isaias-jimenez-japon.html" class="card">
+                    <a href="{{ 'ultimo1' }}" class="card">
                         <div class="headercard">
-                            <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/486173798_1233003355492767_4226612267250431635_n.jpg"
-                                alt="Isaías Jiménez expone sus animales fantásticos de Arrazola en Japón"
-                                src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/486173798_1233003355492767_4226612267250431635_n.jpg"
+                            <img data-src="https://pxcdn.reduno.com.bo/reduno/042024/1712922753923.webp?cw=800&ch=450&extw=jpg"
+                                alt="Día del Niño en Bolivia:"
+                                src="https://pxcdn.reduno.com.bo/reduno/042024/1712922753923.webp?cw=800&ch=450&extw=jpg"
                                 class="ready">
                         </div>
                         <div class="contentcard">
                             <div class="topinfo">
-                                <h2>Conoce México</h2>
-                                <p class="hashtag"><i class="fas fa-map-marker-alt"></i>México</p>
+                                <h2>Conoce Bolivia</h2>
+                                <p class="hashtag"><i class="fas fa-map-marker-alt"></i>Bolivia</p>
                             </div>
-                            <p class="notetitle">Isaías Jiménez expone sus animales fantásticos de Arrazola en
-                                Japón</p>
-                            <span class="notegeneral">Además de ser reconocido por especialistas y aprendices
-                                japoneses, Isaías Jiménez se reencontró con la obra de su padre, Manuel Jiménez,
-                                creador de los animales fantásticos.</span>
+                            <p class="notetitle">Día del Niño en Bolivia</p>
+                            <span class="notegeneral">En Bolivia, el Día del Niño se celebra cada 12 de abril. Es una fecha dedicada a homenajear y reflexionar sobre los derechos,
+                                la protección y el bienestar de la niñez en el país.
+                            </span>
                         </div>
                     </a>
-                    <a href="https://www.mexicodesconocido.com.mx/zacatlan-la-gran-manzana-poblana.html" class="card">
+
+                    <a href="{{ 'ultimo1' }}" class="card">
                         <div class="headercard">
                             <img post-id="5250" fifu-featured="1"
-                                data-src="https://www.mexicodesconocido.com.mx/sites/default/files/styles/adaptive/public/fichas-destino/pue_zacatlan-carreteta-trans-serrana-nocturna_6774_gemd_mfmd_1200.jpg"
-                                alt="Zacatlán, la gran manzana poblana" title="Zacatlán, la gran manzana poblana"
-                                src="https://www.mexicodesconocido.com.mx/sites/default/files/styles/adaptive/public/fichas-destino/pue_zacatlan-carreteta-trans-serrana-nocturna_6774_gemd_mfmd_1200.jpg"
+                                data-src="https://cdn.bolivia.com/sdi/2025/04/16/todo-lo-que-necesitas-para-la-peregrinacion-a-copacabana-en-semana-santa-1282133.jpg"
+                                alt="copacabana La paz" title="copacabana La paz"
+                                src="https://cdn.bolivia.com/sdi/2025/04/16/todo-lo-que-necesitas-para-la-peregrinacion-a-copacabana-en-semana-santa-1282133.jpg"
                                 class="ready">
                         </div>
                         <div class="contentcard">
                             <div class="topinfo">
                                 <h2>Pueblos Mágicos</h2>
-                                <p class="hashtag"><i class="fas fa-map-marker-alt"></i>Puebla</p>
+                                <p class="hashtag"><i class="fas fa-map-marker-alt"></i>Copacabana</p>
                             </div>
-                            <p class="notetitle">Zacatlán, la gran manzana poblana</p>
-                            <span class="notegeneral">Te decimos qué actividades turísticas puedes realizar en este
-                                Pueblo Mágico ubicado en la Sierra Norte de Puebla donde se da la manzana
-                                poblana.</span>
+                            <p class="notetitle">Copacabana, La paz</p>
+                            <span class="notegeneral">Miles de personas acuden a la peregrinación hasta Copacabana. Esta ciudad turística recibirá este año a 25.000 visitantes.</span>
                         </div>
                     </a>
-                    <a href="https://www.mexicodesconocido.com.mx/eclipse-de-luna-2025.html" class="card">
+
+                    <a href="{{ 'ultimo1' }}" class="card">
                         <div class="headercard">
-                            <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/250313-aca12-des-f1-la-Luna-se-pintara-de-rojo-este-jueves-durante-eclipse-total.jpg"
-                                alt="Eclipse de Luna 2025, cuándo y a qué hora ver la «Luna de sangre»"
-                                src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/250313-aca12-des-f1-la-Luna-se-pintara-de-rojo-este-jueves-durante-eclipse-total.jpg"
+                            <img data-src="https://abi.bo/images//nube/2021/10oct/FestivalNacionalTarqueadaBolivia27/3.jpg"
+                                alt="La «Tarqueada» Más grande Del Mundo"
+                                src="https://abi.bo/images//nube/2021/10oct/FestivalNacionalTarqueadaBolivia27/3.jpg"
                                 class="ready">
                         </div>
                         <div class="contentcard">
                             <div class="topinfo">
-                                <h2>Conoce México</h2>
-                                <p class="hashtag"><i class="fas fa-map-marker-alt"></i>México</p>
+                                <h2>Danza del altiplano</h2>
+                                <p class="hashtag"><i class="fas fa-map-marker-alt"></i>Bolivia</p>
                             </div>
-                            <p class="notetitle">Eclipse de Luna 2025, cuándo y a qué hora ver la «Luna de sangre»
+                            <p class="notetitle">La «Tarqueada» Más grande Del Mundo
                             </p>
-                            <span class="notegeneral">¿Estás listo para el eclipse de Luna 2025? Te decimos cuándo,
-                                cómo y a qué hora verlo. ¡Será un gran espectáculo natural!</span>
+                            <span class="notegeneral">¡Festejemos el Bicentenario a lo grande!
+                            Se parte de un hito histórico, únete a La Tarqueada Más grande Del Mundo.</span>
                         </div>
                     </a>
-                    <a href="https://www.mexicodesconocido.com.mx/archivo-general-agrario-de-la-sedatu.html"
+
+                    <a href="{{ 'ultimo1' }}"
                         class="card">
                         <div class="headercard">
-                            <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/archivo-agrario-sedatu-render.png"
-                                alt="La nueva sede del Archivo General Agrario de la SEDATU"
-                                src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/archivo-agrario-sedatu-render.png"
+                            <img data-src="https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/492041672_1421471329289412_2318168045478537980_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=OdMVwgEOP98Q7kNvwG5ci0q&_nc_oc=Adm4gNvx_EhyC2CRIIXPprdAL7uZ_iBGDqjNcsUzUnVMYw9CrE-G4yfHyLqCyc9eo3U&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=5wP1XzmR3Ujvs5hRc-lrWA&oh=00_AfGepJNths17tHptPpxhT0CtPcqFgBNLWoilpKp6F6puag&oe=680A3C93"
+                                alt="¡Bolivia Danza en el Bicentenario!"
+                                src="https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/492041672_1421471329289412_2318168045478537980_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=OdMVwgEOP98Q7kNvwG5ci0q&_nc_oc=Adm4gNvx_EhyC2CRIIXPprdAL7uZ_iBGDqjNcsUzUnVMYw9CrE-G4yfHyLqCyc9eo3U&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=5wP1XzmR3Ujvs5hRc-lrWA&oh=00_AfGepJNths17tHptPpxhT0CtPcqFgBNLWoilpKp6F6puag&oe=680A3C93"
                                 class="ready">
                         </div>
                         <div class="contentcard">
                             <div class="topinfo">
                                 <h2>Actualidad</h2>
-                                <p class="hashtag"><i class="fas fa-map-marker-alt"></i>Ciudad de México</p>
+                                <p class="hashtag"><i class="fas fa-map-marker-alt"></i>Bolivia</p>
                             </div>
-                            <p class="notetitle">La nueva sede del Archivo General Agrario de la SEDATU</p>
-                            <span class="notegeneral">El nuevo edificio que albergará el Archivo General Agrario de
-                                la SEDATU, es un portento arquitectónico. El inmueble, además de resguardar uno de
-                                los acervos más importantes del país, será un museo abierto a todo el público.
+                            <p class="notetitle">¡Bolivia Danza en el Bicentenario 2025!</p>
+                            <span class="notegeneral">¡Bolivia Danza en el Bicentenario! 
+                            Partipa de este concurso que se realiza a nivel nacional. 
                             </span>
                         </div>
                     </a>
-                    <a href="https://www.mexicodesconocido.com.mx/eeuu-repatria-915-bienes-arqueologicos-a-mexico.html"
+                    <a href="{{ 'ultimo1' }}"
                         class="card">
                         <div class="headercard">
-                            <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/foto_home-1.jpg"
-                                alt="EEUU repatria 915 bienes arqueológicos a México"
-                                src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/foto_home-1.jpg"
+                            <img data-src="https://i.pinimg.com/736x/27/4e/47/274e476a4a6ca0eba095211ef399427a.jpg"
+                                alt="Salar de Uyuni, Bolivia"
+                                src="https://i.pinimg.com/736x/27/4e/47/274e476a4a6ca0eba095211ef399427a.jpg"
                                 class="ready">
                         </div>
                         <div class="contentcard">
                             <div class="topinfo">
-                                <h2>Conoce México</h2>
-                                <p class="hashtag"><i class="fas fa-map-marker-alt"></i>México</p>
+                                <h2>Conoce Bolivia</h2>
+                                <p class="hashtag"><i class="fas fa-map-marker-alt"></i>Salar de Uyuni</p>
                             </div>
-                            <p class="notetitle">EEUU repatria 915 bienes arqueológicos a México</p>
-                            <span class="notegeneral">Entre los 915 bienes arqueológicos repatriados en marzo,
-                                destaca una figurilla de un hombre sentado con facciones olmecas.</span>
+                            <p class="notetitle">Salar de Uyuni, Bolivia</p>
+                            <span class="notegeneral">El Salar de Uyuni es más visitado durante la temporada de lluvias, que va desde diciembre hasta abril
+                            Durante este período, el salar se cubre de agua, creando el famoso efecto espejo, lo que atrae a muchos turistas. 
+                            </span>
                         </div>
                     </a>
 
@@ -324,8 +323,8 @@
             </div>
         </section>
 
-        <!--PARTE PUEBLOS MAGICOS -->
 
+        <!--PARTE PUEBLOS MAGICOS -->
         <section class="ultimas">
             <section class="inner">
                 <h2 class="title_home">Pueblos Mágicos</h2>
@@ -334,42 +333,45 @@
 
                         <a href="https://www.mexicodesconocido.com.mx/comala-colima.html" class="especial">
                             <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2020/09/comala-rulfo-fp.jpg"
-                                    alt="Comala, Colima" title="comala-rulfo-fp " data-credit="Francisco Palma"
+                                <img src="https://images.pexels.com/photos/11396013/pexels-photo-11396013.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
+                                "
+                                    alt="Santa Cruz, Samaipata" title="comala-rulfo-fp " data-credit="Francisco Palma"
                                     data-alt="">
                             </figure>
                             <figcaption>
                                 <b>Pueblos Mágicos</b>
-                                <strong>Comala, Colima, ¿qué hacer en este Pueblo Mágico?</strong>
-                                <em><i class="fas fa-map-marker"></i> Colima</em>
+                                <strong>Santa Cruz, Samaipata, ¿qué hacer en este Municipio Mágico?</strong>
+                                <em><i class="fas fa-map-marker"></i> Samaipata</em>
                             </figcaption>
                         </a>
+
                         <a href="https://www.mexicodesconocido.com.mx/todos-santos-baja-california-un-oasis-multicolor-en-el-desierto-baja-california.html"
                             class="especial">
                             <figure>
                                 <img post-id="693" fifu-featured="1"
-                                    src="https://www.mexicodesconocido.com.mx/sites/default/files/styles/adaptive/public/nodes/858/todos-santos.jpg"
-                                    alt="Todos Santos, oasis multicolor en el desierto"
-                                    title="Todos Santos, oasis multicolor en el desierto" data-credit=""
-                                    data-alt="Todos Santos, oasis multicolor en el desierto">
+                                    src="https://i.pinimg.com/736x/55/df/27/55df27769bee522705cdbe3b1f039abe.jpg"
+                                    alt="Coroico"
+                                    title="Coroico" data-credit=""
+                                    data-alt="Coroico">
                             </figure>
                             <figcaption>
                                 <b>Pueblos Mágicos</b>
-                                <strong>Todos Santos, oasis multicolor en el desierto</strong>
-                                <em><i class="fas fa-map-marker"></i> Baja California</em>
+                                <strong>El pueblo de Coroico se encuentra enclavado en lo alto de las cordilleras de la provincia de Nor Yungas</strong>
+                                <em><i class="fas fa-map-marker"></i>Coroico</em>
                             </figcaption>
                         </a>
+
                         <a href="https://www.mexicodesconocido.com.mx/que-hacer-en-villa-del-carbon.html"
                             class="especial">
                             <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2017/12/Villa-del-Carbon-1-600x400.jpg"
-                                    alt="Villa-del-Carbon" title="Villa-del-Carbon " data-credit="Diego L. Cuevas"
-                                    data-alt="Villa-del-Carbon">
+                                <img src="https://www.ibolivia.org/wp-content/uploads/2019/08/parque-nacional-toro-toro.jpg"
+                                    alt="Toro Toro" title="Toro Toro" data-credit="Diego L. Cuevas"
+                                    data-alt="Toro Toro">
                             </figure>
                             <figcaption>
                                 <b>Pueblos Mágicos</b>
-                                <strong>Villa del Carbón, Edomex: ¿Qué se puede hacer y cómo llegar?</strong>
-                                <em><i class="fas fa-map-marker"></i> Estado de México</em>
+                                <strong>Parque Nacional Toro Toro: ¿Qué se puede hacer y cómo llegar?</strong>
+                                <em><i class="fas fa-map-marker"></i> Toro Toro</em>
                             </figcaption>
                         </a>
                     </article>
@@ -387,36 +389,37 @@
 
                         <a href="https://www.mexicodesconocido.com.mx/tamales-capulin.html" class="especial">
                             <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/tamales-capulin-1-600x450.jpg"
-                                    alt="tamales-capulin" title="tamales-capulin " data-credit="Flickr"
-                                    data-alt="tamales-capulin">
+                                <img src="https://i.pinimg.com/736x/75/78/e7/7578e71c7245f487a2d7a37ea2cbf646.jpg"
+                                    alt="Pique macho de Cochabamba" title="Pique macho de Cochabamba" data-credit="Flickr"
+                                    data-alt="Pique macho de Cochabamba">
                             </figure>
                             <figcaption>
-                                <b>Conoce México</b>
-                                <strong>Tamales de capulín en Guerrero, manjar que debes probar</strong>
-                                <em><i class="fas fa-map-marker"></i> Guerrero</em>
+                                <b>Conoce Bolivia</b>
+                                <strong>Pique macho de Cochabamba, manjar que debes probar</strong>
+                                <em><i class="fas fa-map-marker"></i> Cochabamba</em>
                             </figcaption>
                         </a>
                         <a href="https://www.mexicodesconocido.com.mx/macarrones-y-dulce-de-leche.html" class="especial">
                             <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/macarrones-de-dulce-de-leche-600x355.jpg"
-                                    alt="Macarrones de dulce de leche" title="macarrones de dulce de leche "
-                                    data-credit="Dulces artesanales" data-alt="">
+                                <img src="https://i.pinimg.com/736x/71/38/f5/7138f594579a706bab8b17184f591d8b.jpg"
+                                    alt="Sopa de mani" title="Sopa de mani "
+                                    data-credit="Sopa de mani" data-alt="">
                             </figure>
                             <figcaption>
-                                <b>Conoce México</b>
-                                <strong>Macarrones y dulce de leche: una sabrosa tradición de México</strong>
+                                <b>Conoce Bolivia</b>
+                                <strong>Sopa de mani: un plato muy tradicional de Bolivia</strong>
+                                <em><i class="fas fa-map-marker"></i> Chuqisaca</em>
                             </figcaption>
                         </a>
                         <a href="https://www.mexicodesconocido.com.mx/bugambilia-maximiliano.html" class="especial">
                             <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/Bugambilias-Blog-Xochitla-1180x520-1-600x264.jpg"
-                                    alt="Bugambilia" title="Bugambilias-Blog-Xochitla-1180×520 "
-                                    data-credit="Blog Xochitla" data-alt="">
+                                <img src="https://www.pub.eldiario.net/noticias/2016/2016_09/nt160920/f_2016-09-20_89.jpg"
+                                    alt="Salteña" title="Salteña de Bolivia"
+                                    data-credit="Salteña" data-alt="">
                             </figure>
                             <figcaption>
-                                <b>Actualidad</b>
-                                <strong>Bugambilia en México: la flor sudamericana que trajo Maximiliano</strong>
+                                <strong>Salteña de Bolivia: son empanadas de origen boliviano, populares en el occidente del pais</strong>
+                                <em><i class="fas fa-map-marker"></i> Bolivia</em>
                             </figcaption>
                         </a>
                     </article>
@@ -434,40 +437,40 @@
 
                         <a href="https://www.mexicodesconocido.com.mx/rancho-magico-tlalpan.html" class="especial">
                             <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/carrusellaberinto-900x523.jpg"
-                                    alt="Rancho Mágico" title="carrusellaberinto " data-credit="Rancho Mágico"
+                                <img src="https://boliviatravelsite.com/Images/Attractionphotos/villa-tunari-private-tour-02.jpg"
+                                    alt="Villa Tunari" title="carrusellaberinto " data-credit="Villa Tunari"
                                     data-alt="">
                             </figure>
                             <figcaption>
-                                <b>Conoce México</b>
-                                <strong>Rancho Mágico, un divertido plan familiar sin salir de la CDMX</strong>
-                                <em><i class="fas fa-map-marker"></i>Ciudad de México</em>
+                                <b>Ecoturismo y aventura</b>
+                                <strong>Villa Tunari, es una localidad turística de la provincia de Chapare</strong>
+                                <em><i class="fas fa-map-marker"></i>Cochabamba</em>
                             </figcaption>
                         </a>
                         <a href="https://www.mexicodesconocido.com.mx/el-parque-nacional-la-malinche-tlaxcala-puebla.html"
                             class="especial">
                             <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2017/02/CONANP_1600-900x675.jpg"
-                                    alt="Parque nacional la malinche" title="CONANP_1600 " data-credit="CONANP"
+                                <img src="https://images.pexels.com/photos/21637495/pexels-photo-21637495/free-photo-of-coches-punto-de-referencia-viaje-viajar.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                                    alt="Salar de Uyuni" title="CONANP_1600 " data-credit="CONANP"
                                     data-alt="">
                             </figure>
                             <figcaption>
-                                <b>Ecoturismo y aventura</b>
-                                <strong>Parque Nacional La Malinche, la cumbre escondida de México</strong>
-                                <em><i class="fas fa-map-marker"></i>Tlaxcala</em>
+                                <b>Conoce Bolivia</b>
+                                <strong>Salar de Uyuni: Desierto de sal</strong>
+                                <em><i class="fas fa-map-marker"></i>Potosi</em>
                             </figcaption>
                         </a>
                         <a href="https://www.mexicodesconocido.com.mx/paquetes-turisticos-tren-maya.html"
                             class="especial">
                             <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/cenote-ik-kil-01-900x506.webp"
-                                    alt="Cenote Ik-Kil en los paquetes turísticos del Tren Maya" title="cenote-ik-kil-01 "
+                                <img src="https://estaticos-cdn.prensaiberica.es/clip/285aba65-fca1-44ea-8ab3-7415130b72e6_original-libre-aspect-ratio_default_0.jpg"
+                                    alt="Lago Titicaca" title="cenote-ik-kil-01 "
                                     data-credit="chichenitza.com" data-alt="">
                             </figure>
                             <figcaption>
-                                <b>Conoce México</b>
-                                <strong>Paquetes turísticos del Tren Maya, ¡todo armado para tu viaje!</strong>
-                                <em><i class="fas fa-map-marker"></i>México</em>
+                                <b>Conoce Bolivia</b>
+                                <strong>Aventura en el Titicaca, el lago más alto del mundo</strong>
+                                <em><i class="fas fa-map-marker"></i>La paz</em>
                             </figcaption>
                         </a>
                     </article>
@@ -478,9 +481,10 @@
 
         <!-- Seccion de MENU DESPLAZAMIENTO DE EVENTOS DE GUIAS TURISTICAS DE VIAJE  -->
         <section class="especiales_home">
-            <figure class="cover random ready"
-                style="background-image: url(&quot;/wp-content/themes/md2020/img/md_texture_6.jpg&quot;);">
+            <figure class="cover" style="background-image: url('{{ asset('images/fondo.jpg') }}') !important;"
+            >
             </figure>
+
             <section class="inner">
                 <h2 class="nice white">Guías turísticas de viaje</h2>
                 <section class="scroll_notes apps">
@@ -578,13 +582,11 @@
             </section>
         </section>
 
-
-
         <!-- Seccion de MENU DESPLAZAMIENTO DE EVENTOS DE WEB APPS  -->
-
         <section class="especiales_home">
-            <figure class="cover random ready"
-                style="background-image: url(&quot;/wp-content/themes/md2020/img/md_texture_6.jpg&quot;);">
+            <figure class="cover"
+                style="background-image: url('{{ asset('images/fondo.jpg') }}') !important;"
+                >
             </figure>
             <section class="inner">
                 <h2 class="nice white">Web Apps</h2>
@@ -653,113 +655,17 @@
                 </section>
             </section>
         </section>
+        <!-- publicidad -->
+        <div class="publicidad" data-gtm-vis-first-on-screen32626292_39="257563" data-gtm-vis-total-visible-time32626292_39="100" data-gtm-vis-has-fired32626292_39="1">
+                  <!-- <section class="adPlacement" data-ad="div-gpt-ad-Leader_01_Desktop_970x90" data-slot="0"></section> -->
+          <div id="div-gpt-ad-1699062229990-0" style="min-width: 320px; min-height: 90px;" data-google-query-id="CJK1j5CQ24wDFTNMuAQdeg0Ohw">
 
-        <!-- Seccion de las HISTORIA -->
-        <section class="ultimas gray">
-            <section class="inner">
-                <h2 class="title_home">Historia</h2>
-                <section class="scroll_notes">
-                    <article>
-
-                        <a href="https://www.mexicodesconocido.com.mx/palacio-legislativo-donceles.html" class="especial">
-                            <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/1280px-Palacio_Legislativo_de_Donceles_01-900x675.jpg"
-                                    alt="1280px-Palacio_Legislativo_de_Donceles_01"
-                                    title="1280px-Palacio_Legislativo_de_Donceles_01 " data-credit="Wikipedia"
-                                    data-alt="1280px-Palacio_Legislativo_de_Donceles_01">
-                            </figure>
-                            <figcaption>
-                                <b>Conoce México</b>
-                                <strong>El Palacio Legislativo de Donceles y sus momentos más impactantes en la
-                                    historia</strong>
-                                <em><i class="fas fa-map-marker"></i>Ciudad de México</em>
-                            </figcaption>
-                        </a>
-                        <a href="https://www.mexicodesconocido.com.mx/macarrones-y-dulce-de-leche.html" class="especial">
-                            <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/macarrones-de-dulce-de-leche.jpg"
-                                    alt="Macarrones de dulce de leche" title="macarrones de dulce de leche "
-                                    data-credit="Dulces artesanales" data-alt="">
-                            </figure>
-                            <figcaption>
-                                <b>Conoce México</b>
-                                <strong>Macarrones y dulce de leche: una sabrosa tradición de México</strong>
-                                <em><i class="fas fa-map-marker"></i>México</em>
-                            </figcaption>
-                        </a>
-                        <a href="https://www.mexicodesconocido.com.mx/citlallicue.html" class="especial">
-                            <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/CITLALLICUE-900x600.jpg"
-                                    alt="Citallicue" title="CITLALLICUE " data-credit="INAH" data-alt="">
-                            </figure>
-                            <figcaption>
-                                <b>Conoce México</b>
-                                <strong>Citlallicue: la divinidad mexica de las estrellas</strong>
-                                <em><i class="fas fa-map-marker"></i>México</em>
-                            </figcaption>
-                        </a>
-                    </article>
-                </section>
-            </section>
-        </section>
-
-        <!-- Seccion de CULTURA -->
-        <section class="ultimas">
-            <section class="inner">
-                <h2 class="title_home">Cultura</h2>
-                <section class="scroll_notes">
-                    <article>
-
-                        <a href="https://www.mexicodesconocido.com.mx/bugambilia-maximiliano.html" class="especial">
-                            <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/Bugambilias-Blog-Xochitla-1180x520-1-900x397.jpg"
-                                    alt="Bugambilia" title="Bugambilias-Blog-Xochitla-1180×520 "
-                                    data-credit="Blog Xochitla" data-alt="">
-                            </figure>
-                            <figcaption>
-                                <b>Actualidad</b>
-                                <strong>Bugambilia en México: la flor sudamericana que trajo Maximiliano</strong>
-                                <em><i class="fas fa-map-marker"></i>México</em>
-                            </figcaption>
-                        </a>
-                        <a href="https://www.mexicodesconocido.com.mx/alfombras-pasionarias-acatzingo-semana-santa.html"
-                            class="especial">
-                            <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/acatzingo-alfombras-pasionarias-900x676.jpeg"
-                                    alt="acatzingo-alfombras-pasionarias" title="acatzingo-alfombras-pasionarias "
-                                    data-credit="Facebook Abraham Martínez Jiménez"
-                                    data-alt="acatzingo-alfombras-pasionarias">
-                            </figure>
-                            <figcaption>
-                                <b>Conoce México</b>
-                                <strong>Alfombras pasionarias en Acatzingo, Puebla: la tradición que llena de color
-                                    la Semana Santa</strong>
-                                <em><i class="fas fa-map-marker"></i>Puebla</em>
-                            </figcaption>
-                        </a>
-                        <a href="https://www.mexicodesconocido.com.mx/quema-judas-festival-cartoneria-cdmx.html"
-                            class="especial">
-                            <figure>
-                                <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/Judas_dancing_in_the_22Quema_de_judas22_festival_Mexico_City-900x600.jpg"
-                                    alt="Judas_dancing_in_the_Quema_de_judas_festival,_Mexico_City"
-                                    title="Judas_dancing_in_the_Quema_de_judas_festival,_Mexico_City "
-                                    data-credit="Wikipedia"
-                                    data-alt="Judas_dancing_in_the_Quema_de_judas_festival,_Mexico_City">
-                            </figure>
-                            <figcaption>
-                                <b>Conoce México</b>
-                                <strong>La tradición de la quema de Judas y el 13° Festival de Cartonería en
-                                    CDMX</strong>
-                                <em><i class="fas fa-map-marker"></i>Ciudad de México</em>
-                            </figcaption>
-                        </a>
-                    </article>
-                </section>
-            </section>
-        </section>
-
-
-
+            <div id="google_ads_iframe_/1016237/Leader1_970x250_0__container__" style="border: 0pt none;">
+              <iframe id="google_ads_iframe_/1016237/Leader1_970x250_0" name="google_ads_iframe_/1016237/Leader1_970x250_0" title="3rd party ad content" width="970" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" aria-label="Advertisement" tabindex="0" allow="private-state-token-redemption;attribution-reporting" data-load-complete="true" data-google-container-id="7" style="border: 0px; vertical-align: bottom;">                
+              </iframe>
+            </div>
+          </div>
+        </div>
 
         <!-- Seccion de videos -->
         <section class="videos_home">
@@ -769,21 +675,19 @@
                     <h3>Videos</h3>
                     <p>Video más visto</p>
                     <a href="https://www.mexicodesconocido.com.mx/visita-la-ciudad-puebla.html">
-                        <strong>Visita la Ciudad de Puebla</strong>
-                        <span>La Ciudad de Puebla es una mezcla de historia, gastronomía, arquitectura colonial y
-                            moderna. ¿Qué esperas para planear una escapada a una de las ciudades más cosmopolitas
-                            de México?</span>
+                        <strong>Visita Bolivia</strong>
+                        <span>Descubre las joyas ocultas de Bolivia en este recorrido imperdible por algunos de sus destinos más sorprendentes</span>
                     </a>
                     <br>
-                    <a href="/videos-mexico" class="btn terciary"><i class="fas fa-play"></i> Ver todos los
+                    <a href="{{ 'videos' }}" class="btn terciary"><i class="fas fa-play"></i> Ver todos los
                         videos</a>
                 </article>
                 <section class="player">
                     <figure
-                        data-video="<iframe title=&quot;Ciudad de Puebla&quot; width=&quot;640&quot; height=&quot;360&quot; src=&quot;https://www.youtube.com/embed/eXvws6dVgK0?start=20&amp;feature=oembed&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen></iframe>">
-                        <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2018/01/PUE_PUEBLA_PARQUE-LOS-FUERTES_91A3249_AR.jpg"
+                        data-video="<iframe title=&quot;Ciudad de Puebla&quot; width=&quot;640&quot; height=&quot;360&quot; src=&quot;https://www.youtube.com/embed/56U-OdXF9eQ?si=l2VOY8NP2rh0Mk0B&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen></iframe>">
+                        <img data-src="https://i.pinimg.com/736x/82/c5/3c/82c53c33ab3eaf32ece746687072a9c1.jpg"
                             alt="Visita la Ciudad de Puebla"
-                            src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2018/01/PUE_PUEBLA_PARQUE-LOS-FUERTES_91A3249_AR.jpg"
+                            src="https://i.pinimg.com/736x/82/c5/3c/82c53c33ab3eaf32ece746687072a9c1.jpg"
                             class="ready">
                         <a href="#video">
                             <i class="fas fa-play"></i>
@@ -795,7 +699,7 @@
 
         <!-- Seccion de las noticias -->
         <section class="inner">
-            <h2 class="nice color">Noticias en México</h2>
+            <h2 class="nice color">Noticias en Bolivia</h2>
             <section class="grid_notes">
 
                 <a href="https://www.mexicodesconocido.com.mx/serpentikah-aztlan-montana-rusa.html" class="especial">
@@ -824,7 +728,19 @@
                         <em><i class="fas fa-map-marker"></i>Ciudad de México</em>
                     </figcaption>
                 </a>
-
+                <a href="https://www.mexicodesconocido.com.mx/semana-santa-iztapalapa.html" class="especial">
+                    <figure>
+                        <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/1280px-Procesion_solemne_en_La_Cuevita_de_Iztapalapa-900x675.jpg"
+                            alt="1280px-Procesión_solemne_en_La_Cuevita_de_Iztapalapa"
+                            title="1280px-Procesión_solemne_en_La_Cuevita_de_Iztapalapa " data-credit="Wikipedia"
+                            data-alt="1280px-Procesión_solemne_en_La_Cuevita_de_Iztapalapa">
+                    </figure>
+                    <figcaption>
+                        <b>Actualidad</b>
+                        <strong>¡No te pierdas la Semana Santa 2025 en Iztapalapa! Conoce las fechas clave</strong>
+                        <em><i class="fas fa-map-marker"></i>Ciudad de México</em>
+                    </figcaption>
+                </a>
             </section>
         </section><!--inner-->
     </section>

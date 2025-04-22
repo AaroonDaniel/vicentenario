@@ -14,6 +14,7 @@ use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\HistoriaController;
 
+use App\Http\Controllers\UserAgendaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,6 +86,24 @@ Route::delete('/culturas/{id}', [CulturaController::class, 'destroy'])->name('cu
 // Ruta para historia
 Route::resource('historias', HistoriaController::class);
 Route::delete('/historias/{id}', [HistoriaController::class, 'destroy'])->name('historias.destroy');
+
+//RUTA VISTAS
+Route::get('ultimo1', function () {
+    return view('ultimo1');
+});
+
+Route::get('videos', function () {
+    return view('videos');
+});
+
+//RUTA AGENDA USUARIO
+Route::middleware('auth')->group(function () {
+    Route::get('/agenda', [UserAgendaController::class, 'index'])->name('agenda.index');
+    Route::post('/agenda/store', [UserAgendaController::class, 'store'])->name('agenda.store');
+
+    Route::get('/agenda/eventos', [UserAgendaController::class, 'getEventos'])->name('agenda.eventos');
+
+});
 
 
 
