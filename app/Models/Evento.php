@@ -92,4 +92,15 @@ class Evento extends Model
                     ->withPivot('nivel_requerido')
                     ->withTimestamps();
     }
+
+    public function culturas()
+    {
+        return $this->belongsToMany(Cultura::class, 'eventos_cultura', 'id_evento', 'id_cultura');
+    }
+
+    public function historias()
+    {
+        return $this->belongsToMany(Historia::class, 'eventos_historia', 'id_evento', 'id_historia')->withTimestamps();
+    }
+
 }

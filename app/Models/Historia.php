@@ -37,4 +37,9 @@ class Historia extends Model
         return $this->belongsToMany(User::class, 'users_historias', 'id_historia', 'user_id')
             ->withPivot('puntuacion');
     }
+
+    public function eventos()
+    {
+        return $this->belongsToMany(Evento::class, 'eventos_historia', 'id_historia', 'id_evento');
+    }
 }

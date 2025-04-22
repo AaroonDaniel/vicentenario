@@ -53,4 +53,9 @@ class Cultura extends Model
             ->withPivot('descripcion') // Incluye la columna adicional
             ->withTimestamps();
     }
+
+    public function eventos()
+    {
+        return $this->belongsToMany(Evento::class, 'eventos_cultura', 'id_cultura', 'id_evento');
+    }
 }
