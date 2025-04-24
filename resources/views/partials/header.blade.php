@@ -10,6 +10,13 @@
 
         <section class="nav_content">
             <ul>
+                
+                <li id="menu-item-66044"
+                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-66044">
+                    <a href="{{ '' }}">Inicio</a>
+                    
+                </li>
+
                 <li id="menu-item-66044"
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-66044">
                     <a href="{{ 'historias' }}">Historia</a>
@@ -28,11 +35,8 @@
                     </ul>
                 </li>
 
-                <li id="menu-item-66050"
-                    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66050">
-                    <a href="https://www.mexicodesconocido.com.mx/conoce-mexico/actualidad">Presidentes</a>
-                </li>
                 
+
                 <li id="menu-item-66051"
                     class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-66051">
                     <a href="{{ 'culturas' }}">Cultura</a>
@@ -56,7 +60,7 @@
                 </li>
                 <li id="menu-item-66059"
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66059">
-                    <a href="https://www.mexicodesconocido.com.mx/eventos">Eventos</a>
+                    <a href="{{ 'eventos' }}">Eventos</a>
                     <ul class="sub-menu">
                         <li id="menu-item-66045"
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66045"><a
@@ -139,7 +143,7 @@
             <section class="header_btns">
                 <!--
                 <a href="{{ 'login' }}" target="_blank" rel="noopener" class="btn secondary susc">
-                    <i class="fas fa-user"></i> 
+                    <i class="fas fa-user"></i>
                     <span>Iniciar Sesión</span>
                 </a>-->
                 <!-- Botón de Login o Nombre de Usuario -->
@@ -153,7 +157,8 @@
                         <ul class="dropdown-menu" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="{{ route('profile.edit') }}"><i
                                         class="fas fa-user-circle"></i> Perfil</a></li>
-                            <li><a class="dropdown-item" href="{{ route('agenda.index') }}"><i class="fa-solid fa-calendar-days"></i> Agenda</a>
+                            <li><a class="dropdown-item" href="{{ route('agenda.index') }}"><i
+                                        class="fa-solid fa-calendar-days"></i> Agenda</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -184,11 +189,15 @@
 
     <div class="raya">
         <a href="https://bit.ly/4kNLXLD" target="blank" rel="noopener" class="rayabtn right">
-                    <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/lateral-skin-LMDM-2025-der.jpg" class="banner_skin_impression banner_skin_click_right" data-id="lomejormexico2025_22marz_2025" width="100" height="500" alt="banner promo izq" data-gtm-vis-recent-on-screen32626292_26="337" data-gtm-vis-first-on-screen32626292_26="337" data-gtm-vis-total-visible-time32626292_26="100" data-gtm-vis-has-fired32626292_26="1">
+            <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/lateral-skin-LMDM-2025-der.jpg"
+                class="banner_skin_impression banner_skin_click_right" data-id="lomejormexico2025_22marz_2025"
+                width="100" height="500" alt="banner promo izq" data-gtm-vis-recent-on-screen32626292_26="337"
+                data-gtm-vis-first-on-screen32626292_26="337" data-gtm-vis-total-visible-time32626292_26="100"
+                data-gtm-vis-has-fired32626292_26="1">
         </a>
         <a href="https://bit.ly/4kNLXLD" target="blank" rel="noopener" class="rayabtn left">
-                    <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/lateral-skin-LMDM-2025-izq.jpg" class="banner_skin_click_left" data-id="lomejormexico2025_22marz_2025" width="100" height="500" alt="banner promo izq">
+            <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/lateral-skin-LMDM-2025-izq.jpg"
+                class="banner_skin_click_left" data-id="lomejormexico2025_22marz_2025" width="100" height="500"
+                alt="banner promo izq">
         </a>
     </div>
-
-

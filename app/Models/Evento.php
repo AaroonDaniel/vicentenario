@@ -21,11 +21,17 @@ class Evento extends Model
     // Definir los campos que se pueden llenar masivamente
     protected $fillable = [
         'nombre',
-        'fecha',
         'descripcion',
-        'tipo',
         'direccion',
+        'tipo',
+        'fecha',
         'departamento',
+        'imagen_ruta'
+    ];
+    protected $casts = [
+        'fecha' => 'datetime',      // datetime → Carbon con fecha y hora
+        // ó si solo necesitas la parte de la fecha sin hora:
+        // 'fecha' => 'date',       // date → Carbon con sólo la parte fecha
     ];
 
     // Relaciones

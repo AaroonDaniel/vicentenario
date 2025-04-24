@@ -10,6 +10,7 @@ use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\FuncCall;
 use App\Http\Controllers\CulturaController;
+use App\Http\Controllers\EventoController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\HistoriaController;
@@ -37,14 +38,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return view('admin.index');
     })->name('Administrador');
 
-    Route::get('/profile', [UsuarioController::class,'profile']);
+    Route::get('/profile', [UsuarioController::class, 'profile']);
     Route::resource('/client', ClienteController::class)->names('cliente');
     Route::resource('/roles', RoleController::class)->names('roles');
     Route::resource('/permisos', PermisoController::class)->names('permisos');
     Route::post('/roles/{id}/switch-guard', [RoleController::class, 'switchGuard'])->name('roles.switchGuard');
     Route::resource('/usuarios', AsignarController::class)->names('asignar');
-    
-
 });
 
 // Ruta de registro
@@ -68,14 +67,14 @@ Route::middleware('auth')->group(function () {
 });
 
 // Rutas de autenticación (login, registro, etc.)
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 //Ruta de middleware
-Route::get('prueba', function(){
+Route::get('prueba', function () {
     return "Has accedido correctamente a esta ruta";
 })->middleware('age');
 
-Route::get('no-autorizado', function(){
+Route::get('no-autorizado', function () {
     return "Usted no es mayor de edad";
 });
 
@@ -102,8 +101,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/agenda/store', [UserAgendaController::class, 'store'])->name('agenda.store');
 
     Route::get('/agenda/eventos', [UserAgendaController::class, 'getEventos'])->name('agenda.eventos');
-
 });
 
-
-
+//RUTA DE EVENTOS
+Route::get('eventos', [EventoController::class, 'index'])
+    ->name('eventos.index');
+Route::post('eventos', [EventoController::class, 'store'])
+    ->name('eventos.store');
+Route::resource('eventos', EventoController::class);
