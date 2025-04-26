@@ -7,7 +7,7 @@ use App\Models\Evento;
 use App\Models\Historia;
 use App\Models\Cultura;
 use Illuminate\Support\Facades\Storage;
-
+use Carbon\Carbon;
 
 class EventoController extends Controller
 {
@@ -19,6 +19,7 @@ class EventoController extends Controller
         // Carga todas las relaciones de una sola vez
         $eventos = Evento::with(['culturas', 'historias'])->get();
 
+        
         return view('evento.listEvento', compact('eventos'));
     }
 
@@ -43,9 +44,12 @@ class EventoController extends Controller
             'fecha'        => 'required|date',
             'departamento' => 'required|string|max:255',
             'imagen'       => 'nullable|image|max:2048',
+            'hora'         => 'nullable',
+            'modalidad'    => 'nullable',
+            'enlace'       => 'nullable'
         ]);
 
-
+        
         $evento = new Evento();
         $evento->nombre       = $request->nombre;
         $evento->descripcion  = $request->descripcion;
@@ -53,6 +57,9 @@ class EventoController extends Controller
         $evento->tipo         = $request->tipo;
         $evento->fecha        = $request->fecha;
         $evento->departamento = $request->departamento;
+        $evento->hora         = $request->hora;
+        $evento->modalidad    = $request->modalidad;
+        $evento->enlace       =$request->enlace;
 
         // Imagen
         if ($request->hasFile('imagen')) {
@@ -95,6 +102,9 @@ class EventoController extends Controller
             'fecha'        => 'required|date',
             'departamento' => 'required|string|max:255',
             'imagen'       => 'nullable|image|max:2048',
+            'hora'         => 'nullable',
+            'modalidad'    => 'nullable',
+            'enlace'       => 'nullable'
         ]);
 
         $evento->fill($request->only([
@@ -103,7 +113,10 @@ class EventoController extends Controller
             'direccion',
             'tipo',
             'fecha',
-            'departamento'
+            'departamento',
+            'hora',
+            'modalidad',
+            'enlace'
         ]));
 
         if ($request->hasFile('imagen')) {

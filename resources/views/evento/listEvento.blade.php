@@ -24,12 +24,14 @@
                                 <figcaption>
                                     <b>{{ ucfirst($evento->tipo) }}</b>
                                     <strong>{{ $evento->nombre }}</strong>
+                                    <b class="mt-2 text-sm text-white description-text"> {{ substr($evento->hora, 0, 5) }}
+                                        {{ $evento->modalidad }} </b>
                                     <p class="mt-2 text-sm text-white description-text">
                                         {{ Str::limit($evento->descripcion, 160, '...') }}
                                     </p>
                                     <em>
                                         <i class="fas fa-calendar-alt"></i>
-                                        {{ $evento->fecha->format('Y-m-d') }}
+                                        {{ $evento->fecha->format('Y-m-d') }} -
                                         – {{ $evento->departamento }}
                                     </em>
 
@@ -71,6 +73,9 @@
                                 <th class="px-4 py-3">Descripción</th>
                                 <th class="px-4 py-3">Dirección</th>
                                 <th class="px-4 py-3">Fecha</th>
+                                <th class="px-4 py-3">Hora</th>
+                                <th class="px-4 py-3">Modalidad</th>
+                                <th class="px-4 py-3">Enlace</th>
                                 <th class="px-4 py-3">Departamento</th>
                                 <th class="px-4 py-3">Acciones</th>
                             </tr>
@@ -103,6 +108,15 @@
                                     {{-- Fecha --}}
                                     <td class="px-4 py-2">{{ $evento->fecha->format('Y-m-d') }}</td>
 
+                                    {{-- Hora --}}
+                                    <td class="px-4 py-2">{{ $evento->hora }}</td>
+
+                                    {{-- Modalidad --}}
+                                    <td class="px-4 py-2">{{ $evento->modalidad }}</td>
+
+                                    {{-- Enlace --}}
+                                    <td class="px-4 py-2">{{ $evento->enlace }}</td>
+
                                     {{-- Departamento --}}
                                     <td class="px-4 py-2">{{ $evento->departamento }}</td>
 
@@ -117,7 +131,10 @@
                                                 fecha: '{{ $evento->fecha->format('Y-m-d') }}',
                                                 departamento: '{{ addslashes($evento->departamento) }}',
                                                 direccion: '{{ addslashes($evento->direccion) }}',
-                                                imagenUrl: '{{ $evento->imagen_ruta ? Storage::url($evento->imagen_ruta) : asset('images/default-event.png') }}'
+                                                imagenUrl: '{{ $evento->imagen_ruta ? Storage::url($evento->imagen_ruta) : asset('images/default-event.png') }}',
+                                                hora: '{{ substr($evento->hora, 0, 5) }}',
+                                                modalidad: '{{ $evento->modalidad }}',
+                                                enlace: '{{ $evento->enlace }}'
                                             })"
                                             class="text-blue-600 hover:text-blue-800">
                                             <i class="fas fa-eye"></i>
@@ -132,7 +149,10 @@
                                                 tipo: '{{ $evento->tipo }}',
                                                 fecha: '{{ $evento->fecha->format('Y-m-d') }}',
                                                 departamento: '{{ addslashes($evento->departamento) }}',
-                                                direccion: '{{ addslashes($evento->direccion) }}'
+                                                direccion: '{{ addslashes($evento->direccion) }}',
+                                                hora: '{{ substr($evento->hora, 0, 5) }}',
+                                                modalidad: '{{ $evento->modalidad }}',
+                                                enlace: '{{ $evento->enlace }}'
                                             })"
                                             class="text-yellow-500 hover:text-yellow-700">
                                             <i class="fas fa-edit"></i>
@@ -157,8 +177,7 @@
             </div>
 
             <!-- Modal EDITAR -->
-            <div x-show="showEdit" x-transition x-cloak x-on:keydown.escape.window="closeEdit()"
-                @click.away="closeEdit()"
+            <div x-show="showEdit" x-transition x-cloak x-on:keydown.escape.window="closeEdit()" @click.away="closeEdit()"
                 class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
                 <div
                     class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative overflow-y-auto max-h-[90vh] relative">
@@ -255,11 +274,63 @@
                                 class="w-full bg-gray-100 border rounded px-3 py-2" required>
                         </div>
 
+                        <div class="mb-4">
+                            <label class="block font-semibold">Hora</label>
+                            <input type="time" name="hora" x-model="form.hora"
+                                class="w-full bg-gray-100 border rounded px-3 py-2" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block font-semibold mb-1">Modalidad</label>
+                            <select name="modalidad" class="w-full border border-gray-300 rounded px-3 py-2" required>
+                                <option value="Presencial"
+                                    {{ old('modalidad', $evento->modalidad) == 'Presencial' ? 'selected' : '' }}>Presencial
+                                </option>
+                                <option value="Virtual"
+                                    {{ old('modalidad', $evento->modalidad) == 'Virtual' ? 'selected' : '' }}>Virtual
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block font-semibold">Enlace</label>
+                            <input type="text" name="enlace" x-model="form.hora"
+                                class="w-full bg-gray-100 border rounded px-3 py-2" required>
+                        </div>
+
+
                         <!-- Departamento -->
                         <div class="mb-4">
-                            <label class="block font-semibold">Departamento</label>
-                            <input type="text" name="departamento" x-model="form.departamento"
-                                class="w-full bg-gray-100 border rounded px-3 py-2" required>
+                            <label class="block font-semibold mb-1">Departamento</label>
+                            <select name="departamento" class="w-full border border-gray-300 rounded px-3 py-2" required>
+                                <option value="La Paz"
+                                    {{ old('departamento', $evento->departamento) == 'La Paz' ? 'selected' : '' }}>La Paz
+                                </option>
+                                <option value="Cochabamba"
+                                    {{ old('departamento', $evento->departamento) == 'Cochabamba' ? 'selected' : '' }}>
+                                    Cochabamba</option>
+                                <option value="Santa Cruz"
+                                    {{ old('departamento', $evento->departamento) == 'Santa Cruz' ? 'selected' : '' }}>
+                                    Santa Cruz</option>
+                                <option value="Oruro"
+                                    {{ old('departamento', $evento->departamento) == 'Oruro' ? 'selected' : '' }}>Oruro
+                                </option>
+                                <option value="Potosí"
+                                    {{ old('departamento', $evento->departamento) == 'Potosí' ? 'selected' : '' }}>Potosí
+                                </option>
+                                <option value="Tarija"
+                                    {{ old('departamento', $evento->departamento) == 'Tarija' ? 'selected' : '' }}>Tarija
+                                </option>
+                                <option value="Chuquisaca"
+                                    {{ old('departamento', $evento->departamento) == 'Chuquisaca' ? 'selected' : '' }}>
+                                    Chuquisaca</option>
+                                <option value="Beni"
+                                    {{ old('departamento', $evento->departamento) == 'Beni' ? 'selected' : '' }}>Beni
+                                </option>
+                                <option value="Pando"
+                                    {{ old('departamento', $evento->departamento) == 'Pando' ? 'selected' : '' }}>Pando
+                                </option>
+                            </select>
                         </div>
 
                         <!-- Imagen -->
@@ -394,10 +465,52 @@
                         </div>
 
                         <div class="mb-4">
-                            <label class="block font-semibold">Departamento</label>
-                            <input type="text" name="departamento" value="{{ old('departamento') }}"
+                            <label class="block font-semibold">Hora</label>
+                            <input type="time" name="hora" value="{{ old('hora') }}"
                                 class="w-full bg-gray-100 border rounded px-3 py-2" required>
                         </div>
+
+                        <div class="mb-4" x-data="{ modalidad: '{{ old('modalidad', 'presencial') }}' }">
+                            <label class="block font-semibold mb-1">Modalidad</label>
+                            <select name="modalidad" x-model="modalidad"
+                                class="w-full bg-gray-100 border rounded px-3 py-2">
+                                <option value="presencial">Presencial</option>
+                                <option value="virtual">Virtual</option>
+                            </select>
+
+                            <div x-show="modalidad === 'virtual'" class="mt-4">
+                                <label class="block font-semibold mb-1">Enlace del evento virtual</label>
+                                <input type="url" name="enlace" value="{{ old('enlace') }}"
+                                    class="w-full border border-gray-300 rounded px-3 py-2"
+                                    placeholder="https://zoom.us/j/xxxxx">
+                            </div>
+                        </div>
+
+
+                        <div class="mb-4">
+                            <label class="block font-semibold mb-1">Departamento</label>
+                            <select name="departamento" class="w-full border border-gray-300 rounded px-3 py-2" required>
+                                <option value="" disabled selected>-- Selecciona un departamento --</option>
+                                <option value="La Paz" {{ old('departamento') == 'La Paz' ? 'selected' : '' }}>La Paz
+                                </option>
+                                <option value="Cochabamba" {{ old('departamento') == 'Cochabamba' ? 'selected' : '' }}>
+                                    Cochabamba</option>
+                                <option value="Santa Cruz" {{ old('departamento') == 'Santa Cruz' ? 'selected' : '' }}>
+                                    Santa Cruz</option>
+                                <option value="Oruro" {{ old('departamento') == 'Oruro' ? 'selected' : '' }}>Oruro
+                                </option>
+                                <option value="Potosí" {{ old('departamento') == 'Potosí' ? 'selected' : '' }}>Potosí
+                                </option>
+                                <option value="Tarija" {{ old('departamento') == 'Tarija' ? 'selected' : '' }}>Tarija
+                                </option>
+                                <option value="Chuquisaca" {{ old('departamento') == 'Chuquisaca' ? 'selected' : '' }}>
+                                    Chuquisaca</option>
+                                <option value="Beni" {{ old('departamento') == 'Beni' ? 'selected' : '' }}>Beni</option>
+                                <option value="Pando" {{ old('departamento') == 'Pando' ? 'selected' : '' }}>Pando
+                                </option>
+                            </select>
+                        </div>
+
 
                         <div class="mb-4">
                             <label class="block font-semibold">Ingrese imagen</label>
@@ -421,8 +534,7 @@
 
             <!-- Modal VER -->
             <div x-show="showView" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-                x-cloak x-on:keydown.escape.window="closeView()" 
-                @click.away="closeView()">
+                x-cloak x-on:keydown.escape.window="closeView()" @click.away="closeView()">
                 <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
                     <button @click="closeView"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
@@ -430,7 +542,7 @@
                     <h2 class="text-2xl font-bold mb-4 text-center">Detalle del Evento</h2>
 
                     <div class="mb-4 flex justify-center">
-                        <img :src="viewForm.imagenUrl" alt="Imagen del evento" 
+                        <img :src="viewForm.imagenUrl" alt="Imagen del evento"
                             class="rounded-lg shadow-md max-w-full object-contain max-h-96">
                     </div>
 
@@ -452,6 +564,21 @@
                     <div class="mb-2">
                         <span class="font-semibold">Fecha:</span>
                         <p x-text="viewForm.fecha" class="text-gray-700"></p>
+                    </div>
+
+                    <div class="mb-2">
+                        <span class="font-semibold">Hora:</span>
+                        <p x-text="viewForm.hora" class="text-gray-700"></p>
+                    </div>
+
+                    <div class="mb-2">
+                        <span class="font-semibold">Modalidad:</span>
+                        <p x-text="viewForm.modalidad" class="text-gray-700"></p>
+                    </div>
+
+                    <div class="mb-2">
+                        <span class="font-semibold">Enlace:</span>
+                        <p x-text="viewForm.enlace" class="text-gray-700"></p>
                     </div>
 
                     <div class="mb-2">
@@ -556,7 +683,11 @@
                     direccion: '',
                     tipo: '',
                     fecha: '',
-                    departamento: ''
+                    departamento: '',
+                    hora: '',
+                    modalidad: '',
+                    enlace: ''
+
                 },
                 viewForm: {
                     nombre: '',
@@ -565,13 +696,17 @@
                     tipo: '',
                     fecha: '',
                     departamento: '',
-                    imagenUrl: ''
+                    imagenUrl: '',
+                    hora: '',
+                    modalidad: '',
+                    enlace: ''
                 },
 
                 // Abrir edición
                 openEditModal(data) {
                     this.form = {
-                        ...data
+                        ...data,
+                        hora: data.hora ? data.hora.slice(0, 5) : '', // Recorta segundos
                     };
                     this.showEdit = true;
                     document.body.classList.add('overflow-hidden');
@@ -590,11 +725,14 @@
                 // Abrir vista
                 openViewModal(data) {
                     this.viewForm = {
-                        ...data
+                        ...data,
+                        hora: data.hora ? data.hora.slice(0, 5) : '',
+                        modalidad: data.modalidad ?? '',
                     };
                     this.showView = true;
                     document.body.classList.add('overflow-hidden');
                 },
+
                 // Cerrar vista
                 closeView() {
                     this.showView = false;
@@ -624,5 +762,4 @@
             document.body.classList.remove('overflow-hidden');
         }
     </script>
-    
 @endpush

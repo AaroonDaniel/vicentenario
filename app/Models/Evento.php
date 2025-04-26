@@ -26,7 +26,10 @@ class Evento extends Model
         'tipo',
         'fecha',
         'departamento',
-        'imagen_ruta'
+        'imagen_ruta',
+        'hora',
+        'modalidad',
+        'enlace'
     ];
     protected $casts = [
         'fecha' => 'datetime',      // datetime → Carbon con fecha y hora
