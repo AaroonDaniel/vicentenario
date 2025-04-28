@@ -60,6 +60,13 @@
                         class="ready">
                 </figure>
             </section>
+            <section class="col_1 logos_iasa">
+                <a href="https://g21.com.mx" rel="noreferrer" target="_blank" class="g21"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/g21.svg" alt="g21 Comunicación" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/g21.svg" class="ready"></a>
+                <a href="https://www.altonivel.com.mx" rel="noreferrer" target="_blank" class="an"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/altonivel.svg" alt="Alto Nivel" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/altonivel.svg" class="ready"></a>
+                <a href="https://www.cinepremiere.com.mx" rel="noreferrer" target="_blank" class="cp"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/cinepremiere.svg" alt="Cine PREMIERE" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/cinepremiere.svg" class="ready"></a>
+                <a href="https://www.emprendedor.com" rel="noreferrer" target="_blank" class="en"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/emprendedor.svg" alt="Emprendedor.com" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/emprendedor.svg" class="ready"></a>
+                <a href="https://www.nupciasmagazine.com" rel="noreferrer" target="_blank" class="nu"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/nupcias.svg" alt="Nupcias Magazine" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/nupcias.svg" class="ready"></a>
+            </section>
 
         </section>
     </section>

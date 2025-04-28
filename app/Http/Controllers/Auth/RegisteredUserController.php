@@ -17,6 +17,7 @@ use WisdomDiala\Countrypkg\Models\Country;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
+use App\Notifications\BienvenidaUsuario;
 
 class RegisteredUserController extends Controller
 {
@@ -98,5 +99,8 @@ class RegisteredUserController extends Controller
 
         // Redirigir al usuario después del registro
         return redirect(RouteServiceProvider::HOME)->with('success', '¡Registro exitoso!');
+
+        //Correo de bienvenida al Usuario
+        $user->notify(new BienvenidaUsuario());
     }
 }

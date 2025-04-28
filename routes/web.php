@@ -33,7 +33,7 @@ Route::get('/', function () {
 });
 
 // Ruta del panel de administración
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+Route::middleware(['auth:sanctum', 'verified_custom'])->group(function () {
     Route::get('/admin', function () {
         return view('admin.index');
     })->name('Administrador');
