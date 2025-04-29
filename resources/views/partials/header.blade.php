@@ -136,8 +136,7 @@
     <header>
         <section class="inner">
             <!-- Logo -->
-            <a href="{{ route('login') }}" class="logo"><img data-src="/images/logoOficial.png"
-                    alt="Bicentenario Bolivia" title="Bicentenario Bolivia" src="/images/logoOficial.png"
+            <a href="{{ url('/') }}" class="logo"><img alt="Bicentenario Bolivia" title="Bicentenario Bolivia" src="/images/logoOficial.png"
                     class="ready"></a>
             <!-- Botones del Header -->
             <section class="header_btns">

@@ -38,6 +38,7 @@ class Evento extends Model
     ];
 
     // Relaciones
+    
 
     /**
      * Relación muchos a muchos con Expositores.

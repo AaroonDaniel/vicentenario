@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use WisdomDiala\Countrypkg\Models\Country;
+use WisdomDiala\Countrypkg\Models\State;
+use App\Notifications\CustomVerifyEmailNotification;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -17,13 +20,17 @@ class User extends Authenticatable implements MustVerifyEmail
 
     // Clave primaria personalizada
     protected $primaryKey = 'user_id';
-
+    public $incrementing = true;
+    protected $verficationNotification = CustomVerifyEmailNotification::class;
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
+
     protected $fillable = [
+        'user_id',
         'name',
         'email',
         'password',
@@ -82,8 +89,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function historias()
     {
         return $this->belongsToMany(Historia::class, 'users_historia', 'user_id', 'id_historia')
-                    ->withPivot('puntuacion')
-                    ->withTimestamps();
+            ->withPivot('puntuacion')
+            ->withTimestamps();
     }
     // agenda
     public function agenda()
@@ -91,4 +98,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(UserAgenda::class);
     }
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+    
 }

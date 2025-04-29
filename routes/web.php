@@ -14,6 +14,7 @@ use App\Http\Controllers\EventoController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\HistoriaController;
+use App\Http\Controllers\Auth\CustomVerifyEmailController;
 
 use App\Http\Controllers\UserAgendaController;
 /*
@@ -45,6 +46,11 @@ Route::middleware(['auth:sanctum', 'verified_custom'])->group(function () {
     Route::post('/roles/{id}/switch-guard', [RoleController::class, 'switchGuard'])->name('roles.switchGuard');
     Route::resource('/usuarios', AsignarController::class)->names('asignar');
 });
+
+//verificacion de email
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
 
 // Ruta de registro
 Route::get('/register', [RegisteredUserController::class, 'create'])
