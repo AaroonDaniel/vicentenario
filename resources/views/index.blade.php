@@ -743,6 +743,8 @@
                 </a>
             </section>
         </section><!--inner-->
+        {{-- Parte de patrocinadores --}}
+        
     </section>
     <!--content-->
 @endsection
