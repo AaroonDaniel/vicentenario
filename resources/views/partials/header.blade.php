@@ -20,19 +20,7 @@
                 <li id="menu-item-66044"
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-66044">
                     <a href="{{ 'historias' }}">Historia</a>
-                    <ul class="sub-menu">
-                        <li id="menu-item-66045"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66045"><a
-                                href="https://pueblosmagicos.mexicodesconocido.com.mx/">Batallas</a></li>
-                        <li id="menu-item-66046"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66046"><a
-                                href="https://www.mexicodesconocido.com.mx/estados">Independencias</a></li>
-                        <li id="menu-item-66047"
-                            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66047"><a
-                                href="https://www.mexicodesconocido.com.mx/descubre-destinos/ciudades-de-mexico">Personajes
-                            </a>
-                        </li>
-                    </ul>
+                    
                 </li>
 
                 
@@ -40,23 +28,7 @@
                 <li id="menu-item-66051"
                     class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-66051">
                     <a href="{{ 'culturas' }}">Cultura</a>
-                    <ul class="sub-menu">
-                        <li id="menu-item-66052"
-                            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66052"><a
-                                href="/resources/views/historia/historia.blade.php">Etnias e idiomas</a>
-                        </li>
-                        <li id="menu-item-66053"
-                            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66053"><a
-                                href="https://www.mexicodesconocido.com.mx/conoce-mexico/gastronomia">Gastronomía</a>
-                        </li>
-                        <li id="menu-item-66054"
-                            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66054"><a
-                                href="https://www.mexicodesconocido.com.mx/conoce-mexico/cultura-y-artesanias">Arte
-                                y Artesanías</a></li>
-                        <li id="menu-item-66055"
-                            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66055"><a
-                                href="https://www.mexicodesconocido.com.mx/museos">Museos</a></li>
-                    </ul>
+                    
                 </li>
                 <li id="menu-item-66059"
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66059">
@@ -64,7 +36,7 @@
                     <ul class="sub-menu">
                         <li id="menu-item-66045"
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66045"><a
-                                href="https://pueblosmagicos.mexicodesconocido.com.mx/">Agenda</a></li>
+                            <a href="{{ route('agendaEventos') }}">Agenda de Eventos</a></li>
                         <li id="menu-item-66046"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66046"><a
                                 href="{{ 'videos' }}">Multimedia</a></li>
