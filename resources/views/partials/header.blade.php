@@ -1,6 +1,6 @@
 <div id="hs-web-interactives-top-push-anchor" class="go3670563033"></div>
 
-<nav class="nav_close">
+<nav class="nav_close" >
 
     <section class="inner">
         <img class="logo ready" src="{{ asset('images/Bolivialetra.png') }}" alt="Bicentenario Bolivia"

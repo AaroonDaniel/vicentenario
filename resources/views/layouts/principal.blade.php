@@ -4,6 +4,7 @@
 <head>
     
     @include('partials.head')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Metadatos y enlaces CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
 
@@ -17,6 +18,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
     <!-- Alpine.js PARA EDITAR -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
     @stack('styles')
 </head>
 
@@ -161,7 +164,31 @@
         });
     </script>
 
-<!------------------------------------------------->
+<!-----------------------------------------------
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const openButton = document.querySelector('.open_nav');
+            const closeButton = document.querySelector('.close');
+            const nav = document.querySelector('nav');
+
+            // Al hacer click en el botón abrir
+            openButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                nav.classList.remove('nav_close');
+                nav.classList.add('nav_open');
+            });
+
+            // Al hacer click en el botón cerrar
+            closeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                nav.classList.remove('nav_open');
+                nav.classList.add('nav_close');
+            });
+        });
+    </script>-->
+
+
+
     @stack('scripts')
 </body>
 

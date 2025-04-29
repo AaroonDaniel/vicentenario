@@ -16,6 +16,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\HistoriaController;
 
 use App\Http\Controllers\UserAgendaController;
+use App\Http\Controllers\AgendaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -109,3 +110,11 @@ Route::get('eventos', [EventoController::class, 'index'])
 Route::post('eventos', [EventoController::class, 'store'])
     ->name('eventos.store');
 Route::resource('eventos', EventoController::class);
+
+//RUTA DE AGENDA DE EVENTOS
+//Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda.index');
+
+Route::get('/agendaEventos', [AgendaController::class, 'index'])->name('agendaEventos');
+
+
+

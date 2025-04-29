@@ -29,22 +29,33 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 
 @keyframes navOpen{
-0%{height:0;opacity: 0}
-100%{height:100%; opacity: 1}
-}.nav_open{animation-name: navOpen;animation-timing-function:ease-in-out;animation-duration: .4s;animation-fill-mode:both;}
+  0% {height:0;opacity: 0}
+  100%{height:100%; opacity: 1}
+}
+.nav_open{
+  animation-name: navOpen;
+  animation-timing-function:ease-in-out;
+  animation-duration: .4s;
+  animation-fill-mode:both;
+}
 
 
 @keyframes navClose{
   0%{
-    transform:opacity 1;
+    opacity: 1;
     height:100%;
   }
   100%{
-    transform:opacity 0; 
+    opacity: 0; 
     height:0
   }
 }
-.nav_close{animation-name:navClose;animation-timing-function:ease-in-out;animation-duration: .3s;animation-fill-mode:both;}
+.nav_close{
+  animation-name:navClose;
+  animation-timing-function:ease-in-out;
+  animation-duration: .3s;
+  animation-fill-mode:both;
+}
 
 
 
@@ -142,7 +153,7 @@ a.btn.secondary {}
 .btn.block{width: 100%;clear: both;justify-content: center;}
 .btn.center{ display:block; margin:0 auto; width:100px}
 .btn:hover{opacity:.8}
-.gray{background:#ececec;/* padding: 20px 20px 0!important; */}
+.gray{background:#d5d5d5f3;/* padding: 20px 20px 0!important; */}
 .blue{background:#022833;padding: 20px 20px 0!important;}
 
 
@@ -155,9 +166,9 @@ a,.has_animation{transition:.4s ease-out;}
 .trans{transition: all 500ms ease-out; }
 
 /* conatiners */
-main{width:100%;top: 0px;background:#fff;left:0;z-index: 1;position: relative;transition: .5s;margin: 0 auto;padding: 60px 0 0;}
+main{width:100%;top: 0px;background:#fefcfc46;left:0;z-index: 1;position: relative;transition: .5s;margin: 0 auto;padding: 60px 0 0;}
 .envelope{position: absolute;width: 100%;height:100%;z-index: -2;cursor:pointer;left:0;top:0;opacity:0;}
-.content{position: relative;z-index: 1;}
+/*.content{position: relative;z-index: 1;}*/
 .inner{margin:0 auto;width: 90%;z-index: 1;display: flex;flex-wrap: wrap;justify-content: space-between;position: relative;max-width: 1500px;}
 .hidden{ display:none;}
 
@@ -181,7 +192,7 @@ aside{display:block;width:300px;margin: 0 0 0 0;vertical-align: top;background: 
 .inner[data-author="advertorial-md"] .publicidad{display:none;}
 
 /* header */
-header{position: sticky;width: 100%;background: #ffffff;margin: 0 auto;box-shadow: 0 5px 5px rgba(0, 0, 0, 0.192);top: 0;z-index: 2;position: -webkit-sticky;position: fixed;}
+header{position: sticky;width: 100%;background: #ffffff;margin: 0 auto;box-shadow: 0 5px 5px rgba(0, 0, 0, 0.192);top: 0;z-index: 5;position: -webkit-sticky;position: fixed;}
 header a{ transition:0s;}
 header .inner{align-items:center;max-width: inherit;flex-wrap: nowrap;}
 header .logo{width: 130px;display: flex;height: 80px;align-items: center;justify-content: center;}
@@ -332,14 +343,18 @@ to {
 
 
 /* footer */
-footer{width: 100%;position: relative;z-index: 1;background: #f1f1f1;border-top: 1px solid #ddd;}
-footer strong{display:block;}
-footer a,footer span{display:block;color: #666;}
+footer{width: 100%;position: relative;z-index: 0;background: #bcbcbc;border-top: 1px solid #1d1c1c8e;}
+/*footer strong{display:block;}*/
+footer a,footer span{display:block;color: #000000;}
+
 footer a{margin: 0 0 3%;}
 footer a:hover{ color:#444}
+
 footer .logo{width: 230px;height:auto;display:block;margin:0 auto;filter: brightness(.2) grayscale(1);opacity: .2;}
 footer .logo img{ width:100%; height:auto;}
+
 footer a.icon{padding: 0 0 0 30px;position:relative;display:flex;align-items:center;width: 140px;line-height: 23px;/* box-shadow: 0 0 4px rgba(0,0,0,.1); */border-radius: 10em;/* background: #fff; */margin: 0 0 6px;}
+
 footer a.icon i{position: absolute;left: 2px;font-size: 1.1em;}
 footer .copyright{text-align:center;padding:10px;font-size: .8em;background: #770d4c;color: #ddd;}
 footer .social{border-right: 1px solid #ddd;width: 16%;}
@@ -368,7 +383,7 @@ footer .logos_iasa a:nth-child(1) img{height: 70px;}
 footer .logos_iasa a:nth-child(2) img{height: 26px;}
 footer .logos_iasa a:nth-child(3) img{height: 27px;}
 footer .logos_iasa a:nth-child(4) img{height: 37px;}
-footer .logos_iasa a:nth-child(5) img{height: 35px;}
+footer .logos_iasa a:nth-child(5) img{height: 35px;} 
 
 /* newaletter foo */
 iframe.foo{
@@ -3019,3 +3034,10 @@ font-size: 1.6em!important;
   }
   
 }
+/* elimina los pantallazos*/
+[x-cloak] {
+    display: none !important;
+}
+
+
+

@@ -69,6 +69,9 @@ class EventoController extends Controller
 
         $evento->save();
         return redirect()->back()->with('success', 'Evento registrado exitosamente.');
+
+        
+
     }
 
 

@@ -57,54 +57,54 @@
             </form>
         </div>
     </div>
-    @endsection
-    @push('scripts')
-        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-        
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                let calendarEl = document.getElementById('calendar');
+@endsection
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let calendarEl = document.getElementById('calendar');
 
-                let calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth',
-                    locale: 'es',
-                    events: '{{ route("agenda.eventos") }}',
-                    dateClick: function(info) {
-                        console.log("Hiciste clic en", info.dateStr); // ← línea nueva
-                        document.getElementById('fecha').value = info.dateStr;
-                        document.getElementById('eventoModal').classList.remove('hidden');
-                    }
-                });
-
-                calendar.render();
-
-                document.getElementById('formEvento').addEventListener('submit', function(e) {
-                    e.preventDefault();
-
-                    let formData = new FormData(this);
-
-                    fetch('{{ route("agenda.store") }}', {
-                        method: 'POST',
-                        headers: {
-                            'X-CSRF-TOKEN': document.querySelector('[name="_token"]').value
-                        },
-                        body: formData
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.success) {
-                            calendar.refetchEvents();
-                            cerrarModal();
-                            alert('Evento guardado correctamente');
-                        }
-                    });
-                });
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'es',
+                events: '{{ route("agenda.eventos") }}',
+                dateClick: function(info) {
+                    console.log("Hiciste clic en", info.dateStr); // ← línea nueva
+                    document.getElementById('fecha').value = info.dateStr;
+                    document.getElementById('eventoModal').classList.remove('hidden');
+                }
             });
 
-            function cerrarModal() {
-                document.getElementById('eventoModal').classList.add('hidden');
-            }
-        </script>
-    @endpush
+            calendar.render();
+
+            document.getElementById('formEvento').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                let formData = new FormData(this);
+
+                fetch('{{ route("agenda.store") }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('[name="_token"]').value
+                    },
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        calendar.refetchEvents();
+                        cerrarModal();
+                        alert('Evento guardado correctamente');
+                    }
+                });
+            });
+        });
+
+        function cerrarModal() {
+            document.getElementById('eventoModal').classList.add('hidden');
+        }
+    </script>
+@endpush
 
 

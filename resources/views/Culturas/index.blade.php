@@ -55,7 +55,7 @@
         </section>
 
         <div x-data="modalEdit()">
-            {{--@can('Usuario cultural')--}}
+            <!-- {{--@can('Usuario cultural')--}}-->
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-6">
                         <h1 class="text-2xl font-bold text-gray-800">Listado de Culturas</h1>
@@ -128,7 +128,7 @@
                         </table>
                     </div>
                 </div>
-            {{--@endcan--}}
+            <!--{{--@endcan--}}-->
 
 
             <!-- MODAL EDITAR -->
@@ -136,7 +136,8 @@
                 class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
                 <div class="bg-white w-full max-w-md p-6 rounded-lg shadow-lg relative">
                     <button @click="close"
-                        class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                        class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl">&times;
+                    </button>
 
                     <h2 class="text-lg font-bold text-black-700 mb-4"><i class="fas fa-user-edit mr-2"></i>Editar Cultura
                     </h2>
