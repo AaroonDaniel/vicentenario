@@ -3,47 +3,160 @@
 
 @section('content')
     <section class="content">
-        {{-- Carrusel de Eventos --}}
-        <section class="ultimas gray">
+        <!-- tarjeta de Eventos -->
+        <!-- CONTENEDOR PRINCIPAL CON ALPINE --> 
+
+        <section class="ultimas gray" x-data="modalEvento({{ Js::from($eventosAgendados) }}, {{ auth()->check() ? 'true' : 'false' }})">
             <section class="inner">
                 <h2 class="title_home">Eventos</h2>
                 <section class="scroll_notes">
                     <article>
                         @foreach ($eventos as $evento)
-                            <a href="{{ route('eventos.show', $evento->id_evento) }}" class="especial">
-                                <figure>
-                                    @if ($evento->imagen_ruta)
-                                        <img src="{{ Storage::url($evento->imagen_ruta) }}"
-                                            alt="Imagen de {{ $evento->nombre }}" title="{{ $evento->nombre }}">
-                                    @else
-                                        <img src="https://via.placeholder.com/350x200?text=Sin+imagen" alt="Sin imagen">
-                                    @endif
-                                </figure>
-
-
-                                <figcaption>
-                                    <b>{{ ucfirst($evento->tipo) }}</b>
-                                    <strong>{{ $evento->nombre }}</strong>
-                                    <b class="mt-2 text-sm text-white description-text"> {{ substr($evento->hora, 0, 5) }}
-                                        {{ $evento->modalidad }} </b>
-                                    <p class="mt-2 text-sm text-white description-text">
-                                        {{ Str::limit($evento->descripcion, 160, '...') }}
-                                    </p>
-                                    <em>
-                                        <i class="fas fa-calendar-alt"></i>
-                                        {{ $evento->fecha->format('Y-m-d') }} -
-                                        – {{ $evento->departamento }}
-                                    </em>
-
-                                </figcaption>
+                            <a href="javascript:void(0);" class="especial"
+                                @click="evento = {
+                                    id_evento: {{ $evento->id_evento }},
+                                    nombre: '{{ addslashes($evento->nombre) }}',
+                                    descripcion: `{{ addslashes($evento->descripcion) }}`,
+                                    fecha: '{{ $evento->fecha->format('Y-m-d') }}',
+                                    imagen: '{{ $evento->imagen_ruta ? Storage::url($evento->imagen_ruta) : 'https://via.placeholder.com/350x200?text=Sin+imagen' }}',
+                                    tipo: '{{ ucfirst($evento->tipo) }}',
+                                    hora: '{{ substr($evento->hora, 0, 5) }}',
+                                    modalidad: '{{ $evento->modalidad }}',
+                                    departamento: '{{ $evento->departamento }}',
+                                    enlace_reunion: '{{ $evento->enlace }}',
+                                    enlace_formulario: '{{ $evento->enlaceFormulario }}',
+                                    direccion: `{{ addslashes($evento->direccion) }}`
+                                }; abrirModal(evento)">
+                            <figure>
+                                @if ($evento->imagen_ruta)
+                                    <img src="{{ Storage::url($evento->imagen_ruta) }}"
+                                        alt="Imagen de {{ $evento->nombre }}" title="{{ $evento->nombre }}">
+                                @else
+                                    <img src="https://via.placeholder.com/350x200?text=Sin+imagen" alt="Sin imagen">
+                                @endif
+                            </figure>
+                            <figcaption>
+                                <b>{{ ucfirst($evento->tipo) }}</b>
+                                <strong>{{ $evento->nombre }}</strong>
+                                <em>
+                                    <i class="fas fa-calendar-alt"></i>
+                                    {{ $evento->fecha->format('Y-m-d') }} –
+                                    {{ $evento->departamento }}
+                                </em>
+                            </figcaption>
                             </a>
                         @endforeach
                     </article>
                 </section>
             </section>
+
+            <!-- Modal Estético y Responsivo -->
+            <div x-show="mostrarModal"
+                x-transition 
+                class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center px-4"
+                style="display: none;">
+                <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative p-6">
+                    <button @click="mostrarModal = false"
+                            class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
+
+                    <h2 class="text-2xl font-bold text-center mb-4" x-text="evento.nombre"></h2>
+                    <img :src="evento.imagen" alt="Imagen del evento"
+                        class="w-full rounded mb-6 object-contain max-h-96 mx-auto">
+                    <div class="space-y-3 text-sm sm:text-base">
+                        <div><strong class="text-gray-700"><i class="bi bi-file-text-fill text-teal-900"></i> Descripción:</strong>
+                            <p x-text="evento.descripcion" class="text-gray-800"></p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div><strong><i class="bi bi-folder-fill text-amber-500"></i> Tipo:</strong> <span x-text="evento.tipo"></span></div>
+                            <div><strong><i class="bi bi-calendar2-date text-red-900"></i> Fecha:</strong> <span x-text="evento.fecha"></span></div>
+                            <div><strong><i class="bi bi-stopwatch text-red-300"></i> Hora:</strong> <span x-text="evento.hora"></span></div>
+                            <div><strong><i class="bi bi-compass-fill text-teal-900"></i> Modalidad:</strong> <span x-text="evento.modalidad"></span></div>
+
+                            <!-- ENLACES CONDICIONALES -->
+                            <template x-if="evento.modalidad === 'virtual'">
+                                <div class="space-y-4">
+                                    <!-- Enlace de reunión -->
+                                    <div class="flex items-center gap-2">
+                                        <i class="bi bi-camera-reels text-cyan-600"></i>
+                                        <a :href="evento.enlace_reunion" target="_blank"
+                                        class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-1 rounded-full text-sm transition"
+                                        title="Ir a la reunión">
+                                            Unirme a la reunión
+                                        </a>
+                                    </div>
+
+                                    <!-- Enlace de formulario -->
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-file-alt text-teal-600"></i>
+                                        <a :href="evento.enlace_formulario" target="_blank"
+                                        class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-1 rounded-full text-sm transition"
+                                        title="Ir al formulario">
+                                            Llenar formulario
+                                        </a>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- Enlace de formulario -->
+                            <template x-if="evento.modalidad === 'presencial'">
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-file-alt text-teal-600"></i>
+                                    <a :href="evento.enlace_formulario" target="_blank"
+                                    class="bg-teal-600 hover:bg-teal-700 text-white px-3 py-1 rounded-full text-sm transition"
+                                    title="Ir al formulario">
+                                        Llenar formulario
+                                    </a>
+                                </div>
+                            </template>
+
+
+                            <!-- Departamento -->
+                            <div><strong><i class="bi bi-bank text-teal-900"></i> Departamento:</strong> <span x-text="evento.departamento"></span></div>
+                        
+                        </div>
+                        <!-- Dirección y botón maps -->
+                        <div>
+                            <strong><i class="bi bi-geo-alt-fill text-red-500"></i> Dirección:</strong>
+                            <span x-text="evento.direccion"></span>
+                            <a :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(evento.direccion)}`"
+                            target="_blank"
+                            class="ml-2 bg-teal-950 text-white px-2 py-1 text-xs rounded hover:bg-teal-800 ">
+                                Ver en maps
+                            </a>
+                        </div>
+
+                        <!-- botones -->
+                        <div class="flex justify-end mt-4">
+                            <button 
+                                :disabled="eventoYaAgendado(evento.evento_id)"
+                                @click="añadirAMiAgenda(evento)"
+                                class="px-4 py-2 rounded flex items-center gap-2"
+                                :class="eventoYaAgendado(evento.evento_id) 
+                                        ? 'bg-green-600 cursor-not-allowed text-white' 
+                                        : 'bg-blue-600 hover:bg-blue-700 text-white'">
+                                <i class="fas fa-calendar-plus"></i>
+                                <span x-text="eventoYaAgendado(evento.evento_id) ? 'Evento agendado' : 'Añadir a mi agenda'"></span>
+                            </button>
+
+                            <button @click="mostrarModal = false"
+                                class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">
+                                    Cerrar
+                                </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div x-show="mostrarNotificacion" x-transition x-cloak              
+                class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-teal-600 text-white px-4 py-2 rounded shadow-lg z-50">
+                <span x-text="notificacion"></span>
+            </div>
+
         </section>
 
-        {{-- MODAL --}}
+        <!------------------------------------------------------->
+        {{-- FORMULARIO EVENTOS --}}
         <div x-data="modalEdit()">
 
             <!-- Vista de la lista de eventos -->
@@ -71,12 +184,13 @@
                                 <th class="px-4 py-3">Nombre</th>
                                 <th class="px-4 py-3">Tipo</th>
                                 <th class="px-4 py-3">Descripción</th>
+                                <th class="px-4 py-3">Departamento</th>
                                 <th class="px-4 py-3">Dirección</th>
                                 <th class="px-4 py-3">Fecha</th>
                                 <th class="px-4 py-3">Hora</th>
                                 <th class="px-4 py-3">Modalidad</th>
                                 <th class="px-4 py-3">Enlace</th>
-                                <th class="px-4 py-3">Departamento</th>
+                                <th class="px-4 py-3">Enlace del formulario:</th>
                                 <th class="px-4 py-3">Acciones</th>
                             </tr>
                         </thead>
@@ -102,6 +216,9 @@
                                     {{-- Descripción --}}
                                     <td class="px-4 py-2">{{ $evento->descripcion }}</td>
 
+                                    {{-- Departamento --}}
+                                    <td class="px-4 py-2">{{ $evento->departamento }}</td>
+
                                     {{-- Dirección --}}
                                     <td class="px-4 py-2">{{ $evento->direccion }}</td>
 
@@ -117,8 +234,8 @@
                                     {{-- Enlace --}}
                                     <td class="px-4 py-2">{{ $evento->enlace }}</td>
 
-                                    {{-- Departamento --}}
-                                    <td class="px-4 py-2">{{ $evento->departamento }}</td>
+                                    {{-- Enlace --}}
+                                    <td class="px-4 py-2">{{ $evento->enlaceFormulario }}</td>                                    
 
                                     {{-- Acciones --}}
                                     <td class="px-4 py-2 flex space-x-2">
@@ -134,7 +251,8 @@
                                                 imagenUrl: '{{ $evento->imagen_ruta ? Storage::url($evento->imagen_ruta) : asset('images/default-event.png') }}',
                                                 hora: '{{ substr($evento->hora, 0, 5) }}',
                                                 modalidad: '{{ $evento->modalidad }}',
-                                                enlace: '{{ $evento->enlace }}'
+                                                enlace: '{{ $evento->enlace }}',
+                                                enlaceFormulario: '{{ $evento->enlaceFormulario }}'
                                             })"
                                             class="text-blue-600 hover:text-blue-800">
                                             <i class="fas fa-eye"></i>
@@ -152,7 +270,8 @@
                                                 direccion: '{{ addslashes($evento->direccion) }}',
                                                 hora: '{{ substr($evento->hora, 0, 5) }}',
                                                 modalidad: '{{ $evento->modalidad }}',
-                                                enlace: '{{ $evento->enlace }}'
+                                                enlace: '{{ $evento->enlace }}',
+                                                enlaceFormulario: '{{ $evento->enlaceFormulario }}'
                                             })"
                                             class="text-yellow-500 hover:text-yellow-700">
                                             <i class="fas fa-edit"></i>
@@ -294,10 +413,16 @@
 
                         <div class="mb-4">
                             <label class="block font-semibold">Enlace</label>
-                            <input type="text" name="enlace" x-model="form.hora"
+                            <input type="text" name="enlace" x-model="form.enlace"
                                 class="w-full bg-gray-100 border rounded px-3 py-2" required>
                         </div>
 
+                        <!-- enlaceFormulario -->
+                        <div class="mb-4">
+                            <label class="block font-semibold" >Enlace del formulario</label>
+                            <input type="url" name="enlaceFormulario" x-model="form.enlaceFormulario"
+                            class="w-full bg-gray-100 border rounded px-3 py-2" required>
+                        </div>
 
                         <!-- Departamento -->
                         <div class="mb-4">
@@ -486,6 +611,12 @@
                             </div>
                         </div>
 
+                        <div class="mb-4">
+                            <label class="block font-semibold" for="enlaceFormulario">Enlace del formulario</label>
+                            <input type="url" name="enlaceFormulario" id="enlaceFormulario"
+                                value="{{ old('enlaceFormulario') }}"
+                                class="w-full bg-gray-100 border rounded px-3 py-2" required>
+                        </div>
 
                         <div class="mb-4">
                             <label class="block font-semibold mb-1">Departamento</label>
@@ -578,7 +709,22 @@
 
                     <div class="mb-2">
                         <span class="font-semibold">Enlace:</span>
-                        <p x-text="viewForm.enlace" class="text-gray-700"></p>
+                        <a 
+                            :href="viewForm.enlace" 
+                            x-text="viewForm.enlace"
+                            class="text-blue-600 hover:underline"
+                            target="_blank"
+                        ></a>
+                    </div>
+
+                    <div class="mb-2">
+                        <span class="font-semibold">Enlace del formulario:</span>
+                        <a 
+                            :href="viewForm.enlaceFormulario" 
+                            x-text="viewForm.enlaceFormulario"
+                            class="text-blue-600 hover:underline"
+                            target="_blank"
+                        ></a>
                     </div>
 
                     <div class="mb-2">
@@ -598,12 +744,14 @@
                     </div>
                 </div>
             </div>
+        </div>
 
 
     </section>
 @endsection
 
 @push('scripts')
+    <!---->
     <script>
         function abrirModal(id) {
             document.getElementById(id).classList.remove('hidden');
@@ -667,8 +815,6 @@
         });
     </script>
 
-
-
     <!-- Alpine.js controller -->
     <script>
         function modalEdit() {
@@ -686,7 +832,8 @@
                     departamento: '',
                     hora: '',
                     modalidad: '',
-                    enlace: ''
+                    enlace: '',
+                    enlaceFormulario: ''
 
                 },
                 viewForm: {
@@ -699,7 +846,8 @@
                     imagenUrl: '',
                     hora: '',
                     modalidad: '',
-                    enlace: ''
+                    enlace: '',
+                    enlaceFormulario: ''
                 },
 
                 // Abrir edición
@@ -762,4 +910,83 @@
             document.body.classList.remove('overflow-hidden');
         }
     </script>
+
+
+<!---------------------- agrega el evento a la agenda del usuario------------ -->
+
+<script>
+    function modalEvento(eventosAgendados, usuarioAutenticado) {
+        return {
+            evento: {},
+            mostrarModal: false,
+            eventosAgendados: eventosAgendados,
+            usuarioAutenticado: usuarioAutenticado,
+
+            notificacion: '', 
+            mostrarNotificacion: false,
+
+            abrirModal(evento) {
+                this.evento = evento;
+                this.mostrarModal = true;
+            },
+            eventoYaAgendado(eventoId) {
+                return this.eventosAgendados.includes(eventoId);
+            },
+
+            mostrarMensaje(mensaje) {
+                this.notificacion = mensaje;
+                this.mostrarNotificacion = true;
+                setTimeout(() => this.mostrarNotificacion = false, 3000);
+            },
+
+            async añadirAMiAgenda(evento) {
+                if (!this.usuarioAutenticado) {
+                    window.location.href = "{{ route('login') }}";
+                    return;
+                }
+
+                try {
+                    const response = await fetch("{{ route('agenda.store') }}", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": '{{ csrf_token() }}',
+                        },
+                        body: JSON.stringify({
+                            evento_id: evento.id_evento, 
+                            titulo: evento.nombre,
+                            fecha: evento.fecha,
+                            hora_inicio: evento.hora,
+                            descripcion: evento.descripcion,
+                            ubicacion: evento.direccion
+                        }),
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        // Usa push() para añadir el evento a eventosAgendados
+                        this.eventosAgendados.push(evento.id_evento); // Ahora agregamos evento.id_evento
+                        this.mostrarMensaje("¡Evento registrado en tu calendario!");
+                    } else {
+                        // Mostrar mensaje si ya estaba registrado
+                        this.mostrarMensaje(data.message || "Este evento ya fue agregado a tu calendario.");
+                    }
+                } catch (error) {
+                    console.error(error);
+                    this.mostrarMensaje("Ocurrió un error al intentar agendar el evento.");
+                }
+            }
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
 @endpush

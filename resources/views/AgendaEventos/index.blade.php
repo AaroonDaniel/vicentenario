@@ -17,7 +17,7 @@
             @foreach(range(1,12) as $m)
                 @php
                     $nombreMes = \Carbon\Carbon::createFromDate(null, $m, null)
-                                ->locale('es')
+                                
                                 ->isoFormat('MMMM');
                 @endphp
                 <a href="{{ route('agendaEventos', array_merge(request()->except('page'), ['mes' => $m])) }}"

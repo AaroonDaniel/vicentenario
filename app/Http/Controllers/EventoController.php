@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Evento;
 use App\Models\Historia;
 use App\Models\Cultura;
+use App\Models\UserAgenda; 
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
@@ -18,9 +19,16 @@ class EventoController extends Controller
     {
         // Carga todas las relaciones de una sola vez
         $eventos = Evento::with(['culturas', 'historias'])->get();
-
         
-        return view('evento.listEvento', compact('eventos'));
+        $userId = auth()->check() ? auth()->id() : null;
+
+        $eventosAgendados = [];
+
+        if (auth()->check()) {
+            $eventosAgendados = UserAgenda::where('user_id', auth()->id())->pluck('evento_id')->toArray();
+        }
+
+        return view('evento.listEvento', compact('eventos', 'eventosAgendados'));
     }
 
     /**
@@ -46,7 +54,8 @@ class EventoController extends Controller
             'imagen'       => 'nullable|image|max:2048',
             'hora'         => 'nullable',
             'modalidad'    => 'nullable',
-            'enlace'       => 'nullable'
+            'enlace'       => 'nullable',
+            'enlaceFormulario'       => 'nullable'
         ]);
 
         
@@ -60,6 +69,8 @@ class EventoController extends Controller
         $evento->hora         = $request->hora;
         $evento->modalidad    = $request->modalidad;
         $evento->enlace       =$request->enlace;
+        $evento->enlaceFormulario =$request->enlaceFormulario;
+
 
         // Imagen
         if ($request->hasFile('imagen')) {
@@ -107,7 +118,8 @@ class EventoController extends Controller
             'imagen'       => 'nullable|image|max:2048',
             'hora'         => 'nullable',
             'modalidad'    => 'nullable',
-            'enlace'       => 'nullable'
+            'enlace'       => 'nullable',
+            'enlaceFormulario' => 'nullable'
         ]);
 
         $evento->fill($request->only([
@@ -119,7 +131,8 @@ class EventoController extends Controller
             'departamento',
             'hora',
             'modalidad',
-            'enlace'
+            'enlace',
+            'enlaceFormulario'
         ]));
 
         if ($request->hasFile('imagen')) {

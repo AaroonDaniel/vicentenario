@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
     <!-- Alpine.js PARA EDITAR -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     @stack('styles')
@@ -34,9 +36,13 @@
     <script type="text/javascript"
         src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/jquery.min.js?ver=2.1.0" id="jquerymin-js">
     </script>
+    <!-- nav-->
+    <!-- Google Analytics clásico -->
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+
     <script type="text/javascript"
         src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/assets.js?ver=3.3.3.2.32" id="assets-js">
-    </script>
+    </script> 
 
     <!-- VUE
     <script type="text/javascript"
@@ -108,7 +114,7 @@
         });
     </script>
 
-    <!-- Agente Artificial -->
+    <!-- Agente Artificial 
     <script>
         $(document).ready(function() {
             $('td[id^="agent-response-"]').each(function() {
@@ -135,9 +141,9 @@
                 });
             });
         });
-    </script>
+    </script>-->
 
-    <!-- n8n Chat -->
+    <!-- n8n Chat 
     <script type="module">
         import {
             createChat
@@ -162,7 +168,7 @@
                 },
             },
         });
-    </script>
+    </script>-->
 
 <!-----------------------------------------------
     <script>

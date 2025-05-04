@@ -29,7 +29,8 @@ class Evento extends Model
         'imagen_ruta',
         'hora',
         'modalidad',
-        'enlace'
+        'enlace',
+        'enlaceFormulario', // 👈 Añade esta línea
     ];
     protected $casts = [
         'fecha' => 'datetime',      // datetime → Carbon con fecha y hora
@@ -76,6 +77,12 @@ class Evento extends Model
     {
         return $this->hasMany(Agenda::class, 'id_evento', 'id_evento');
     }
+
+    public function agenda()
+    {
+        return $this->hasOne(Agenda::class, 'id_evento', 'id_evento');
+    }/**/
+
 
     /**
      * Relación uno a muchos con Recursos.

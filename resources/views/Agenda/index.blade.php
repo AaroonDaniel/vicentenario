@@ -75,6 +75,8 @@
                     document.getElementById('eventoModal').classList.remove('hidden');
                 }
             });
+            //window.calendar = calendar; // 👈 Agrega esta línea
+           // window.calendar.refetchEvents();
 
             calendar.render();
 

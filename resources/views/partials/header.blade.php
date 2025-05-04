@@ -35,8 +35,12 @@
                     <a href="{{ 'eventos' }}">Eventos</a>
                     <ul class="sub-menu">
                         <li id="menu-item-66045"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66045"><a
-                            <a href="{{ route('agendaEventos') }}">Agenda de Eventos</a></li>
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66045">
+                            <a
+                                href="{{ 'agendaEventos' }}">Agenda
+                            </a>
+                        </li>
+
                         <li id="menu-item-66046"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66046"><a
                                 href="{{ 'videos' }}">Multimedia</a></li>
@@ -129,7 +133,7 @@
                             <li><a class="dropdown-item" href="{{ route('profile.edit') }}"><i
                                         class="fas fa-user-circle"></i> Perfil</a></li>
                             <li><a class="dropdown-item" href="{{ route('agenda.index') }}"><i
-                                        class="fa-solid fa-calendar-days"></i> Agenda</a>
+                                        class="fa-solid fa-calendar-days"></i> Mi agenda</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -158,16 +162,16 @@
         </section>
     </header>
 
-    <div class="raya">
+    <div class="raya pt-4">
         <a href="https://bit.ly/4kNLXLD" target="blank" rel="noopener" class="rayabtn right">
-            <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/lateral-skin-LMDM-2025-der.jpg"
+            <img src="/images/raya_right.gif"
                 class="banner_skin_impression banner_skin_click_right" data-id="lomejormexico2025_22marz_2025"
                 width="100" height="500" alt="banner promo izq" data-gtm-vis-recent-on-screen32626292_26="337"
                 data-gtm-vis-first-on-screen32626292_26="337" data-gtm-vis-total-visible-time32626292_26="100"
                 data-gtm-vis-has-fired32626292_26="1">
         </a>
         <a href="https://bit.ly/4kNLXLD" target="blank" rel="noopener" class="rayabtn left">
-            <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/lateral-skin-LMDM-2025-izq.jpg"
+            <img src="/images/raya_left1.gif"
                 class="banner_skin_click_left" data-id="lomejormexico2025_22marz_2025" width="100" height="500"
                 alt="banner promo izq">
         </a>

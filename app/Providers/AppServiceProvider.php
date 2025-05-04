@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Carbon\Carbon;
+
+use App\Models\Evento;
+use App\Observers\EventoObserver;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -20,7 +24,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
-        // Carbon::setLocale('es');
+        Carbon::setLocale('es');
+        Evento::observe(EventoObserver::class);
     }
 
 }

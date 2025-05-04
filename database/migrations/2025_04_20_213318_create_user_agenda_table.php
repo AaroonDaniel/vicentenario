@@ -25,9 +25,12 @@ return new class extends Migration
             $table->time('hora_inicio');
             $table->time('hora_fin')->nullable();
             $table->text('descripcion')->nullable();
+            $table->text('ubicacion')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->unique(['user_id', 'evento_id']);
+
         });
     }
 

@@ -170,7 +170,7 @@ main{width:100%;top: 0px;background:#fefcfc46;left:0;z-index: 1;position: relati
 .envelope{position: absolute;width: 100%;height:100%;z-index: -2;cursor:pointer;left:0;top:0;opacity:0;}
 /*.content{position: relative;z-index: 1;}*/
 .inner{margin:0 auto;width: 90%;z-index: 1;display: flex;flex-wrap: wrap;justify-content: space-between;position: relative;max-width: 1500px;}
-.hidden{ display:none;}
+.hidden{ display:none;}      /*video*/
 
 
 
@@ -591,7 +591,7 @@ nav .close span:before,nav .close span:after{background:#fff}
 .video_top .secondary{ margin:0 0 10%}
 
 
-.especiales_home{background: #000000;padding: 2% 0 2%;position: relative;}
+.especiales_home{background: #000000;padding: 8% 0 2%;position: relative;}
 .especiales_home .cover{opacity: .3;}
 
 .destinations{position:relative;padding: 5% 0;background: #e4e4e4;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;}
@@ -785,11 +785,11 @@ margin: 0 0 10px;
 .especial figure img{position:relative;width:100%;height: 100%;object-fit:cover;background: #f9f9f9;}
 .especial figure:after{position:absolute;top:0;left:0;width: 100%;height:100%;content:'';display:block;/* background: linear-gradient(0deg,rgba(0,0,0,1) 10%,rgba(0,0,0,0) 40%); */z-index:1;transition:.4s;}
 .especial figcaption{position:absolute;bottom: 0;z-index:2;width: 100%;padding: 30% 4% 3%;background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,.7) 70%);}
-.especial figcaption strong{font-weight: 600;display: block;margin: 0 0 2%;font-size: 1.4em;color: #fff;}
+.especial figcaption strong{font-weight: 500;display: block;margin: 0 0 2%;font-size: 1.2em;color: #ffffffec;}
 .especial figcaption span{color:#fff;line-aheight: 1.8em;}
-.especial figcaption em{font-style:normal;display: block;text-transform: uppercase;align-items: center;opacity: .6;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;color: #fff;}
+.especial figcaption em{font-style:normal;display: block;text-transform: uppercase;align-items: center;opacity: .7;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;color: #91bdb5;}
 .especial figcaption em i{font-size: .9em;margin: 0px 3% 0 0;opacity:.5;line-height: 0;display: inline-block;}
-.especial figcaption b{color: #eb008b;display: block;margin: 0 0 2%;font-weight: 100;}
+.especial figcaption b{color: #0fad8dc8;display: block;margin: 0 0 1%;font-weight: 500;}
 .especial:hover figure{ transform:scale(1.05);}
 .note:hover figure:after{opacity:.5}
 
@@ -1239,7 +1239,7 @@ margin: 0 0 10px;
 .top_section .publicidad{background: rgba(0,0,0,.6);}
 .top_section.especiales{ background:#000;}
 .top_section .cover{opacity: .8;}
-.top_section .inner{backdrop-filter: blur(5px);padding: 2% 0;background: rgba(0,0,0,.4);border-radius: 3px;margin: 2% auto 3%;}
+.top_section .inner{backdrop-filter: blur(5px);padding: 5% 0;background: rgba(0,0,0,.4);border-radius: 3px;margin: 2% auto 3%;}
 .top_section h2{color:#fff;font-size:1.4em;font-weight:600;padding:0 4%;text-align:center;width:100%;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;text-overflow: ellipsis;}
 
 .top_destinos{position:relative;background:#000;padding: 4% 0 12%;overflow: hidden;}
@@ -1696,7 +1696,7 @@ main{padding-top:55px;}
 aside{width:100%}
 .col_aside,.col_2,.col_3,.col_3f,.col_4,.col_4.social{width: 100%;border: none;}
 .col_4.social{border-bottom:1px solid #ddd;padding: 0 0 3%;}
-.inner{width: 92%;}
+.inner{width: 92%;} /*/*/
 #single{display:block;}
 
 .publicidad{padding: 4% 0;}
@@ -2008,7 +2008,7 @@ footer .logos_iasa a:nth-child(5) img{height: 30px;}
 /*  Nuevio slider modular */
 .principalnotes{
 position: relative;
-  padding: 2% 0;
+  padding: 3% 0;
   /* margin: 0 0 8%; */
   /* max-height: 770px; */
   /* background: #487790; */
@@ -2016,7 +2016,7 @@ position: relative;
 
 .boxnotes{
 margin: 0 auto;
-width: 90%;
+width: 96%;
 z-index: 1;
 display: flex;
 flex-wrap: wrap;
@@ -2644,6 +2644,7 @@ padding: 0px 5px;
   }
   .especial figcaption b {
     font-size: .9em;
+    font-weight: 500;
   }
 
 }
@@ -3039,5 +3040,13 @@ font-size: 1.6em!important;
     display: none !important;
 }
 
+/* modal*/
+a.button-link {
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
 
