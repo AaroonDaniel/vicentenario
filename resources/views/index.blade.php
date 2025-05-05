@@ -82,7 +82,7 @@
                                 </figure>
                                 <figcaption>
                                     <div class="inner">
-                                        <b>Pueblos Mágicos</b>
+                                        <b>Pueblos Mágicoos</b>
                                         <strong>Zacatlán, la gran manzana poblana</strong>
                                         <span>Te decimos qué actividades turísticas puedes realizar en este Pueblo
                                             Mágico ubicado en la Sierra Norte de Puebla donde se da la manzana
