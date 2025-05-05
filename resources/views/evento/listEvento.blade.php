@@ -121,7 +121,7 @@
                             <span x-text="evento.direccion"></span>
                             <a :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(evento.direccion)}`"
                             target="_blank"
-                            class="ml-2 bg-teal-950 text-white px-2 py-1 text-xs rounded hover:bg-teal-800 ">
+                            class="ml-2 bg-red-950 text-white px-2 py-1 text-xs rounded hover:bg-red-500 ">
                                 Ver en maps
                             </a>
                         </div>
@@ -133,16 +133,16 @@
                                 @click="añadirAMiAgenda(evento)"
                                 class="px-4 py-2 rounded flex items-center gap-2"
                                 :class="eventoYaAgendado(evento.evento_id) 
-                                        ? 'bg-green-600 cursor-not-allowed text-white' 
-                                        : 'bg-blue-600 hover:bg-blue-700 text-white'">
+                                        ? 'bg-yellow-500 cursor-not-allowed text-white' 
+                                        : 'bg-emerald-900 hover:bg-emerald-700 text-white'">
                                 <i class="fas fa-calendar-plus"></i>
                                 <span x-text="eventoYaAgendado(evento.evento_id) ? 'Evento agendado' : 'Añadir a mi agenda'"></span>
                             </button>
 
                             <button @click="mostrarModal = false"
-                                class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">
+                                class="px-4 py-2 bg-neutral-500 text-white rounded hover:bg-neutral-700 hover:text-black flex items-center gap-2 font-bold ">
                                     Cerrar
-                                </button>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -980,13 +980,5 @@
         }
     }
 </script>
-
-
-
-
-
-
-
-
 
 @endpush

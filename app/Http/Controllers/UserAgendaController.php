@@ -13,28 +13,6 @@ class UserAgendaController extends Controller
         return view('agenda.index');
     }
 
-
-    /* public function store(Request $request)
-    {
-        $request->validate([
-            'titulo' => 'required|string|max:255',
-            'fecha' => 'required|date',
-            'hora_inicio' => 'required',
-            'hora_fin' => 'nullable',
-        ]);
-    
-        UserAgenda::create([
-            'user_id' => auth()->id(),
-            'titulo' => $request->titulo,
-            'fecha' => $request->fecha,
-            'hora_inicio' => $request->hora_inicio,
-            'hora_fin' => $request->hora_fin,
-            'descripcion' => $request->descripcion,
-        ]);
-    
-        return response()->json(['success' => true]);
-    }*/
-
     public function store(Request $request)
     {
         $request->validate([
@@ -84,14 +62,45 @@ class UserAgendaController extends Controller
                 'id' => $evento->id,
                 'title' => $evento->titulo,
                 'start' => $evento->fecha . 'T' . $evento->hora_inicio,
+
                 'end' => $evento->hora_fin ? $evento->fecha . 'T' . $evento->hora_fin : null,
+                'descripcion' => $evento->descripcion,
+                'ubicacion' => $evento->ubicacion,
             ];
         });
 
         return response()->json($eventosTransformados);
     }
 
+    public function update(Request $request, $id)
+    {
+        $evento = UserAgenda::where('id', $id)
+            ->where('user_id', auth()->id())
+            ->firstOrFail();
 
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'fecha' => 'required|date',
+            'hora_inicio' => 'required',
+        ]);
 
+        $evento->update([
+            'titulo' => $request->titulo,
+            'fecha' => $request->fecha,
+            'hora_inicio' => $request->hora_inicio,
+            'hora_fin' => $request->hora_fin,
+            'descripcion' => $request->descripcion,
+            'ubicacion' => $request->ubicacion,
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Evento actualizado correctamente.']);
+    }
+
+    public function destroy($id)
+    {
+        $evento = UserAgenda::where('user_id', auth()->id())->findOrFail($id);
+        $evento->delete();
+
+        return response()->json(['success' => true, 'message' => 'Evento eliminado correctamente.']);
+    }
 }
-

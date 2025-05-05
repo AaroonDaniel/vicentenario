@@ -101,9 +101,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/agenda', [UserAgendaController::class, 'index'])->name('agenda.index');
     Route::post('/agenda/store', [UserAgendaController::class, 'store'])->name('agenda.store');
     Route::get('/agenda/eventos', [UserAgendaController::class, 'getEventos'])->name('agenda.eventos');
+
+    // NUEVAS rutas para actualizar y eliminar eventos
+    Route::put('/agenda/update/{id}', [UserAgendaController::class, 'update'])->name('agenda.update');
+    Route::delete('/agenda/delete/{id}', [UserAgendaController::class, 'destroy'])->name('agenda.destroy');
+    
 });
 
-// mmm
+// ruta para agregar eventos a la agenda
 Route::get('/agenda/eventos/agendados', [UserAgendaController::class, 'eventosAgendados'])->name('agenda.eventosAgendados');
 
 //RUTA DE EVENTOS
