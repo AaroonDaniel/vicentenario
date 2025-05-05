@@ -24,6 +24,7 @@ class Historia extends Model
         'descripcion',
         'fuentes',
         'puntuacion',
+        'imagen'
     ];
 
     // Relación uno a muchos con Culturas

@@ -12,8 +12,8 @@
                             <a href="{{ route('historias.show', $historia->id_historia) }}"
                                 class="especial min-w-[300px] bg-white shadow rounded overflow-hidden">
                                 <figure>
-                                    @if ($historia->imagen_ruta)
-                                        <img src="{{ Storage::url($historia->imagen_ruta) }}"
+                                    @if ($historia->imagen)
+                                        <img src="{{ Storage::url($historia->imagen) }}"
                                             alt="Imagen de {{ $historia->titulo }}" class="w-full h-48 object-cover">
                                     @else
                                         <img src="https://via.placeholder.com/300x200?text=Sin+imagen" alt="Sin imagen"
@@ -26,20 +26,22 @@
                                     <h3 class="text-xl font-bold text-gray-900 leading-tight">
                                         {{ $historia->titulo }}
                                     </h3>
-                                
+
                                     {{-- DESCRIPCIÓN --}}
                                     <p class="mt-2 text-sm text-white description-text">
                                         {{ Str::limit($historia->descripcion, 160, '...') }}
                                     </p>
                                 </figcaption>
-                                
+
                                 <style>
                                     .description-text {
-                                        max-height: 40px; /* Altura máxima del texto */
+                                        max-height: 40px;
+                                        /* Altura máxima del texto */
                                         overflow: hidden;
                                         text-overflow: ellipsis;
                                         display: -webkit-box;
-                                        -webkit-line-clamp: 2; /* Limita a 2 líneas */
+                                        -webkit-line-clamp: 2;
+                                        /* Limita a 2 líneas */
                                         -webkit-box-orient: vertical;
                                     }
                                 </style>
@@ -52,7 +54,7 @@
 
         <div x-data="modalEdit()">
 
-            <!-- Modal Nuevo -->
+            <!-- Modal lista -->
             <div class="p-6">
                 <div class="flex justify-between items-center mb-6">
                     <h1 class="text-2xl font-bold text-gray-800">Listado de Historias</h1>
@@ -77,6 +79,7 @@
                                 <th class="px-4 py-3">Fuentes</th>
                                 <th class="px-4 py-3">Puntuación</th>
                                 <th class="px-4 py-3">Fecha</th>
+                                <th class="px-4 py-3">Imagen</th>
                                 <th class="px-4 py-3">Acciones</th>
                             </tr>
                         </thead>
@@ -88,11 +91,20 @@
                                     <td class="px-4 py-2">{{ $historia->descripcion }}</td>
                                     <td class="px-4 py-2">{{ $historia->fuentes }}</td>
                                     <td class="px-4 py-2">{{ $historia->puntuacion }}</td>
-                                    <td class="px-4 py-2">{{ $historia->created_at }}</td>
+                                    <td class="px-4 py-2">{{ $historia->created_at->format('Y-m-d') }}</td>
+
+                                    <td class="px-4 py-2">
+                                        @if ($historia->imagen)
+                                            <img src="{{ asset('storage/' . $historia->imagen) }}" alt="Imagen"
+                                                class="w-16 h-16 object-cover rounded border">
+                                        @else
+                                            <span class="text-gray-500 italic">Sin imagen</span>
+                                        @endif
+                                    </td>
 
                                     <td class="px-4 py-2 flex space-x-2">
-                                        {{-- Ver --}}
-
+                                        
+                                        {{-- Botón para ver --}}
                                         <button onclick="mostrarDetalles({{ $historia->id_historia }})"
                                             class="text-blue-600 hover:text-blue-800">
                                             <i class="fas fa-eye"></i>
@@ -100,17 +112,19 @@
 
                                         {{-- Editar --}}
                                         <button
-                                            @click="openEditModal({ 
-                                            id: '{{ $historia->id_historia }}',
-                                            titulo: '{{ $historia->titulo }}', 
-                                            descripcion: '{{ $historia->descripcion }}', 
-                                            fuentes: '{{ $historia->fuentes }}',
-                                            puntuacion: '{{ $historia->puntuacion }}', 
-                                            fecha: '{{ $historia->created_at }}' 
-                                        })"
+                                            onclick="openEditModal({
+                                                id: '{{ $historia->id_historia }}',
+                                                titulo: '{{ addslashes($historia->titulo) }}',
+                                                descripcion: '{{ addslashes($historia->descripcion) }}',
+                                                fuentes: '{{ addslashes($historia->fuentes) }}',
+                                                puntuacion: '{{ $historia->puntuacion }}',
+                                                fecha: '{{ $historia->created_at }}',
+                                                imagen: '{{ $historia->imagen }}' // <--- aquí pasas la imagen
+                                            })"
                                             class="text-yellow-500 hover:text-yellow-700">
                                             <i class="fas fa-edit"></i>
                                         </button>
+
 
                                         {{-- Eliminar --}}
                                         <button
@@ -126,94 +140,120 @@
                 </div>
             </div>
 
+
             <!-- MODAL EDITAR -->
-            <div x-show="show" x-transition x-cloak
-                class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
-                <div class="bg-white w-full max-w-md p-6 rounded-lg shadow-lg relative">
-                    <button @click="close"
+            <div id="editModal" class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center hidden">
+                <div class="bg-white w-full max-w-md p-6 rounded-lg shadow-lg relative overflow-y-auto max-h-[90vh]">
+                    <button onclick="closeEditModal()"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-                    <h2 class="text-lg font-bold text-black-700 mb-4"><i class="fas fa-user-edit mr-2"></i>Editar Historia
+                    <h2 class="text-lg font-bold text-black-700 mb-4">
+                        <i class="fas fa-user-edit mr-2"></i>Editar Historia
                     </h2>
 
-                    <form :action="'/historias/' + form.id" method="POST" @submit="show = false">
+                    <form id="editForm" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
+                        <input type="hidden" name="id" id="form-id">
+
                         <div class="mb-4">
                             <label class="block font-semibold">Título</label>
-                            <input type="text" name="titulo"
-                                x-model="form.titulo"class="w-full bg-gray-200 border-3 border-red-100 rounded px-3 py-2">
+                            <input type="text" name="titulo" id="form-titulo"
+                                class="w-full bg-gray-200 border border-red-100 rounded px-3 py-2">
                         </div>
 
                         <div class="mb-4">
                             <label class="block font-semibold">Descripción</label>
-                            <textarea name="descripcion"
-                                x-model="form.descripcion"class="w-full bg-gray-200 border-3 border-red-100 rounded px-3 py-2"></textarea>
+                            <textarea name="descripcion" id="form-descripcion" class="w-full bg-gray-200 border border-red-100 rounded px-3 py-2"></textarea>
                         </div>
 
                         <div class="mb-4">
                             <label class="block font-semibold">Fuentes</label>
-                            <input type="text" name="fuentes"
-                                x-model="form.fuentes"class="w-full bg-gray-200 border-3 border-red-100 rounded px-3 py-2">
+                            <input type="text" name="fuentes" id="form-fuentes"
+                                class="w-full bg-gray-200 border border-red-100 rounded px-3 py-2">
                         </div>
 
                         <div class="mb-4">
                             <label class="block font-semibold">Puntuación</label>
-                            <input type="number" name="puntuacion"
-                                x-model="form.puntuacion"class="w-full bg-gray-200 border-3 border-red-100 rounded px-3 py-2">
+                            <input type="number" name="puntuacion" id="form-puntuacion"
+                                class="w-full bg-gray-200 border border-red-100 rounded px-3 py-2">
                         </div>
 
                         <div class="mb-4">
                             <label class="block font-semibold">Fecha</label>
-                            <input type="text" name="fecha" x-model="form.fecha"
-                                class="w-full bg-gray-200 border-3 border-red-100 rounded px-3 py-2">
+                            <input type="text" name="fecha" id="form-fecha"
+                                class="w-full bg-gray-200 border border-red-100 rounded px-3 py-2">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block font-semibold">Imagen actual</label>
+                            <img id="edit-imagen-preview" src="" alt="Imagen actual"
+                                class="w-32 h-32 object-cover rounded border">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block font-semibold">Nueva imagen (opcional)</label>
+                            <input type="file" name="imagen" accept="image/*"
+                                class="w-full bg-white border border-gray-300 rounded px-3 py-2">
                         </div>
 
                         <div class="flex justify-end gap-2">
-                            <button type="button" @click="close"
+                            <button type="button" onclick="closeEditModal()"
                                 class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cerrar</button>
-                            <button type="submit" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">Editar
-                                historia</button>
-
+                            <button type="submit"
+                                class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">Editar historia</button>
                         </div>
                     </form>
                 </div>
             </div>
 
+
+
+
             <!-- Modal VER DETALLES -->
-            <div id="verHistoriaModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50">
+            <div id="verHistoriaModal"  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
                 <div class="flex items-center justify-center min-h-screen">
-                    <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+                    <div class="bg-white w-full max-w-4xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative">
                         <div class="flex justify-between items-center border-b pb-2 mb-2">
-                            <h2 class="text-lg font-bold text-black-700 mb-4"><i class="fas fa-info-circle"></i> Detalles
-                                de la historia</h2>
+                            <h2 class="text-lg font-bold text-black-700 mb-4">
+                                <i class="fas fa-info-circle"></i> Detalles de la historia
+                            </h2>
                             <button onclick="cerrarModalVer()"
                                 class="text-gray-600 hover:text-red-600 text-lg">&times;</button>
                         </div>
+
                         <div>
-                            <div>
+                            <div class="mb-2">
                                 <strong>Título:</strong>
                                 <div id="ver-titulo" class="text-gray-600"></div>
                             </div>
-                            <div>
+                            <div class="mb-2">
                                 <strong>Descripción:</strong>
                                 <div id="ver-descripcion" class="text-gray-600"></div>
                             </div>
-                            <div>
+                            <div class="mb-2">
                                 <strong>Fuentes:</strong>
                                 <div id="ver-fuentes" class="text-gray-600"></div>
                             </div>
-                            <div class="col-span-2">
+                            <div class="mb-2">
                                 <strong>Puntuación:</strong>
                                 <div id="ver-puntuacion" class="text-gray-600"></div>
                             </div>
-                            <div>
+                            <div class="mb-2">
                                 <strong>Fecha creación:</strong>
                                 <div id="ver-fecha-creacion" class="text-gray-600"></div>
                             </div>
-                            <div>
+                            <div class="mb-2">
                                 <strong>Fecha actualización:</strong>
                                 <div id="ver-fecha-actualizacion" class="text-gray-600"></div>
+                            </div>
+                            <div class="mt-4">
+                                <strong>Imagen:</strong>
+                                <div>
+                                    <img id="ver-imagen" src="" alt="Imagen de la historia"
+                                        class="w-full max-h-64 object-contain mt-2 rounded border"
+                                        onerror="this.src='/default.jpg'">
+                                </div>
                             </div>
                         </div>
 
@@ -223,10 +263,10 @@
                                 OK
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>
+
 
             <!-- Modal de Confirmación Eliminar Cultura -->
             <div id="eliminarHistoriaModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50">
@@ -291,6 +331,13 @@
                                 class="w-full border border-gray-300 rounded px-3 py-2" required>
                         </div>
 
+                        <div class="mb-4">
+                            <label class="block font-semibold mb-1">Imagen</label>
+                            <input type="file" name="imagen" accept="image/*"
+                                class="w-full border border-gray-300 rounded px-3 py-2">
+                        </div>
+
+
                         <div class="text-right">
                             <button type="submit"
                                 class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Guardar</button>
@@ -299,6 +346,7 @@
                 </div>
             </div>
         </div>
+
     </section>
 @endsection
 
@@ -318,41 +366,46 @@
     </script>
     <!-- editar-->
     <script>
-        function modalEdit() {
-            return {
-                show: false,
-                form: {
-                    id: '',
-                    titulo: '',
-                    descripcion: '',
-                    fuentes: '',
-                    puntuacion: '',
-                    fecha: '',
-                },
-                openEditModal(data) {
-                    this.form = {
-                        ...data
-                    };
-                    this.show = true;
-                },
-                close() {
-                    this.show = false;
-                }
-            }
+        function openEditModal(data) {
+            document.getElementById('form-id').value = data.id;
+            document.getElementById('form-titulo').value = data.titulo;
+            document.getElementById('form-descripcion').value = data.descripcion;
+            document.getElementById('form-fuentes').value = data.fuentes;
+            document.getElementById('form-puntuacion').value = data.puntuacion;
+            document.getElementById('form-fecha').value = data.fecha;
+
+            // Mostrar imagen actual
+            const imageUrl = `/storage/${data.imagen}`;
+            document.getElementById('edit-imagen-preview').src = imageUrl;
+
+
+            // Establecer acción del formulario
+            const form = document.getElementById('editForm');
+            form.action = `/historias/${data.id}`;
+
+            // Mostrar modal
+            document.getElementById('editModal').classList.remove('hidden');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.add('hidden');
         }
     </script>
 
-    <!-- ver-->
+
+    <!-- ver -->
     <script>
         function mostrarDetalles(id) {
             $.ajax({
                 url: `/historias/${id}`,
                 method: 'GET',
                 success: function(data) {
+                    // Rellenar campos
                     $('#ver-titulo').text(data.titulo);
                     $('#ver-descripcion').text(data.descripcion);
                     $('#ver-fuentes').text(data.fuentes);
                     $('#ver-puntuacion').text(data.puntuacion);
+
                     $('#ver-fecha-creacion').text(new Date(data.created_at).toLocaleDateString('es-ES', {
                         year: 'numeric',
                         month: 'long',
@@ -363,6 +416,12 @@
                         month: 'long',
                         day: 'numeric'
                     }));
+
+                    // Imagen con fallback
+                    const imagenRuta = data.imagen ? `/storage/${data.imagen}` : '/default.jpg';
+                    $('#ver-imagen').attr('src', imagenRuta);
+
+                    // Mostrar modal
                     $('#verHistoriaModal').removeClass('hidden');
                 },
                 error: function() {
