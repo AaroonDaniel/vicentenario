@@ -47,7 +47,7 @@ class Evento extends Model
     public function expositores()
     {
         return $this->belongsToMany(Expositor::class, 'eventos_expositores', 'id_evento', 'id_expositor')
-                    ->withPivot('fecha', 'tema') // Incluye las columnas adicionales
+                    ->withPivot( 'tema') // Incluye las columnas adicionales
                     ->withTimestamps();       // Incluye created_at y updated_at
     }
 
