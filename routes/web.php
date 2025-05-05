@@ -17,6 +17,8 @@ use App\Http\Controllers\HistoriaController;
 
 use App\Http\Controllers\UserAgendaController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\expositorController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -121,6 +123,11 @@ Route::resource('eventos', EventoController::class);
 //RUTA DE AGENDA DE EVENTOS
 Route::get('/agendaEventos', [AgendaController::class, 'index'])->name('agendaEventos');
 
-
+//RUTA DE EXPOSITORES
+Route::resource('expositores', expositorController::class);
+Route::get('/expositores', [ExpositorController::class, 'index'])->name('expositores.index');
+Route::post('/expositores', [ExpositorController::class, 'store'])->name('expositores.store');
+Route::delete('/expositores/{id}', [ExpositorController::class, 'destroy'])->name('expositores.destroy');
+Route::get('/expositores/{id}', [ExpositorController::class, 'show']);
 
 

@@ -24,13 +24,14 @@ class Expositor extends Model
         'especialidad',
         'institucion',
         'contacto',
+        'imagen_perfil'
     ];
 
     // Relación muchos a muchos con Eventos
     public function eventos()
     {
         return $this->belongsToMany(Evento::class, 'eventos_expositores', 'id_expositor', 'id_evento')
-                    ->withPivot('fecha', 'tema') // Incluye las columnas adicionales
+                    ->withPivot('tema') // Incluye las columnas adicionales
                     ->withTimestamps();       // Incluye created_at y updated_at
     }
 }
