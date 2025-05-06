@@ -18,7 +18,7 @@ use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\UserAgendaController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\expositorController;
-
+use App\Http\Controllers\VideoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -94,9 +94,9 @@ Route::get('ultimo1', function () {
     return view('ultimo1');
 });
 
-Route::get('videos', function () {
-    return view('videos');
-});
+//Route::get('videos', function () {
+   // return view('videos');
+//});
 
 //RUTA AGENDA USUARIO
 Route::middleware('auth')->group(function () {
@@ -129,5 +129,10 @@ Route::get('/expositores', [ExpositorController::class, 'index'])->name('exposit
 Route::post('/expositores', [ExpositorController::class, 'store'])->name('expositores.store');
 Route::delete('/expositores/{id}', [ExpositorController::class, 'destroy'])->name('expositores.destroy');
 Route::get('/expositores/{id}', [ExpositorController::class, 'show']);
+
+//multimedia
+
+Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
+Route::post('/videos', [VideoController::class, 'store'])->name('videos.store');
 
 

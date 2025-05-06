@@ -1,221 +1,43 @@
 <!-- resources/views/index.blade.php -->
 @extends('layouts.principal')
 @section('title', 'Vicentenario Bolivia')
-
 @section('content')
 
     <!--PARTE LO ULTIMO -->
 
     <!--CONTENIDO DEL CUERPO DE LA PAGINA -->
 
-    <section class="content">
-        <article class="top_home">
-            <section class="slideshow owl-carousel owl-theme owl-loaded">
-                <div class="owl-stage-outer">
-                    <div class="owl-stage" style="transform: translate3d(-2835px, 0px, 0px); transition: all; width: 3645px;">
-                        <div class="owl-item cloned" style="width: 405px; margin-right: 0px;"><a
-                                href="https://www.mexicodesconocido.com.mx/archivo-general-agrario-de-la-sedatu.html">
-                                <figure>
-                                    <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/archivo-agrario-sedatu-render.png"
-                                        alt="La nueva sede del Archivo General Agrario de la SEDATU"
-                                        src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/archivo-agrario-sedatu-render.png"
-                                        class="ready">
-                                </figure>
-                                <figcaption>
-                                    <div class="inner">
-                                        <b>Actualidad</b>
-                                        <strong>La nueva sede del Archivo General Agrario de la SEDATU</strong>
-                                        <span>El nuevo edificio que albergará el Archivo General Agrario de la
-                                            SEDATU, es un portento arquitectónico. El inmueble, además de resguardar
-                                            uno de los acervos más importantes del país, será un museo abierto a
-                                            todo el público. </span>
-                                        <em><i class="fas fa-map-marker"></i>Ciudad de México</em>
-                                    </div>
-                                </figcaption>
-                            </a></div>
-                        <div class="owl-item cloned" style="width: 405px; margin-right: 0px;"><a
-                                href="https://www.mexicodesconocido.com.mx/eeuu-repatria-915-bienes-arqueologicos-a-mexico.html">
-                                <figure>
-                                    <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/foto_home-1.jpg"
-                                        alt="EEUU repatria 915 bienes arqueológicos a México"
-                                        src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/foto_home-1.jpg"
-                                        class="ready">
-                                </figure>
-                                <figcaption>
-                                    <div class="inner">
-                                        <b>Conoce México</b>
-                                        <strong>EEUU repatria 915 bienes arqueológicos a México</strong>
-                                        <span>Entre los 915 bienes arqueológicos repatriados en marzo, destaca una
-                                            figurilla de un hombre sentado con facciones olmecas.</span>
-                                        <em><i class="fas fa-map-marker"></i>México</em>
-                                    </div>
-                                </figcaption>
-                            </a></div>
-                        <div class="owl-item" style="width: 405px; margin-right: 0px;"><a
-                                href="https://www.mexicodesconocido.com.mx/isaias-jimenez-japon.html">
-                                <figure>
-                                    <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/486173798_1233003355492767_4226612267250431635_n.jpg"
-                                        alt="Isaías Jiménez expone sus animales fantásticos de Arrazola en Japón"
-                                        src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/486173798_1233003355492767_4226612267250431635_n.jpg"
-                                        class="ready">
-                                </figure>
-                                <figcaption>
-                                    <div class="inner">
-                                        <b>Conoce México</b>
-                                        <strong>Isaías Jiménez expone sus animales fantásticos de Arrazola en
-                                            Japón</strong>
-                                        <span>Además de ser reconocido por especialistas y aprendices japoneses,
-                                            Isaías Jiménez se reencontró con la obra de su padre, Manuel Jiménez,
-                                            creador de los animales fantásticos.</span>
-                                        <em><i class="fas fa-map-marker"></i>México</em>
-                                    </div>
-                                </figcaption>
-                            </a></div>
-                        <div class="owl-item" style="width: 405px; margin-right: 0px;"><a
-                                href="https://www.mexicodesconocido.com.mx/zacatlan-la-gran-manzana-poblana.html">
-                                <figure>
-                                    <img post-id="5250" fifu-featured="1"
-                                        data-src="https://www.mexicodesconocido.com.mx/sites/default/files/styles/adaptive/public/fichas-destino/pue_zacatlan-carreteta-trans-serrana-nocturna_6774_gemd_mfmd_1200.jpg"
-                                        alt="Zacatlán, la gran manzana poblana" title="Zacatlán, la gran manzana poblana"
-                                        src="https://www.mexicodesconocido.com.mx/sites/default/files/styles/adaptive/public/fichas-destino/pue_zacatlan-carreteta-trans-serrana-nocturna_6774_gemd_mfmd_1200.jpg"
-                                        class="ready">
-                                </figure>
-                                <figcaption>
-                                    <div class="inner">
-                                        <b>Pueblos Mágicoos</b>
-                                        <strong>Zacatlán, la gran manzana poblana</strong>
-                                        <span>Te decimos qué actividades turísticas puedes realizar en este Pueblo
-                                            Mágico ubicado en la Sierra Norte de Puebla donde se da la manzana
-                                            poblana.</span>
-                                        <em><i class="fas fa-map-marker"></i>Puebla</em>
-                                    </div>
-                                </figcaption>
-                            </a></div>
-                        <div class="owl-item" style="width: 405px; margin-right: 0px;"><a
-                                href="https://www.mexicodesconocido.com.mx/eclipse-de-luna-2025.html">
-                                <figure>
-                                    <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/250313-aca12-des-f1-la-Luna-se-pintara-de-rojo-este-jueves-durante-eclipse-total.jpg"
-                                        alt="Eclipse de Luna 2025, cuándo y a qué hora ver la «Luna de sangre»"
-                                        src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/250313-aca12-des-f1-la-Luna-se-pintara-de-rojo-este-jueves-durante-eclipse-total.jpg"
-                                        class="ready">
-                                </figure>
-                                <figcaption>
-                                    <div class="inner">
-                                        <b>Conoce México</b>
-                                        <strong>Eclipse de Luna 2025, cuándo y a qué hora ver la «Luna de
-                                            sangre»</strong>
-                                        <span>¿Estás listo para el eclipse de Luna 2025? Te decimos cuándo, cómo y a
-                                            qué hora verlo. ¡Será un gran espectáculo natural!</span>
-                                        <em><i class="fas fa-map-marker"></i>México</em>
-                                    </div>
-                                </figcaption>
-                            </a></div>
-                        <div class="owl-item" style="width: 405px; margin-right: 0px;"><a
-                                href="https://www.mexicodesconocido.com.mx/archivo-general-agrario-de-la-sedatu.html">
-                                <figure>
-                                    <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/archivo-agrario-sedatu-render.png"
-                                        alt="La nueva sede del Archivo General Agrario de la SEDATU"
-                                        src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/archivo-agrario-sedatu-render.png"
-                                        class="ready">
-                                </figure>
-                                <figcaption>
-                                    <div class="inner">
-                                        <b>Actualidad</b>
-                                        <strong>La nueva sede del Archivo General Agrario de la SEDATU</strong>
-                                        <span>El nuevo edificio que albergará el Archivo General Agrario de la
-                                            SEDATU, es un portento arquitectónico. El inmueble, además de resguardar
-                                            uno de los acervos más importantes del país, será un museo abierto a
-                                            todo el público. </span>
-                                        <em><i class="fas fa-map-marker"></i>Ciudad de México</em>
-                                    </div>
-                                </figcaption>
-                            </a></div>
-                        <div class="owl-item" style="width: 405px; margin-right: 0px;"><a
-                                href="https://www.mexicodesconocido.com.mx/eeuu-repatria-915-bienes-arqueologicos-a-mexico.html">
-                                <figure>
-                                    <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/foto_home-1.jpg"
-                                        alt="EEUU repatria 915 bienes arqueológicos a México"
-                                        src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/foto_home-1.jpg"
-                                        class="ready">
-                                </figure>
-                                <figcaption>
-                                    <div class="inner">
-                                        <b>Conoce México</b>
-                                        <strong>EEUU repatria 915 bienes arqueológicos a México</strong>
-                                        <span>Entre los 915 bienes arqueológicos repatriados en marzo, destaca una
-                                            figurilla de un hombre sentado con facciones olmecas.</span>
-                                        <em><i class="fas fa-map-marker"></i>México</em>
-                                    </div>
-                                </figcaption>
-                            </a></div>
-                        <div class="owl-item cloned animated owl-animated-in fadeIn active"
-                            style="width: 405px; margin-right: 0px;"><a
-                                href="https://www.mexicodesconocido.com.mx/isaias-jimenez-japon.html">
-                                <figure>
-                                    <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/486173798_1233003355492767_4226612267250431635_n.jpg"
-                                        alt="Isaías Jiménez expone sus animales fantásticos de Arrazola en Japón"
-                                        src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/486173798_1233003355492767_4226612267250431635_n.jpg"
-                                        class="ready">
-                                </figure>
-                                <figcaption>
-                                    <div class="inner">
-                                        <b>Conoce México</b>
-                                        <strong>Isaías Jiménez expone sus animales fantásticos de Arrazola en
-                                            Japón</strong>
-                                        <span>Además de ser reconocido por especialistas y aprendices japoneses,
-                                            Isaías Jiménez se reencontró con la obra de su padre, Manuel Jiménez,
-                                            creador de los animales fantásticos.</span>
-                                        <em><i class="fas fa-map-marker"></i>México</em>
-                                    </div>
-                                </figcaption>
-                            </a></div>
-                        <div class="owl-item cloned" style="width: 405px; margin-right: 0px;"><a
-                                href="https://www.mexicodesconocido.com.mx/zacatlan-la-gran-manzana-poblana.html">
-                                <figure>
-                                    <img post-id="5250" fifu-featured="1"
-                                        data-src="https://www.mexicodesconocido.com.mx/sites/default/files/styles/adaptive/public/fichas-destino/pue_zacatlan-carreteta-trans-serrana-nocturna_6774_gemd_mfmd_1200.jpg"
-                                        alt="Zacatlán, la gran manzana poblana" title="Zacatlán, la gran manzana poblana"
-                                        src="https://www.mexicodesconocido.com.mx/sites/default/files/styles/adaptive/public/fichas-destino/pue_zacatlan-carreteta-trans-serrana-nocturna_6774_gemd_mfmd_1200.jpg"
-                                        class="ready">
-                                </figure>
-                                <figcaption>
-                                    <div class="inner">
-                                        <b>Pueblos Mágicos</b>
-                                        <strong>Zacatlán, la gran manzana poblana</strong>
-                                        <span>Te decimos qué actividades turísticas puedes realizar en este Pueblo
-                                            Mágico ubicado en la Sierra Norte de Puebla donde se da la manzana
-                                            poblana.</span>
-                                        <em><i class="fas fa-map-marker"></i>Puebla</em>
-                                    </div>
-                                </figcaption>
-                            </a></div>
+    <section class="content ">
+
+        <!-- Carrusel de lugares turísticos -->
+        <div x-data="carousel()" x-init="start()" class="relative w-full h-[400px] sm:h-[500px] md:h-[600px] overflow-hidden">
+            <template x-for="(lugar, index) in lugares" :key="index">
+                <div x-show="current === index" 
+                    x-transition:enter="transition-opacity duration-700" 
+                    x-transition:enter-start="opacity-0" 
+                    x-transition:enter-end="opacity-100" 
+                    class="absolute inset-0 bg-cover bg-center"
+                    :style="'background-image: url(/storage/lugares/' + lugar.imagen + ')'">
+                    <div class="bg-black bg-opacity-50 h-full flex items-center justify-center">
+                        <div class="text-white text-center p-4">
+                            <h2 class="text-2xl sm:text-4xl font-bold" x-text="lugar.departamento"></h2>
+                            <p class="text-md sm:text-xl mt-2" x-text="lugar.nombre_lugar"></p>
+                        </div>
                     </div>
                 </div>
-                <div class="owl-controls">
-                    <div class="owl-nav">
-                        <div class="owl-prev" style="display: flex;">prev</div>
-                        <div class="owl-next" style="display: flex;">next</div>
-                    </div>
-                    <div class="owl-dots" style="">
-                        <div class="owl-dot active"><span></span><i>1</i><img
-                                src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/486173798_1233003355492767_4226612267250431635_n.jpg"><strong>Isaías
-                                Jiménez expone sus animales fantásticos de Arrazola en Japón</strong></div>
-                        <div class="owl-dot"><span></span><i>2</i><img
-                                src="https://www.mexicodesconocido.com.mx/sites/default/files/styles/adaptive/public/fichas-destino/pue_zacatlan-carreteta-trans-serrana-nocturna_6774_gemd_mfmd_1200.jpg"><strong>Zacatlán,
-                                la gran manzana poblana</strong></div>
-                        <div class="owl-dot"><span></span><i>3</i><img
-                                src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/250313-aca12-des-f1-la-Luna-se-pintara-de-rojo-este-jueves-durante-eclipse-total.jpg"><strong>Eclipse
-                                de Luna 2025, cuándo y a qué hora ver la «Luna de sangre»</strong></div>
-                        <div class="owl-dot"><span></span><i>4</i><img
-                                src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/archivo-agrario-sedatu-render.png"><strong>La
-                                nueva sede del Archivo General Agrario de la SEDATU</strong></div>
-                        <div class="owl-dot"><span></span><i>5</i><img
-                                src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2025/03/foto_home-1.jpg"><strong>EEUU
-                                repatria 915 bienes arqueológicos a México</strong></div>
-                    </div>
-                </div>
-            </section>
-        </article>
+            </template>
+
+            <!-- Flechas navegación -->
+            <button @click="prev()" 
+                    class="absolute left-0 top-1/2 transform -translate-y-1/2  bg-opacity-30 hover:bg-opacity-60 text-white text-3xl px-4 py-2 z-10">
+                ❮
+            </button>
+            <button @click="next()" 
+                    class="absolute right-0 top-1/2 transform -translate-y-1/2  bg-opacity-30 hover:bg-opacity-60 text-white text-3xl px-4 py-2 z-10">
+                ❯
+            </button>
+        </div>
+
 
 
         <section class="principalnotes">
@@ -748,3 +570,36 @@
     </section>
     <!--content-->
 @endsection
+
+@push('scripts')
+    <script>
+        function carousel() {
+            return {
+                current: 0,
+                interval: null,
+                lugares: [
+                    { departamento: 'La Paz', nombre_lugar: 'Plaza Murillo', imagen: 'la_paz_titicaca.jpg' },
+                    { departamento: 'Santa Cruz', nombre_lugar: 'Catedral de San Lorenzo', imagen: 'Santa-Cruz_catedral.jpg' },
+                    { departamento: 'Cochabamba', nombre_lugar: 'Cristo de la Concordia', imagen: 'Cochabamba_Cristo.avif' },
+                    { departamento: 'Potosí', nombre_lugar: 'Ciudad de Potosi, Iglesia San Francisco', imagen: 'Potosi_San_Francisco.avif' },
+                    { departamento: 'Oruro', nombre_lugar: 'Ciudad de Oruro', imagen: 'oruro.jpg' },
+                    { departamento: 'Chuquisaca', nombre_lugar: 'Catedral de Sucre', imagen: 'Sucre_catedral.avif' },
+                    { departamento: 'Tarija', nombre_lugar: 'Castillo azul', imagen: 'tarija_castillo_azul.jpg' },
+                    { departamento: 'Beni', nombre_lugar: 'Rurrenabaque, orillas de la Amazonía', imagen: 'beni_amazonia.jpg' },
+                    { departamento: 'Pando', nombre_lugar: 'Parque piñata', imagen: 'cobija_parque.jpg' }
+                ],
+                start() {
+                    this.interval = setInterval(() => {
+                        this.next();
+                    }, 5000);
+                },
+                next() {
+                    this.current = (this.current + 1) % this.lugares.length;
+                },
+                prev() {
+                    this.current = (this.current - 1 + this.lugares.length) % this.lugares.length;
+                }
+            }
+        }
+    </script>
+@endpush
