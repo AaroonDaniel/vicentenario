@@ -25,6 +25,7 @@ class Cultura extends Model
         'descripcion',
         'tipo',
         'origen',
+        'imagen'
     ];
 
     // Relación inversa uno a muchos con Historia
