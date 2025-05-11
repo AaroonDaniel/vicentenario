@@ -13,7 +13,7 @@
                 
                 <li id="menu-item-66044"
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-66044">
-                    <a href="{{ '' }}">Inicio</a>
+                    <a href="{{ '/' }}">Inicio</a>
                     
                 </li>
 

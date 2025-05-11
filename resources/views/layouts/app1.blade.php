@@ -10,14 +10,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <style>
+        html, body {
+    height: 100%;
+}
+    </style>
+
 
 
 </head>
 <body class="bg-gray-100">
     @include('partials.header') <!-- Header visual -->
     @yield('content') <!-- Contenido dinámico -->
-    @include('partials.footer') <!-- Footer -->
-
+    @include('partials.footer')
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
