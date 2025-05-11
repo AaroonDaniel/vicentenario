@@ -1,70 +1,80 @@
 <footer>
     <section class="inner">
         <section class="wrapper">
+            <section class="col_1 logos_iasa bg-gray-150 py-8">
+                <!-- Contenedor principal con overflow oculto -->
+                <div class="overflow-hidden whitespace-nowrap relative">
+                    <!-- Carrusel animado -->
+                    <div class="animate-marquee flex gap-8">
+                        <!-- Duplicado para efecto continuo -->
+                        @for ($i = 0; $i < 2; $i++)
+                            @foreach ($patrocinadores as $patro)
+                                <div
+                                    class="flex-shrink-0 w-48 h-24 flex items-center justify-center bg-white rounded-lg shadow-md transition-transform hover:scale-105">
+                                    <a @if ($patro->url) href="{{ $patro->url }}" target="_blank" rel="noreferrer" @endif
+                                        class="block w-full h-full flex items-center justify-center">
+                                        @if ($patro->imagen)
+                                            <img src="{{ asset('storage/' . $patro->imagen) }}"
+                                                alt="{{ $patro->razon_social }}"
+                                                class="max-h-16 max-w-[90%] object-contain transition-opacity hover:opacity-90"
+                                                style="filter: brightness(0.95) contrast(1.1);">
+                                        @else
+                                            <div class="text-sm text-gray-600">
+                                                Sin logo
+                                            </div>
+                                        @endif
+                                    </a>
+                                </div>
+                            @endforeach
+                        @endfor
+                    </div>
+                </div>
 
-            <section class="col_1 logos_iasa">
-            <a href="https://g21.com.mx" rel="noreferrer" target="_blank" class="g21"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/g21.svg" alt="g21 Comunicación" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/g21.svg" class="ready"></a>
-            <a href="https://www.altonivel.com.mx" rel="noreferrer" target="_blank" class="an"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/altonivel.svg" alt="Alto Nivel" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/altonivel.svg" class="ready"></a>
-            <a href="https://www.cinepremiere.com.mx" rel="noreferrer" target="_blank" class="cp"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/cinepremiere.svg" alt="Cine PREMIERE" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/cinepremiere.svg" class="ready"></a>
-            <a href="https://www.emprendedor.com" rel="noreferrer" target="_blank" class="en"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/emprendedor.svg" alt="Emprendedor.com" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/emprendedor.svg" class="ready"></a>
-            <a href="https://www.nupciasmagazine.com" rel="noreferrer" target="_blank" class="nu"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/nupcias.svg" alt="Nupcias Magazine" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/nupcias.svg" class="ready"></a>
+                <!-- Estilos embebidos -->
+                <style>
+                    @keyframes marquee {
+                        0% {
+                            transform: translateX(0);
+                        }
+
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                    }
+
+                    .animate-marquee {
+                        display: inline-flex;
+                        animation: marquee 30s linear infinite;
+                        white-space: nowrap;
+                        padding-right: 100%;
+                    }
+                </style>
             </section>
-            <section class="col_1 logos_iasa">
-            </section>
+
             <section class="col_4">
                 <strong class="nice">Información</strong>
-                <a href="https://suscribiendome.com/mexico-desconocido/" target="_blank" rel="noreferrer">Suscripciones</a>
-                <a href="/aviso-de-privacidad">Aviso de Privacidad</a>
-                <a href="/declaracion-de-accesibilidad">Accesibilidad</a>
+                <a href="https://www.bicentenario.gob.bo/" target="_blank" rel="noreferrer">Sitio Oficial</a>
+                <a href="/aviso-de-privacidad">Política de Privacidad</a>
+                <a href="/accesibilidad">Accesibilidad</a>
             </section>
+
             <section class="col_4">
-                    <strong class="nice">Conócenos</strong>
-                    <a href="/contacto">Contáctanos</a>
-                    <a href="https://g21.com.mx/mexico-desconocido/" target="_blank" rel="noreferrer">Media Kit</a>
-                    <a href="https://g21.com.mx/mexico-desconocido/" target="_blank" rel="noreferrer">Anúnciate con nosotros</a>
-                    <!-- <a href="/quienes-somos">Quiénes somos</a> -->
-                    
+                <strong class="nice">Sobre el Bicentenario</strong>
+                <a href="/historia-bicentenario">Historia y Significado</a>
+                <a href="/actividades-nacionales">Actividades Nacionales</a>
+                <a href="/contacto-bicentenario">Contáctanos</a>
             </section>
-            <section class="col_4 social">
-                    <strong class="nice">Síguenos</strong>
-                    <a href="https://www.facebook.com/mexicodesconocido" target="_blank" rel="noreferrer" class="icon"><i class="fab fa-facebook"></i> Facebook</a>
-                    <a href="https://twitter.com/mexdesconocido" target="_blank" rel="noreferrer" class="icon"><i class="fab fa-twitter"></i> Twitter</a>
-                    <a href="https://www.instagram.com/mexicodesconocido/" target="_blank" rel="noreferrer" class="icon"><i class="fab fa-instagram"></i> Instagram</a>
-                    <a href="https://www.youtube.com/user/MEXICODESCONOCIDOTV" target="_blank" rel="noreferrer" class="icon"><i class="fab fa-youtube"></i> YouTube</a>
-                    <a href="https://www.pinterest.com.mx/mexdesconocido/" target="_blank" rel="noreferrer" class="icon"><i class="fab fa-pinterest"></i> Pinterest</a>
-            </section>
+
             <section class="col_4 digital_mag">
+                <strong class="nice">Ver galería conmemorativa</strong>
+                <p>Explora imágenes y contenidos digitales en homenaje a los 200 años de Bolivia.</p>
 
-                                     
-                    <strong class="nice">Ver revista digital</strong>
-                    <p>Disfruta de la e-magazine de México Desconocido con acceso gratuito</p>
-
-
-                    <a href="https://revistadigital.mx/mexicodesconocido-mayo2024/" class="btn block" rel="noreferrer" target="_blank">Ver edición</a>
-                        
-                    <figure class="ipad">
-                        <img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/ipad.png" alt="ipad" width="60" height="100" class="isbg ready" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/ipad.png">
-                        <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2024/12/MD-PORTADA-MAYO24-2.jpg" alt="Revista" src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2024/12/MD-PORTADA-MAYO24-2.jpg" class="ready">
-                        <!-- <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2018/02/mexico_desconocido_logo-300x300.png" alt="mexico_desconocido_logo" title="mexico_desconocido_logo "data-credit="" data-alt="mexico_desconocido_logo"> -->
-                    </figure>
-                    <figure class="iphone">
-                        <img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/iphone.png" alt="ipad" width="60" height="100" class="isbg ready" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/iphone.png">
-                        <!-- <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2018/02/mexico_desconocido_logo-300x300.png" alt="mexico_desconocido_logo" title="mexico_desconocido_logo "data-credit="" data-alt="mexico_desconocido_logo"> -->
-                        <img data-src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2024/12/MD-PORTADA-MAYO24-2.jpg" alt="Revista" src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2024/12/MD-PORTADA-MAYO24-2.jpg" class="ready">
-                    </figure>  
+                <a href="https://www.bicentenario.gob.bo/galeria" class="btn block" rel="noreferrer" target="_blank">Ver
+                    galería</a>
             </section>
-            <section class="col_1 logos_iasa">
-                <a href="https://g21.com.mx" rel="noreferrer" target="_blank" class="g21"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/g21.svg" alt="g21 Comunicación" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/g21.svg" class="ready"></a>
-                <a href="https://www.altonivel.com.mx" rel="noreferrer" target="_blank" class="an"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/altonivel.svg" alt="Alto Nivel" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/altonivel.svg" class="ready"></a>
-                <a href="https://www.cinepremiere.com.mx" rel="noreferrer" target="_blank" class="cp"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/cinepremiere.svg" alt="Cine PREMIERE" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/cinepremiere.svg" class="ready"></a>
-                <a href="https://www.emprendedor.com" rel="noreferrer" target="_blank" class="en"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/emprendedor.svg" alt="Emprendedor.com" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/emprendedor.svg" class="ready"></a>
-                <a href="https://www.nupciasmagazine.com" rel="noreferrer" target="_blank" class="nu"><img data-src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/nupcias.svg" alt="Nupcias Magazine" width="1px" height="1px" src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/img/nupcias.svg" class="ready"></a>
-            </section>
-
-
         </section>
     </section>
     <section class="copyright">
-        ©2025 México Desconocido | g21 Comunicación
+        ©2025 Bicentenario de Bolivia | Gobierno del Estado Plurinacional
     </section>
 </footer>

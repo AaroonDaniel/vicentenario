@@ -57,7 +57,7 @@ class Evento extends Model
     public function patrocinadores()
     {
         return $this->belongsToMany(Patrocinador::class, 'eventos_patrocinadores', 'id_evento', 'id_auspiciador')
-                    ->withPivot('fecha', 'monto')
+                    ->withPivot( 'monto')
                     ->withTimestamps();
     }
 

@@ -49,6 +49,11 @@
                                 href="{{ 'expositores' }}">Expositores
                             </a>
                         </li>
+                        <li id="menu-item-66047"
+                            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66047"><a
+                                href="{{ 'patrocinadores' }}">Patrocinadores
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

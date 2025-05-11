@@ -22,13 +22,14 @@ class Patrocinador extends Model
     protected $fillable = [
         'razon_social',
         'institucion',
+        'imagen'
     ];
 
     // Relación muchos a muchos con Evento
     public function eventos()
     {
         return $this->belongsToMany(Evento::class, 'eventos_patrocinadores', 'id_auspiciador', 'id_evento')
-                    ->withPivot('fecha', 'monto')
+                    ->withPivot('monto')
                     ->withTimestamps();
     }
 }

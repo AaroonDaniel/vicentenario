@@ -18,6 +18,7 @@ use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\UserAgendaController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\expositorController;
+use App\Http\Controllers\PatrocinadorController;
 use App\Http\Controllers\VideoController;
 /*
 |--------------------------------------------------------------------------
@@ -134,5 +135,9 @@ Route::get('/expositores/{id}', [ExpositorController::class, 'show']);
 
 Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
 Route::post('/videos', [VideoController::class, 'store'])->name('videos.store');
+
+//RUTA DE PATROCINADORES
+Route::resource('patrocinadores', PatrocinadorController::class);
+Route::delete('/patrocinadores/{id}', [PatrocinadorController::class, 'destroy'])->name('patrocinadores.destroy');
 
 
