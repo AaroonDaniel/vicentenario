@@ -10,8 +10,7 @@
 
     <!-- Font Awesome para iconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <!-- Tailwind CSS CDN (para pruebas rápidas) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- estilos css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"> 
@@ -60,8 +59,7 @@
     <script type="text/javascript"
         src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/owl.carousel.min.js?ver=1.0.0"
         id="carousel-js"></script>
-    <script type="text/javascript" src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js?ver=1.0.0"
-        id="remote_sdk-js" defer="defer" data-wp-strategy="defer"></script>
+    
 
     
     
