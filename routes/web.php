@@ -140,4 +140,7 @@ Route::post('/videos', [VideoController::class, 'store'])->name('videos.store');
 Route::resource('patrocinadores', PatrocinadorController::class);
 Route::delete('/patrocinadores/{id}', [PatrocinadorController::class, 'destroy'])->name('patrocinadores.destroy');
 
-
+//
+Route::get('/offline', function(){
+    return view('vendor.laravelpwa.offline');
+});
