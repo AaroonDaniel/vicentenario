@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    
+
     @include('partials.head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Metadatos y enlaces CSS -->
@@ -10,10 +10,10 @@
 
     <!-- Font Awesome para iconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    
+
     <!-- estilos css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
     <!-- Alpine.js PARA EDITAR -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -22,11 +22,17 @@
 
     <script src="https://unpkg.com/heroicons@2.0.13/dist/heroicons.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
-        <!-- Swiper CSS -->
+    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
+    <!-- Rutas para la app movil -->
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    <meta name="theme-color" content="#0d6efd">
+    <link rel="stylesheet" href="https://0483-189-28-94-115.ngrok-free.app/css/md2020-style.css">
+
+
     @laravelPWA
     @stack('styles')
 </head>
@@ -45,11 +51,11 @@
     </script>
     <!-- nav-->
     <!-- Google Analytics clásico -->
-<script async src="https://www.google-analytics.com/analytics.js"></script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
 
     <script type="text/javascript"
         src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/assets.js?ver=3.3.3.2.32" id="assets-js">
-    </script> 
+    </script>
 
     <!-- VUE
     <script type="text/javascript"
@@ -59,10 +65,10 @@
     <script type="text/javascript"
         src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/owl.carousel.min.js?ver=1.0.0"
         id="carousel-js"></script>
-    
 
-    
-    
+
+
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
@@ -109,7 +115,7 @@
 
     <!-- Inicialización de DataTables CORREGIDO-->
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#funcionesTable').DataTable({
                 dom: 'Bfrtip',
                 buttons: ['copy', 'excel', 'pdf', 'csv', 'print'],
@@ -120,7 +126,7 @@
         });
     </script>
 
-    <!-- Agente Artificial 
+    <!-- Agente Artificial
     <script>
         $(document).ready(function() {
             $('td[id^="agent-response-"]').each(function() {
@@ -149,7 +155,7 @@
         });
     </script>-->
 
-    <!-- n8n Chat 
+    <!-- n8n Chat
     <script type="module">
         import {
             createChat
@@ -176,7 +182,7 @@
         });
     </script>-->
 
-<!-----------------------------------------------
+    <!-----------------------------------------------
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const openButton = document.querySelector('.open_nav');
@@ -198,6 +204,15 @@
             });
         });
     </script>-->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/serviceworker.js')
+                    .then(reg => console.log('SW registrado con scope:', reg.scope))
+                    .catch(err => console.error('Error al registrar SW:', err));
+            });
+        }
+    </script>
 
 
 
