@@ -7,10 +7,15 @@
 @section('content')
 
 
+
+
 <div class="bg-white rounded-lg shadow p-6">
     <h2 class="text-xl font-semibold mb-4">Resumen de Asistencias</h2>
-    <canvas id="chartAsistencias" height="100"></canvas>
+    <div style="height: 400px;">
+        <canvas id="chartAsistencias"></canvas>
+    </div>
 </div>
+
 @stop
 
 @section('js')
@@ -26,8 +31,25 @@
         labels: labels,
         datasets: [{
             label: 'Cantidad de Asistentes',
-            backgroundColor: 'rgba(54, 162, 235, 0.6)',
-            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: [
+                'rgba(208, 119, 138, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(116, 90, 167, 0.6)',
+                'rgba(255, 159, 64, 0.6)',
+                'rgba(212, 118, 160, 0.6)'
+            ],
+            borderColor: [
+                'rgb(255, 83, 120)',
+                'rgb(15, 105, 165)',
+                'rgb(245, 177, 4)',
+                'rgb(23, 170, 170)',
+                'rgb(116, 81, 184)',
+                'rgb(199, 111, 23)',
+                'rgb(79, 77, 77)'
+            ],
+
             borderWidth: 1,
             data: [
                 @foreach ($asistenciasPorEvento as $evento)
@@ -42,13 +64,40 @@
         data: data,
         options: {
             responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: '#f9fafb',
+                    titleColor: '#111827',
+                    bodyColor: '#374151',
+                    borderColor: '#e5e7eb',
+                    borderWidth: 1
+                }
+            },
             scales: {
+                x: {
+                    ticks: {
+                        color: '#374151',
+                        font: { size: 12 }
+                    }
+                },
                 y: {
                     beginAtZero: true,
-                    precision: 0
+                    precision: 0,
+                    ticks: {
+                        color: '#374151',
+                        font: { size: 12 }
+                    },
+                    grid: {
+                        color: '#e5e7eb'
+                    }
                 }
             }
         }
+
     };
 
     const myChart = new Chart(document.getElementById('chartAsistencias'), config);
