@@ -23,7 +23,7 @@
 
                                 <figcaption class="p-3 bg-white">
                                     {{-- TÍTULO GRANDE --}}
-                                    <h3 class="text-xl font-bold text-gray-900 leading-tight">
+                                    <h3 class="text-xl font-bold text-gray-100 leading-tight">
                                         {{ $historia->titulo }}
                                     </h3>
 
