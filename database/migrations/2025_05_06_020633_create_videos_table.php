@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('evento_id'); // Clave foránea
             $table->string('titulo');
             $table->string('url');
-            $table->text('descripcion'); // <--- esta línea nueva
+            $table->text('descripcion'); 
 
             $table->timestamps();
+
+            // Definición de la clave foránea
+            $table->foreign('evento_id')->references('id_evento')->on('eventos')->onDelete('cascade');
         });
         
     }

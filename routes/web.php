@@ -20,6 +20,9 @@ use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\expositorController;
 use App\Http\Controllers\PatrocinadorController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\AsistenciaController;
+use App\Http\Controllers\GraficoControlador;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +47,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/profile', [UsuarioController::class, 'profile']);
     Route::resource('/client', ClienteController::class)->names('cliente');
+    Route::resource('/graficos', GraficoControlador::class)->names('graficos');
     Route::resource('/roles', RoleController::class)->names('roles');
     Route::resource('/permisos', PermisoController::class)->names('permisos');
     Route::post('/roles/{id}/switch-guard', [RoleController::class, 'switchGuard'])->name('roles.switchGuard');
@@ -133,11 +137,28 @@ Route::get('/expositores/{id}', [ExpositorController::class, 'show']);
 
 //multimedia
 
-Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
-Route::post('/videos', [VideoController::class, 'store'])->name('videos.store');
+//Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
+//Route::post('/videos', [VideoController::class, 'store'])->name('videos.store');
+Route::resource('videos', VideoController::class);
+
+//Route::get('/videos/{id}', [VideoController::class, 'show'])->name('videos.show');
+
+//Route::put('/videos/{video}', [VideoController::class, 'update'])->name('videos.update');
+//Route::delete('/videos/{video}', [VideoController::class, 'destroy'])->name('videos.destroy');
+
 
 //RUTA DE PATROCINADORES
 Route::resource('patrocinadores', PatrocinadorController::class);
 Route::delete('/patrocinadores/{id}', [PatrocinadorController::class, 'destroy'])->name('patrocinadores.destroy');
 
+// ruta asistencia
+Route::get('/asistencia', [AsistenciaController::class, 'index'])->name('asistencias.escanear');
+Route::post('/registrar-asistencia', [AsistenciaController::class, 'registrar'])->name('asistencias.registrar');
+Route::post('/asistencias', [AsistenciaController::class, 'store'])->name('asistencias.store');
+Route::get('/asistencias/{id}', [AsistenciaController::class, 'show']);
+Route::put('/asistencias/{id}', [AsistenciaController::class, 'update'])->name('asistencias.update');
+
+
+//OPCIONAL
+//Route::get('/eventos/qr/{id}', [EventoController::class, 'generarQR']);
 

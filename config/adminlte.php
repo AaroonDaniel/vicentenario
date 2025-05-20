@@ -315,10 +315,10 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
-        [
+        /* [
             'text' => 'blog',
             'url' => 'admin/blog'
-        ],
+        ],*/
         
         ['header' => 'USUARIOS',
             
@@ -354,6 +354,14 @@ return [
             'route' => 'cliente.create',
             'icon' => 'fas fa-fw fa-lock',
         ],
+
+        ['header' => 'GRAFICOS'],
+        [
+            'text' => 'Eventos',
+            'route' => 'graficos.index',
+            'icon' => 'fas fa-fw fa-chart-line',
+        ],
+
         /*
         [
             'text' => 'multilevel',
@@ -393,7 +401,7 @@ return [
                 ],
             ],
         ],*/
-        ['header' => 'labels'],
+        /*['header' => 'labels'],
         [
             'text' => 'important',
             'icon_color' => 'red',
@@ -408,7 +416,7 @@ return [
             'text' => 'information',
             'icon_color' => 'cyan',
             'url' => '#',
-        ],
+        ],*/
     ],
 
     /*

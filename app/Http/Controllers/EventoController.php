@@ -10,6 +10,10 @@ use App\Models\UserAgenda;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Models\User;
+
+
 class EventoController extends Controller
 {
     /**
@@ -166,4 +170,29 @@ class EventoController extends Controller
 
         return response()->json(['success' => true]);
     }
+
+   /* public function generarQR($id)
+    {
+        $evento = Evento::findOrFail($id);
+
+        $user = auth()->user();
+
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Debes iniciar sesión');
+        }
+
+        $data = json_encode([
+            'user_id'   => $user->user_id,
+            'nombre'    => $user->name,
+            'evento_id' => $evento->id_evento,
+            'evento'    => $evento->nombre,
+        ]);
+
+        $qrCode = \QrCode::size(250)->generate($data);
+
+        return view('asistencia.qr', compact('user', 'evento', 'qrCode'));
+    }*/
+
+
+
 }

@@ -1,5 +1,5 @@
 @extends('layouts.principal')
-@section('title', 'Vicentenario Bolivia')
+@section('title', 'Bicentenario Bolivia/Eventos')
 
 @section('content')
     <section class="content">
@@ -25,7 +25,8 @@
                                     departamento: '{{ $evento->departamento }}',
                                     enlace_reunion: '{{ $evento->enlace }}',
                                     enlace_formulario: '{{ $evento->enlaceFormulario }}',
-                                    direccion: `{{ addslashes($evento->direccion) }}`
+                                    direccion: `{{ addslashes($evento->direccion) }}`, 
+                                    nombre_usuario: '{{ auth()->check() ? addslashes(auth()->user()->name) : '' }}' 
                                 }; abrirModal(evento)">
                             <figure>
                                 @if ($evento->imagen_ruta)
@@ -127,7 +128,16 @@
                         </div>
 
                         <!-- botones -->
-                        <div class="flex justify-end mt-4">
+                        <div class="flex justify-center gap-4 mt-6 flex-wrap">
+
+                            <template x-if="usuarioAutenticado">
+                                <button
+                                    @click="abrirQR(evento)"
+                                    class="px-4 py-2 bg-neutral-500 text-white rounded hover:bg-neutral-700 hover:text-black flex items-center gap-2 font-bold">
+                                    <i class="bi bi-qr-code" style="color:rgb(6, 252, 215);"></i>Generar QR
+                                </button>
+                            </template>
+
                             <button 
                                 :disabled="eventoYaAgendado(evento.evento_id)"
                                 @click="añadirAMiAgenda(evento)"
@@ -144,9 +154,47 @@
                                     Cerrar
                             </button>
                         </div>
+                        <template x-if="!usuarioAutenticado">
+                            <p class="text-sm text-teal-500 mt-2 text-center">Inicia sesión para generar tu QR para la asistencia.</p>
+                        </template>
+
                     </div>
                 </div>
             </div>
+
+            <div 
+                x-show="qrModalAbierto"
+                x-transition 
+                class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center px-4"
+                style="display: none;">
+                <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative text-center">
+                    <button @click="cerrarQR()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
+                    <h2 class="text-xl font-bold mb-4">Código QR del Evento</h2>
+                    
+                    <div id="qr-captura" class="bg-white p-4 rounded-lg border border-gray-300 shadow-md inline-block text-center w-full">
+                        <!-- Encabezado con el nombre del evento -->
+                        <h3 class="text-lg font-semibold mb-2 text-emerald-700" x-text="evento.nombre"></h3>
+                        
+                        <!-- Datos del usuario (si deseas mostrarlos visualmente) -->
+                        <p class="text-sm text-gray-700 mb-2" x-text="'Participante: ' + evento.nombre_usuario"></p>
+                        
+                        <!-- Contenedor del código QR -->
+                        <div id="qr-code" class="flex justify-center"></div>
+                    </div>
+
+                    <div class="pt-3">
+                        <button 
+                            @click="descargarQR()" 
+                            class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded">
+                            Descargar QR
+                        </button>
+                    </div>
+
+                    <p class="text-sm text-gray-600 mt-3">Este código contiene los datos del usuario y del evento.</p>
+                </div>
+            </div>
+
+
 
             <div x-show="mostrarNotificacion" x-transition x-cloak              
                 class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-teal-600 text-white px-4 py-2 rounded shadow-lg z-50">
@@ -155,6 +203,7 @@
 
         </section>
 
+        <!------------------------------------------------------->
         <!------------------------------------------------------->
         {{-- FORMULARIO EVENTOS --}}
         <div x-data="modalEdit()">
@@ -746,12 +795,14 @@
             </div>
         </div>
 
-
     </section>
 @endsection
 
 @push('scripts')
-    <!---->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <!------------------------------------------------------>
+    <!--nuevo evento-->
     <script>
         function abrirModal(id) {
             document.getElementById(id).classList.remove('hidden');
@@ -815,7 +866,7 @@
         });
     </script>
 
-    <!-- Alpine.js controller -->
+    <!-- ver y editar un evento-->
     <script>
         function modalEdit() {
             return {
@@ -898,87 +949,125 @@
         }
     </script>
 
-    <!-- Nuevo modal -->
-    <script>
-        function abrirModal(id) {
-            document.getElementById(id).classList.remove('hidden');
-            document.body.classList.add('overflow-hidden');
-        }
 
-        function cerrarModal(id) {
-            document.getElementById(id).classList.add('hidden');
-            document.body.classList.remove('overflow-hidden');
+    <!-- agrega el evento a la agenda del usuario y genera qr -->
+
+    <script>
+        function modalEvento(eventosAgendados, usuarioAutenticado) {
+            return {
+                evento: {},
+                mostrarModal: false,
+                eventosAgendados: eventosAgendados,
+                usuarioAutenticado: usuarioAutenticado,
+
+                notificacion: '', 
+                mostrarNotificacion: false,
+
+                abrirModal(evento) {
+                    this.evento = evento;
+                    this.mostrarModal = true;
+                },
+                eventoYaAgendado(eventoId) {
+                    return this.eventosAgendados.includes(eventoId);
+                },
+
+                mostrarMensaje(mensaje) {
+                    this.notificacion = mensaje;
+                    this.mostrarNotificacion = true;
+                    setTimeout(() => this.mostrarNotificacion = false, 3000);
+                },
+
+                async añadirAMiAgenda(evento) {
+                    if (!this.usuarioAutenticado) {
+                        window.location.href = "{{ route('login') }}";
+                        return;
+                    }
+
+                    try {
+                        const response = await fetch("{{ route('agenda.store') }}", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-CSRF-TOKEN": '{{ csrf_token() }}',
+                            },
+                            body: JSON.stringify({
+                                evento_id: evento.id_evento, 
+                                titulo: evento.nombre,
+                                fecha: evento.fecha,
+                                hora_inicio: evento.hora,
+                                descripcion: evento.descripcion,
+                                ubicacion: evento.direccion
+                            }),
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success) {
+                            // Usa push() para añadir el evento a eventosAgendados
+                            this.eventosAgendados.push(evento.id_evento); // Ahora agregamos evento.id_evento
+                            this.mostrarMensaje("¡Evento registrado en tu calendario!");
+                        } else {
+                            // Mostrar mensaje si ya estaba registrado
+                            this.mostrarMensaje(data.message || "Este evento ya fue agregado a tu calendario.");
+                        }
+                    } catch (error) {
+                        console.error(error);
+                        this.mostrarMensaje("Ocurrió un error al intentar agendar el evento.");
+                    }
+                },
+
+                qrModalAbierto: false,
+
+                abrirQR(evento) {
+                    if (!this.usuarioAutenticado) {
+                        this.mostrarMensaje("Debes iniciar sesión para generar tu QR.");
+                        return;
+                    }
+
+                    const payload = {
+                        user_id: {{ auth()->id() ?? 'null' }},
+                        nombre: "{{ auth()->user()->name ?? '' }}",
+                        evento_id: evento.id_evento,
+                        evento: evento.nombre
+                    };
+
+                    this.qrModalAbierto = true;
+
+                    this.$nextTick(() => {
+                        const contenedor = document.getElementById("qr-code");
+                        contenedor.innerHTML = "";
+
+                        new QRCode(contenedor, {
+                            text: JSON.stringify(payload),
+                            width: 200,
+                            height: 200,
+                        });
+                    });
+                },
+
+
+                cerrarQR() {
+                    this.qrModalAbierto = false;
+                },
+
+                descargarQR() {
+                    const contenedor = document.getElementById("qr-captura");
+                    html2canvas(contenedor).then(canvas => {
+                        const link = document.createElement("a");
+
+                        const usuario = this.evento.nombre_usuario?.replace(/\s+/g, '_') || 'usuario';
+                        const evento = this.evento.nombre?.replace(/\s+/g, '_') || 'evento';
+
+                        link.href = canvas.toDataURL("image/png");
+                        link.download = `QR_${usuario}_${evento}.png`;
+                        link.click();
+                    });
+                }
+
+
+            }
         }
     </script>
 
-
-<!---------------------- agrega el evento a la agenda del usuario------------ -->
-
-<script>
-    function modalEvento(eventosAgendados, usuarioAutenticado) {
-        return {
-            evento: {},
-            mostrarModal: false,
-            eventosAgendados: eventosAgendados,
-            usuarioAutenticado: usuarioAutenticado,
-
-            notificacion: '', 
-            mostrarNotificacion: false,
-
-            abrirModal(evento) {
-                this.evento = evento;
-                this.mostrarModal = true;
-            },
-            eventoYaAgendado(eventoId) {
-                return this.eventosAgendados.includes(eventoId);
-            },
-
-            mostrarMensaje(mensaje) {
-                this.notificacion = mensaje;
-                this.mostrarNotificacion = true;
-                setTimeout(() => this.mostrarNotificacion = false, 3000);
-            },
-
-            async añadirAMiAgenda(evento) {
-                if (!this.usuarioAutenticado) {
-                    window.location.href = "{{ route('login') }}";
-                    return;
-                }
-
-                try {
-                    const response = await fetch("{{ route('agenda.store') }}", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "X-CSRF-TOKEN": '{{ csrf_token() }}',
-                        },
-                        body: JSON.stringify({
-                            evento_id: evento.id_evento, 
-                            titulo: evento.nombre,
-                            fecha: evento.fecha,
-                            hora_inicio: evento.hora,
-                            descripcion: evento.descripcion,
-                            ubicacion: evento.direccion
-                        }),
-                    });
-
-                    const data = await response.json();
-
-                    if (data.success) {
-                        // Usa push() para añadir el evento a eventosAgendados
-                        this.eventosAgendados.push(evento.id_evento); // Ahora agregamos evento.id_evento
-                        this.mostrarMensaje("¡Evento registrado en tu calendario!");
-                    } else {
-                        // Mostrar mensaje si ya estaba registrado
-                        this.mostrarMensaje(data.message || "Este evento ya fue agregado a tu calendario.");
-                    }
-                } catch (error) {
-                    console.error(error);
-                    this.mostrarMensaje("Ocurrió un error al intentar agendar el evento.");
-                }
-            }
-        }
-    }
-</script>
 
 @endpush

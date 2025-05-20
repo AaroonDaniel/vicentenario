@@ -119,5 +119,11 @@ class Evento extends Model
     {
         return $this->belongsToMany(Historia::class, 'eventos_historia', 'id_evento', 'id_historia')->withTimestamps();
     }
+    /* relacion 1:N un evento tiene muchos videos*/
+    public function videos()
+    {
+        return $this->hasMany(Video::class, 'evento_id', 'id_evento');
+    }
+
 
 }

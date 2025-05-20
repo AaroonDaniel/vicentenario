@@ -58,7 +58,7 @@
             <div class="p-6">
                 <div class="flex justify-between items-center mb-6">
                     <h1 class="text-2xl font-bold text-gray-800">Listado de Historias</h1>
-                    <button onclick="abrirModal('modalNuevo')"
+                    <button onclick="abrirModal('modalNuevo')" 
                         class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded">+ Nuevo</button>
                 </div>
 
