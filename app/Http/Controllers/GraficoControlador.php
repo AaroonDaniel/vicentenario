@@ -2,20 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Asistencia;
-use Illuminate\Support\Facades\DB;
+use App\Models\Evento;
+use Illuminate\Http\Request;
 
 class GraficoControlador extends Controller
 {
     public function index()
     {
-        // Contar asistentes por evento (solo donde asistio = 1)
-        $asistenciasPorEvento = Asistencia::select('evento_id', 'nombre_evento', DB::raw('count(*) as total_asistentes'))
-            ->where('asistio', true)
-            ->groupBy('evento_id', 'nombre_evento')
+        $asistenciasPorEvento = Asistencia::select('nombre_evento')
+            ->selectRaw('count(*) as total_asistentes')
+            ->groupBy('nombre_evento')
             ->get();
 
-        return view('sistema.Graficos.graph', compact('asistenciasPorEvento'));
+        // Total de asistencias
+        $totalAsistencias = Asistencia::count();
+
+        // Total de eventos
+        $totalEventos = Evento::count();
+
+        // Evento con mayor asistencia
+        $eventoConMayorAsistencia = Asistencia::select('nombre_evento')
+            ->selectRaw('count(*) as total')
+            ->groupBy('nombre_evento')
+            ->orderByDesc('total')
+            ->first();
+
+        return view('sistema.Graficos.graph', compact(
+            'asistenciasPorEvento',
+            'totalAsistencias',
+            'totalEventos',
+            'eventoConMayorAsistencia'
+        ));
+
     }
 }
