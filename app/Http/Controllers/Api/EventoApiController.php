@@ -1,7 +1,7 @@
 <?php
 // app/Http/Controllers/Api/EventoApiController.php
 namespace App\Http\Controllers\Api;
-
+use App\Http\Resources\EventoResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use App\Models\Evento;
@@ -14,7 +14,7 @@ class EventoApiController extends Controller
 
         return response()->json([
             'success' => true,
-            'eventos' => $eventos
+            'eventos' => EventoResource::collection($eventos),
         ]);
     }
 }
