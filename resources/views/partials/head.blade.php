@@ -31,6 +31,6 @@
 <link rel="apple-touch-icon" href="{{ asset('images/favicon_180x180.png') }}">
 <meta name="msapplication-TileImage" content="{{ asset('images/favicon_192x192.png') }}">
 
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 

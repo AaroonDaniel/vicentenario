@@ -3,11 +3,67 @@
 
 @section('content')
     <section class="content">
+        <!-- tarjeta de patrocinadores -->
+
+        <section  style="background-image: url('{{ asset('images/patro.png') }}');">
+            <section class="wrapper bg-black/60 w-full h-full">
+                <section class=" logos_iasa ">
+                    <!-- Contenedor principal con overflow oculto -->
+                    <div class="overflow-hidden whitespace-nowrap relative">
+                        <!-- Carrusel animado -->
+                        <div class="animate-marquee flex gap-8">
+                            <!-- Duplicado para efecto continuo -->
+                            @for ($i = 0; $i < 2; $i++)
+                                @foreach ($patrocinadores as $patro)
+                                    <div
+                                        class="flex-shrink-0 w-48 h-24 flex items-center justify-center bg-white/30 rounded-lg shadow-md transition-transform hover:scale-105">
+                                        <a @if ($patro->url) href="{{ $patro->url }}" target="_blank" rel="noreferrer" @endif
+                                            class="block w-full h-full flex items-center justify-center">
+                                            @if ($patro->imagen)
+                                                <img src="{{ asset('storage/' . $patro->imagen) }}"
+                                                    alt="{{ $patro->razon_social }}"
+                                                    class="max-h-16 max-w-[90%] object-contain transition-opacity hover:opacity-90"
+                                                    style="filter: brightness(0.95) contrast(1.1);">
+                                            @else
+                                                <div class="text-sm text-gray-600">
+                                                    Sin logo
+                                                </div>
+                                            @endif
+                                        </a>
+                                    </div>
+                                @endforeach
+                            @endfor
+                        </div>
+                    </div>
+
+                    <!-- Estilos embebidos -->
+                    <style>
+                        @keyframes marquee {
+                            0% {
+                                transform: translateX(0);
+                            }
+
+                            100% {
+                                transform: translateX(-50%);
+                            }
+                        }
+
+                        .animate-marquee {
+                            display: inline-flex;
+                            animation: marquee 30s linear infinite;
+                            white-space: nowrap;
+                            padding-right: 100%;
+                        }
+                    </style>
+                </section>
+            </section>
+        </section>
         <!-- tarjeta de Eventos -->
         <!-- CONTENEDOR PRINCIPAL CON ALPINE --> 
 
         <section class="ultimas gray" x-data="modalEvento({{ Js::from($eventosAgendados) }}, {{ auth()->check() ? 'true' : 'false' }})">
             <section class="inner">
+
                 <h2 class="title_home">Eventos</h2>
                 <section class="scroll_notes">
                     <article>
