@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\LoginApiController;
 use App\Http\Controllers\Api\EventoApiController;
+use App\Http\Controllers\Api\AgendaApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,6 @@ Route::post('/login', [LoginApiController::class, 'login']);
 
 // Ruta para obtener todos los eventos
 Route::get('/eventos', [EventoApiController::class, 'index']);
+
+// Devuelve todos los eventos de la agenda
+Route::get('/agenda/usuario/{user_id}', [AgendaApiController::class, 'misEventos']);
