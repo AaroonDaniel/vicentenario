@@ -1,5 +1,8 @@
-<x-guest-layout>
-    <div class="min-h-screen flex items-center justify-center"> 
+@extends('layouts.app1')
+@section('title', 'Bicentenario Bolivia / register')
+
+@section('content')
+    <div class="wrapper"> 
         <form method="POST" action="{{ route('password.email') }}" class="login-container">
             @csrf
             <!-- Título -->
@@ -21,4 +24,4 @@
             </div>
         </form>
     </div>
-</x-guest-layout>
+@endsection

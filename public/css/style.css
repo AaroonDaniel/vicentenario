@@ -1,25 +1,32 @@
-body, html {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    background: rgba(245, 248, 245, 0.5);
-    background: url('/images/fondo1.jpg') no-repeat center center/cover;
+
+
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    background-image: url('/images/bolivia.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
+
 
 .login-container {
     background: rgba(145, 167, 164, 0.279);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 1 4px 6px rgba(47, 94, 81, 0.1);
-    max-width: 400px;
+    box-shadow: 1px 4px 6px rgba(47, 94, 81, 0.1);
+    max-width: 360px;
     width: 100%;
     backdrop-filter: blur(6px);
     border: 1.8px solid rgba(92, 100, 100, 0.6);
 }
-.custom-login-container {
-    max-width: 600px;  /* Ancho máximo */
-    /* max-height: 500px; Altura máxima */
+
+.notificacion {
+    color: rgb(138, 238, 8);
 }
 
 .login-title {

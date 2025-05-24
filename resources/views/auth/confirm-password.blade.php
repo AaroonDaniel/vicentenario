@@ -1,5 +1,10 @@
-<x-guest-layout>
-<div class="min-h-screen flex items-center justify-center"> 
+@extends('layouts.app1')
+@section('title', 'Bicentenario Bolivia / register')
+
+
+
+@section('content')
+<div class="wrapper"> 
     <div class="mb-4 text-sm text-gray-600">
         {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
     </div>
@@ -26,4 +31,4 @@
         </div>
     </form>
 </div>
-</x-guest-layout>
+@endsection

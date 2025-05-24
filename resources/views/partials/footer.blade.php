@@ -1,80 +1,51 @@
-<footer>
-    <section class="inner">
-        <section class="wrapper">
-            <section class="col_1 logos_iasa bg-gray-150 py-8">
-                <!-- Contenedor principal con overflow oculto -->
-                <div class="overflow-hidden whitespace-nowrap relative">
-                    <!-- Carrusel animado -->
-                    <div class="animate-marquee flex gap-8">
-                        <!-- Duplicado para efecto continuo -->
-                        @for ($i = 0; $i < 2; $i++)
-                            @foreach ($patrocinadores as $patro)
-                                <div
-                                    class="flex-shrink-0 w-48 h-24 flex items-center justify-center bg-white rounded-lg shadow-md transition-transform hover:scale-105">
-                                    <a @if ($patro->url) href="{{ $patro->url }}" target="_blank" rel="noreferrer" @endif
-                                        class="block w-full h-full flex items-center justify-center">
-                                        @if ($patro->imagen)
-                                            <img src="{{ asset('storage/' . $patro->imagen) }}"
-                                                alt="{{ $patro->razon_social }}"
-                                                class="max-h-16 max-w-[90%] object-contain transition-opacity hover:opacity-90"
-                                                style="filter: brightness(0.95) contrast(1.1);">
-                                        @else
-                                            <div class="text-sm text-gray-600">
-                                                Sin logo
-                                            </div>
-                                        @endif
-                                    </a>
-                                </div>
-                            @endforeach
-                        @endfor
-                    </div>
+<footer class="bg-cover bg-center text-white" style="background-image: url('{{ asset('images/foot.png') }}');">
+
+    <div class="bg-black/70 w-full h-full">
+        <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Columna izquierda -->
+            <div class="items-center">
+                <h2 class="text-2xl font-bold mb-3 items-center">Bicentenario de Bolivia 1825 – 2025</h2>
+                <p class="text-sm text-gray-300 mb-4 items-center">
+                    Celebramos 200 años de historia, libertad y diversidad. El Bicentenario impulsa el desarrollo, la inclusión y la memoria viva de nuestros pueblos.
+                </p>
+                <ul class="space-y-2 text-sm items-center">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-map-marker-alt hover:text-yellow-400 transition-colors"></i>
+                        Plaza Murillo, La Paz, Bolivia
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-phone hover:text-yellow-400 transition-colors"></i>
+                        +591 70000000
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-envelope hover:text-yellow-400 transition-colors"></i>
+                        contacto@bicentenariobolivia.bo
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Columna derecha -->
+            <div class="flex flex-col items-start md:items-end space-y-3 items-center">
+                <div class="space-y-1 text-bold ">
+                    <a href="{{ 'agendaEventos' }}" class="text-gray-300 hover:underline hover:text-teal-400">Agenda de eventos</a>
+                    <a href="{{ 'eventos' }}" class=" text-gray-300 hover:underline hover:text-teal-400">Eventos</a>
+                    <a href="{{ 'historias' }}" class=" text-gray-300 hover:underline hover:text-teal-400">Historias</a>
+                    <a href="{{ 'culturas' }}" class="text-gray-300 hover:underline hover:text-teal-400">Culturas</a>
                 </div>
+                <div class="flex gap-4 mt-4">
+                    <a href="#" class="text-blue-500 hover:text-teal-400 transition-colors"><i class="fab fa-facebook-f "></i></a>
+                    <a href="#" class="text-pink-500 hover:text-pink-400 transition-colors"><i class="fab fa-instagram "></i></a>
+                    <a href="#" class="text-purple-500 hover:text-blue-400 transition-colors"><i class="fab fa-twitter "></i></a>
+                    <a href="#" class="text-red-400 hover:text-amber-700 transition-colors"><i class="fab fa-youtube "></i></a>
+                </div>
+            </div>
+        </div>
 
-                <!-- Estilos embebidos -->
-                <style>
-                    @keyframes marquee {
-                        0% {
-                            transform: translateX(0);
-                        }
+        <!-- Línea inferior -->
+        <div class="bg-black/80 text-center py-3 text-xs text-gray-300">
+            &copy; {{ date('Y') }} Gobierno del Estado Plurinacional de Bolivia — Comisión del Bicentenario. Todos los derechos reservados.
+        </div>
+    </div>
 
-                        100% {
-                            transform: translateX(-50%);
-                        }
-                    }
 
-                    .animate-marquee {
-                        display: inline-flex;
-                        animation: marquee 30s linear infinite;
-                        white-space: nowrap;
-                        padding-right: 100%;
-                    }
-                </style>
-            </section>
-
-            <section class="col_4">
-                <strong class="nice">Información</strong>
-                <a href="https://www.bicentenario.gob.bo/" target="_blank" rel="noreferrer">Sitio Oficial</a>
-                <a href="/aviso-de-privacidad">Política de Privacidad</a>
-                <a href="/accesibilidad">Accesibilidad</a>
-            </section>
-
-            <section class="col_4">
-                <strong class="nice">Sobre el Bicentenario</strong>
-                <a href="/historia-bicentenario">Historia y Significado</a>
-                <a href="/actividades-nacionales">Actividades Nacionales</a>
-                <a href="/contacto-bicentenario">Contáctanos</a>
-            </section>
-
-            <section class="col_4 digital_mag">
-                <strong class="nice">Ver galería conmemorativa</strong>
-                <p>Explora imágenes y contenidos digitales en homenaje a los 200 años de Bolivia.</p>
-
-                <a href="https://www.bicentenario.gob.bo/galeria" class="btn block" rel="noreferrer" target="_blank">Ver
-                    galería</a>
-            </section>
-        </section>
-    </section>
-    <section class="copyright">
-        ©2025 Bicentenario de Bolivia | Gobierno del Estado Plurinacional
-    </section>
 </footer>
