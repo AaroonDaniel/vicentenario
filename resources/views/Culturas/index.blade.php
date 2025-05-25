@@ -18,7 +18,7 @@
                                         <img src="{{ Storage::url($cultura->imagen) }}" alt="Imagen de {{ $cultura->nombre }}"
                                             class="w-full h-48 object-cover">
                                     @else
-                                        <img src="https://via.placeholder.com/300x200?text=Sin+imagen" alt="Sin imagen"
+                                        <img src="#" alt="Sin imagen"
                                             class="w-full h-48 object-cover">
                                     @endif
                                 </figure>
@@ -54,13 +54,14 @@
             </section>
         </section>
 
-        <div x-data="modalEdit()">
+        <!-- Crud de CULTURA -->
+        <div>
             <!-- {{-- @can('Usuario cultural') --}}-->
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-6">
+            <div class="p-4 sm:p-6 max-w-full overflow-x-auto">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-2">
                     <h1 class="text-2xl font-bold text-gray-800">Listado de Culturas</h1>
                     <button onclick="abrirModal('modalNuevo')"
-                        class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded">+ Nuevo</button>
+                        class="bg-pink-600 hover:bg-pink-800 text-white px-4 py-2 rounded w-full sm:w-auto">+ Nuevo</button>
                 </div>
 
                 @if (session('success'))
@@ -69,29 +70,29 @@
                     </div>
                 @endif
 
-                <div class="overflow-x-auto table-responsive">
+                <div class="overflow-x-auto w-full">
                     <table id="funcionesTable"
-                        class="min-w-full bg-white text-sm text-left text-gray-800 rounded-lg shadow">
+                        class="min-w-[1000px] w-full bg-white text-sm text-left text-gray-800 rounded-lg shadow">
                         <thead class="bg-gray-100 text-gray-600 uppercase text-xs font-semibold">
                             <tr>
                                 <th class="px-4 py-3">ID</th>
-                                <th class="px-4 py-3">Historia</th>
-                                <th class="px-4 py-3">Nombre</th>
-                                <th class="px-4 py-3">Tipo</th>
-                                <th class="px-4 py-3">Origen</th>
+                                <th class="px-4 py-3 max-w-[200px]">Historia</th>
+                                <th class="px-4 py-3 max-w-[200px]">Nombre</th>
+                                <th class="px-4 py-3 max-w-[200px]">Tipo</th>
+                                <th class="px-4 py-3 max-w-[200px]">Origen</th>
                                 <th class="px-4 py-3">Fecha</th>
                                 <th class="px-4 py-3">Imagen</th>
                                 <th class="px-4 py-3">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($culturas as $cultura)
+                            @forelse ($culturas as $cultura)
                                 <tr class="border-t hover:bg-gray-50">
                                     <td class="px-4 py-2">{{ $cultura->id_cultura }}</td>
-                                    <td class="px-4 py-2">{{ optional($cultura->historia)->titulo ?? 'Sin historia' }}</td>
-                                    <td class="px-4 py-2">{{ $cultura->nombre }}</td>
-                                    <td class="px-4 py-2">{{ $cultura->tipo }}</td>
-                                    <td class="px-4 py-2">{{ $cultura->origen }}</td>
+                                    <td class="px-4 py-2 truncate max-w-[200px]">{{ optional($cultura->historia)->titulo ?? 'Sin historia' }}</td>
+                                    <td class="px-4 py-2 truncate max-w-[200px]">{{ $cultura->nombre }}</td>
+                                    <td class="px-4 py-2 truncate max-w-[200px]">{{ $cultura->tipo }}</td>
+                                    <td class="px-4 py-2 truncate max-w-[200px]">{{ $cultura->origen }}</td>
                                     <td class="px-4 py-2">{{ $cultura->created_at }}</td>
 
                                     <td class="px-4 py-2">
@@ -134,7 +135,13 @@
                                         </button>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="13" class="text-center text-gray-500 py-4">
+                                        No hay Culturas registrados actualmente.
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -143,8 +150,8 @@
 
 
             <!-- MODAL EDITAR -->
-            <div id="editModal" class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center hidden">
-                <div class="bg-white w-full max-w-md p-6 rounded-lg shadow-lg relative overflow-y-auto max-h-[90vh]">
+            <div id="editModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
+                <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative overflow-y-auto max-h-[90vh] space-y-4">
                     <button onclick="closeEditModal()"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
                     </button>
@@ -212,11 +219,11 @@
                                 class="w-full bg-white border border-gray-300 rounded px-3 py-2">
                         </div>
 
-                        <div class="flex justify-end gap-2">
+                        <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                             <button type="button" onclick="closeEditModal()"
                                 class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cerrar</button>
                             <button type="submit"
-                                class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">Editar cultura</button>
+                                class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-800">Editar cultura</button>
                         </div>
                     </form>
                 </div>
@@ -224,9 +231,9 @@
 
             <!-- Modal VER DETALLES -->
             <div
-                id="verCulturaModal"class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+                id="verCulturaModal"class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
                 <div class="flex items-center justify-center min-h-screen">
-                    <div class="bg-white w-full max-w-4xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative">
+                    <div class="bg-white w-full max-w-4xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative space-y-4">
                         <div class="flex justify-between items-center border-b pb-2 mb-2">
                             <h2 class="text-lg font-bold text-black-700 mb-4"><i class="fas fa-info-circle"></i> Detalles
                                 de la cultura</h2>
@@ -272,9 +279,9 @@
                             </div>
                         </div>
 
-                        <div class="flex justify-end mt-4">
+                        <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                             <button onclick="cerrarModalVer()"
-                                class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded">
+                                class="bg-pink-600 hover:bg-pink-800 text-white px-4 py-2 rounded">
                                 OK
                             </button>
                         </div>
@@ -285,7 +292,7 @@
             <!-- Modal de Confirmación Eliminar Cultura -->
             <div id="eliminarCulturaModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50">
                 <div class="flex items-center justify-center min-h-screen">
-                    <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+                    <div class="bg-white rounded-lg shadow-lg w-full sm:max-w-md p-6 space-y-4">
                         <div class="flex justify-between items-center border-b pb-2 mb-4">
                             <h2 class="text-lg font-bold text-black-600"><i class="fas fa-trash-alt"></i> Eliminar Cultura
                             </h2>
@@ -299,11 +306,11 @@
                         <form id="formEliminarCultura" method="POST">
                             @csrf
                             @method('DELETE')
-                            <div class="flex justify-end space-x-2">
+                            <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                                 <button type="button" onclick="cerrarModalEliminar()"
                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded">Cancelar</button>
                                 <button type="submit"
-                                    class="bg-pink-600 hover:bg-black-700 text-white px-4 py-2 rounded">Eliminar</button>
+                                    class="bg-pink-600 hover:bg-pink-800 text-white px-4 py-2 rounded">Eliminar</button>
                             </div>
                         </form>
                     </div>
@@ -312,8 +319,8 @@
 
             <!-- Modal NUEVO -->
             <div id="modalNuevo"
-                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
-                <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative">
+                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden p-4">
+                <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative space-y-4">
                     <button onclick="cerrarModal('modalNuevo')"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
                     <h2 class="text-2xl font-bold mb-4">Registrar Nueva Cultura</h2>
@@ -361,9 +368,9 @@
                                 class="w-full border border-gray-300 rounded px-3 py-2">
                         </div>
 
-                        <div class="text-right">
+                        <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                             <button type="submit"
-                                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Guardar</button>
+                                class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-800">Guardar</button>
                         </div>
                     </form>
                 </div>

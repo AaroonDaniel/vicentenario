@@ -9,8 +9,6 @@
         
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="//unpkg.com/alpinejs" defer></script>
     <style>
         html, body {
             height: 100%;
@@ -26,10 +24,17 @@
         
     <!-- Font tailwindcss -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.13.0/dist/cdn.min.js"></script>
+
+    <!-- Alpine Collapse -->
+    <script defer src="https://unpkg.com/@alpinejs/collapse@3.13.0/dist/cdn.min.js"></script>
+
+    <!-- Plugin registration (defer también) -->
 
 
     <!-- login-->
-        <!-- Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -44,20 +49,6 @@
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
-
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- Desplegador de menu -->
-    <script type="text/javascript"
-        src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/jquery.min.js?ver=2.1.0" id="jquerymin-js">
-    </script>
-    <!-- nav-->
-    <!-- Google Analytics clásico -->
-    <script async src="https://www.google-analytics.com/analytics.js"></script>
-
-    <script type="text/javascript"
-        src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/assets.js?ver=3.3.3.2.32" id="assets-js">
-    </script> 
     <!-- DataTables-->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
@@ -66,7 +57,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <!-- Inicialización de DataTables CORREGIDO-->
+
+    <!-- Desplegador de menu -->
+    <script type="text/javascript"
+        src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/assets.js?ver=3.3.3.2.32" id="assets-js">
+    </script> 
+
+    <!-- Google Analytics clásico -->
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+    <!-- Inicialización de DataTables -->
     <script>
         $(document).ready(function () {
             $('#funcionesTable').DataTable({
@@ -81,9 +81,6 @@
 
     @stack('scripts')
 
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         function togglePassword(inputId, iconId) {
             let passwordInput = document.getElementById(inputId);
@@ -98,6 +95,7 @@
             }
         }
     </script>
+
     <script>
         $(document).ready(function() {
             $("#country").change(function() {
@@ -117,5 +115,5 @@
             });
         });
     </script>
-    </body>
+</body>
 </html>

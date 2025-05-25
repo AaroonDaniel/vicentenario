@@ -5,13 +5,13 @@
 @section('content')
     <section class="content">
         <div x-data="modalEdit()">
-            <div class="p-6">
+            <div class="p-4 sm:p-6 max-w-full overflow-x-auto">
 
                 <!-- Encabezado y botón -->
-                <div class="flex justify-between items-center mb-6">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-2">
                     <h1 class="text-2xl font-bold text-gray-800">Listado de Patrocinadores</h1>
                     <button onclick="abrirModal('modalNuevo')"
-                        class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded">+ Nuevo</button>
+                        class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded w-full sm:w-auto">+ Nuevo</button>
                 </div>
 
                 <!-- Éxito -->
@@ -95,7 +95,7 @@
                 </div>
             </div>
             <!-- MODAL NUEVO PATROCINADOR -->
-            <div id="modalNuevo" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+            <div id="modalNuevo" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden p-4">
                 <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative">
                     <button onclick="cerrarModal('modalNuevo')"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
@@ -153,12 +153,12 @@
                         </div>
 
                         <!-- Botones -->
-                        <div class="flex justify-end mt-6 space-x-3">
+                        <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                             <button type="button" onclick="cerrarModal('modalNuevo')"
                                 class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded">Cancelar</button>
 
                             <button type="submit"
-                                class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded">Guardar</button>
+                                class="bg-pink-600 hover:bg-pink-900 text-white px-4 py-2 rounded">Guardar</button>
                         </div>
                     </form>
 
@@ -166,7 +166,7 @@
             </div>
 
             <!-- MODAL DE EDITAR -->
-            <div id="modalEditar" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+            <div id="modalEditar" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden p-4 ">
                 <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative">
                     <button onclick="cerrarModal('modalEditar')"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
@@ -211,12 +211,12 @@
                             </button>
                         </div>
 
-                        <div class="flex justify-end gap-2 mt-6">
+                        <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                             <button type="button" onclick="cerrarModal('modalEditar')"
                                 class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded">
                                 Cancelar
                             </button>
-                            <button type="submit" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded">
+                            <button type="submit" class="bg-pink-600 hover:bg-pink-800 text-white px-4 py-2 rounded">
                                 Guardar
                             </button>
                         </div>
@@ -228,30 +228,34 @@
 
             <!-- MODAL DE BORRAR -->
             <div id="eliminarPatrocinadorModal"
-                class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-                <div class="bg-white p-5 rounded shadow-lg w-1/3">
-                    <h2 class="text-lg font-bold mb-4">Eliminar Patrocinador</h2>
-                    <p>¿Estás seguro de eliminar a <span id="nombrePatrocinadorEliminar" class="font-semibold"></span>?
-                    </p>
-                    <p id="error-message" class="text-red-500 mt-2 hidden"></p>
-                    <div class="mt-4 flex justify-end space-x-2">
-                        <button onclick="cerrarModalEliminarPatrocinador()"
-                            class="px-4 py-2 bg-gray-300 rounded">Cancelar</button>
-                        <form id="formEliminarPatrocinador" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" id="btnEliminarNormal"
-                                class="px-4 py-2 bg-red-500 text-white rounded">Eliminar</button>
-                            <button type="button" id="btnEliminarForzado" onclick="eliminarPatrocinador(true)"
-                                class="px-4 py-2 bg-red-700 text-white rounded hidden">Eliminar de todas formas</button>
-                        </form>
+                class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 p-4">
+                <div class="flex items-center justify-center min-h-screen" >
+                    <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+                        <h2 class="text-lg font-bold mb-4">Eliminar Patrocinador</h2>
+                        <p>¿Estás seguro de eliminar a <span id="nombrePatrocinadorEliminar" class="font-semibold"></span>?
+                        </p>
+                        <p id="error-message" class="text-red-500 mt-2 hidden"></p>
+                        <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
+                            <button onclick="cerrarModalEliminarPatrocinador()"
+                                class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded">Cancelar</button>
+                            <form id="formEliminarPatrocinador" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
+                                    <button type="submit" id="btnEliminarNormal"
+                                        class="bg-pink-600 hover:bg-pink-800 text-white px-4 py-2 rounded">Eliminar</button>
+                                    <button type="button" id="btnEliminarForzado" onclick="eliminarPatrocinador(true)"
+                                        class="px-4 py-2 bg-red-700 text-white rounded hidden">Eliminar de todas formas</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- MODAL D VER -->
             <div id="verPatrocinadorModal"
-                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden p-4">
                 <div class="bg-white w-full max-w-4xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative">
                     <div class="flex justify-between items-center border-b pb-2 mb-2">
                         <h2 class="text-lg font-bold text-black-700"><i class="fas fa-info-circle"></i> Detalles del
@@ -275,7 +279,7 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-end mt-4">
+                    <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                         <button onclick="cerrarModal('verPatrocinadorModal')"
                             class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded">OK</button>
                     </div>

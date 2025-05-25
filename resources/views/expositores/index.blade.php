@@ -4,7 +4,7 @@
 @section('content')
     <section class="content">
         {{-- CARRUSEL DE EXPOSITORES --}}
-        <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 px-6 py-10">
+        <!--<div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 px-6 py-10">
             @foreach ($eventos as $evento)
                 <div class="break-inside-avoid bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition">
                     <img src="{{ Storage::url($evento->imagen_ruta) }}" class="w-full object-cover h-48">
@@ -17,130 +17,63 @@
                     </div>
                 </div>
             @endforeach
-        </div>
+        </div>-->
 
-        <div class="relative border-l border-gray-200 pl-6 mt-6">
-            @foreach ($eventos as $evento)
-                <div class="mb-10 ml-4">
-                    <div class="absolute w-3 h-3 bg-blue-500 rounded-full -left-1.5 border border-white"></div>
-                    <h3 class="text-lg font-semibold text-gray-800">{{ $evento->nombre }}</h3>
-                    <time class="block text-sm text-gray-500"><i class="fas fa-calendar"></i>
-                        {{ $evento->fecha->format('Y-m-d') }}</time>
-                    <p class="text-gray-700">{{ Str::limit($evento->descripcion, 100) }}</p>
-                </div>
-            @endforeach
-        </div>
-
-        <div class="relative border-l border-gray-200 pl-6 mt-6">
-            @foreach ($eventos as $evento)
-                <div
-                    class="max-w-xs rounded-xl overflow-hidden shadow-lg relative group cursor-pointer transform transition hover:scale-105">
-                    <img src="{{ $evento->imagen_ruta ? Storage::url($evento->imagen_ruta) : 'https://via.placeholder.com/350x500.png?text=Evento+Ejemplo' }}"
-                        alt="{{ $evento->nombre }}" class="w-full h-80 object-cover">
-
-                    <div
-                        class="absolute top-0 left-0 w-full flex justify-between items-center bg-gradient-to-r from-cyan-700 to-pink-600 text-white p-2 text-sm font-bold z-10">
-                        <span>{{ $evento->departamento }}</span>
-                        <span class="bg-pink-700 px-2 py-1 rounded text-xs">{{ ucfirst($evento->tipo) }}</span>
-                    </div>
-
-                    <div class="bg-white p-4 space-y-1">
-                        <p class="text-teal-600 font-medium text-sm">E-Magazine</p>
-                        <p class="text-xs text-gray-600">Disfruta de <span
-                                class="text-green-600 font-semibold">{{ $evento->modalidad }}</span> en
-                            {{ $evento->departamento }}</p>
-                        <h3 class="text-lg font-bold text-black">{{ $evento->nombre }}</h3>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
-        <div class="relative border-l border-gray-200 pl-6 mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="relative border-l border-gray-200 mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
             @foreach ($expositores as $expositor)
-                <div onclick="verExpositor({{ $expositor->id }})"
-                    class="max-w-xs rounded-xl overflow-hidden shadow-lg relative group cursor-pointer transform transition hover:scale-105">
+                <div onclick="verExpositorNuevo({{ $expositor->id_expositor }})"
+                    class="w-72 h-[500px] rounded-xl overflow-hidden shadow-lg relative group cursor-pointer transform transition hover:scale-105 bg-white flex flex-col">
 
                     <!-- Imagen del expositor -->
-                    <img src="{{ $expositor->imagen_perfil ? Storage::url($expositor->imagen_perfil) : 'https://via.placeholder.com/350x500.png?text=Expositor' }}"
-                        alt="{{ $expositor->nombre }}" class="w-full h-80 object-cover">
+                    <div class="w-full h-full overflow-hidden">
+                        <img src="{{ $expositor->imagen_perfil ? Storage::url($expositor->imagen_perfil) : 'https://via.placeholder.com/350x500.png?text=Expositor' }}"
+                            alt="{{ $expositor->nombre }}"
+                            class="w-full h-full object-cover object-center">
+                    </div>
 
                     <!-- Encabezado con especialidad y ubicación -->
                     <div
-                        class="absolute top-0 left-0 w-full flex justify-between items-center bg-gradient-to-r from-indigo-700 to-pink-600 text-white p-2 text-sm font-bold z-10">
+                        class="absolute top-0 left-0 w-full flex justify-between items-center bg-gradient-to-r from-teal-900 to-lime-200 text-white p-2 text-sm font-bold z-10">
                         <span>{{ $expositor->especialidad ?? 'Especialista' }}</span>
-                        <span class="bg-pink-700 px-2 py-1 rounded text-xs">{{ $expositor->pais ?? 'País' }}</span>
+                        <span class="bg-teal-700 px-2 py-1 rounded text-xs">{{ $expositor->institucion ?? 'Institución' }}</span>
                     </div>
 
                     <!-- Contenido inferior -->
-                    <div class="bg-white p-4 space-y-1">
+                    <div class="p-4 space-y-1 flex-1 flex flex-col justify-end">
                         <p class="text-indigo-600 font-medium text-sm">Perfil Profesional</p>
-                        <p class="text-xs text-gray-600">Conferencista de <span
-                                class="text-green-600 font-semibold">{{ $expositor->especialidad ?? 'N/A' }}</span></p>
+                        <p class="text-xs text-gray-600">Conferencista de
+                            <span class="text-green-600 font-semibold">{{ $expositor->especialidad ?? 'N/A' }}</span>
+                        </p>
                         <h3 class="text-lg font-bold text-black">{{ $expositor->nombre }}</h3>
                     </div>
                 </div>
             @endforeach
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
-            @foreach ($expositores as $expositor)
-                <div onclick="verExpositorNuevo({{ $expositor->id_expositor }})"
-                    class="cursor-pointer bg-white rounded-xl shadow hover:shadow-lg transform hover:scale-105 transition duration-300 overflow-hidden">
-
-                    <!-- Imagen -->
-                    <img src="{{ $expositor->imagen_perfil ? Storage::url($expositor->imagen_perfil) : 'https://via.placeholder.com/400x300.png?text=Sin+Imagen' }}"
-                        alt="{{ $expositor->nombre }}" class="w-full h-60 object-cover">
-
-                    <!-- Información -->
-                    <div class="p-4 space-y-1">
-                        <h3 class="text-lg font-bold text-gray-800">{{ $expositor->nombre }}</h3>
-                        <p class="text-sm text-gray-600">
-                            <span class="font-semibold text-indigo-600">Especialidad:</span>
-                            {{ $expositor->especialidad ?? 'N/A' }}
-                        </p>
-                        <p class="text-sm text-gray-600">
-                            <span class="font-semibold text-pink-600">Institución:</span>
-                            {{ $expositor->institucion ?? 'N/A' }}
-                        </p>
-                        <p class="text-sm text-gray-600">
-                            <span class="font-semibold text-teal-600">País:</span>
-                            {{ $expositor->pais ?? 'No especificado' }}
-                        </p>
-                        <button class="mt-2 text-sm text-blue-600 hover:underline font-medium">Ver más</button>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
-
-
-
-
-
         {{-- TABLA DE EXPOSITORES --}}
-        <div x-data="modalExpositor()">
+        <div>
             <!-- Vista de las tablas -->
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-6">
+            <div class="p-4 sm:p-6 max-w-full overflow-x-auto">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-2">
                     <h1 class="text-2xl font-bold text-gray-800">Listado de Expositores</h1>
                     <button onclick="abrirModal('modalNuevoExpositor')"
-                        class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded">
+                        class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded w-full sm:w-auto">
                         + Nuevo
                     </button>
                 </div>
 
-                <div class="overflow-x-auto table-responsive">
+                <div class="overflow-x-auto w-full">
                     <table id="funcionesTable"
-                        class="min-w-full bg-white text-sm text-left text-gray-800 rounded-lg shadow">
+                        class="min-w-[1000px] w-full bg-white text-sm text-left text-gray-800 rounded-lg shadow">
                         <thead class="bg-gray-100 text-gray-600 uppercase text-xs font-semibold">
                             <tr>
                                 <th class="px-4 py-3">ID</th>
                                 <th class="px-4 py-3">Foto de Perfil</th>
                                 <th class="px-4 py-3">Nombre</th>
                                 <th class="px-4 py-3">Especialidad</th>
-                                <th class="px-4 py-3">Institución</th>
+                                <th class="px-4 py-3 max-w-[200px]">Institución</th>
                                 <th class="px-4 py-3">Contacto</th>
-                                <th class="px-4 py-3">Tema</th>
+                                <th class="px-4 py-3 max-w-[200px]">Tema</th>
                                 <th class="px-4 py-3">Acciones</th>
                             </tr>
                         </thead>
@@ -166,13 +99,13 @@
                                     <td class="px-4 py-2">{{ $expositor->especialidad }}</td>
 
                                     {{-- Institución --}}
-                                    <td class="px-4 py-2">{{ $expositor->institucion }}</td>
+                                    <td class="px-4 py-2 truncate max-w-[200px]">{{ $expositor->institucion }}</td>
 
                                     {{-- Contacto --}}
                                     <td class="px-4 py-2">{{ $expositor->contacto }}</td>
 
                                     {{-- Temas por evento --}}
-                                    <td class="px-4 py-2">
+                                    <td class="px-4 py-2 truncate max-w-[200px]">
                                         @if ($expositor->eventos->isNotEmpty())
                                             <ul class="list-disc pl-4 space-y-1">
                                                 @foreach ($expositor->eventos as $evento)
@@ -223,7 +156,7 @@
 
             <!-- Modal crear -->
             <div id="modalNuevoExpositor"
-                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden p-4">
                 <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative">
                     <button onclick="cerrarModal('modalNuevoExpositor')"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
@@ -302,7 +235,7 @@
                             <div id="preview" class="mt-2"></div>
                         </div>
 
-                        <div class="text-right space-x-2">
+                        <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                             <button type="button" onclick="cerrarModal('modalNuevoExpositor')"
                                 class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600">
                                 Cancelar
@@ -317,7 +250,7 @@
 
             <!-- Modal EDITAR EXPOSITOR -->
             <div id="modalEditarExpositor"
-                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden p-4">
                 <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative">
                     <button onclick="cerrarModal('modalEditarExpositor')"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
@@ -370,7 +303,7 @@
                             <div id="imagen_preview" class="mt-2 hidden"></div>
                         </div>
 
-                        <div class="text-right space-x-2">
+                        <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                             <button type="button" onclick="cerrarModal('modalEditarExpositor')"
                                 class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600">
                                 Cancelar
@@ -385,8 +318,8 @@
 
             <!-- Modal VER EXPOSITOR -->
             <div id="modalVerExpositor"
-                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
-                <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative">
+                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden p-4">
+                <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative space-y-4">
                     <button onclick="cerrarModal('modalVerExpositor')"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
                     <h2 class="text-2xl font-bold mb-4">Ver expositor</h2>
@@ -425,7 +358,7 @@
                         </div>
                     </div>
 
-                    <div class="text-right space-x-2">
+                    <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                         <button type="button" onclick="cerrarModal('modalVerExpositor')"
                             class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600">
                             Cerrar
@@ -435,7 +368,7 @@
             </div>
 
             <!-- Modal Eliminar Expositor -->
-            <div id="eliminarExpositorModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50">
+            <div id="eliminarExpositorModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 p-4">
                 <div class="flex items-center justify-center min-h-screen">
                     <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
                         <div class="flex justify-between items-center border-b pb-2 mb-4">
@@ -454,13 +387,13 @@
                         <form id="formEliminarExpositor" method="POST">
                             @csrf
                             @method('DELETE')
-                            <div class="flex justify-end space-x-2">
+                            <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                                 <button type="button" onclick="cerrarModalEliminarExpositor()"
                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded">
                                     Cancelar
                                 </button>
                                 <button type="submit"
-                                    class="bg-pink-600 hover:bg-black-700 text-white px-4 py-2 rounded">
+                                    class="bg-pink-600 hover:bg-pink-800 text-white px-4 py-2 rounded">
                                     Eliminar
                                 </button>
                             </div>
@@ -472,7 +405,7 @@
             <!-- Modal para la vista de usuarios -->
             <!-- Nuevo Modal para ver expositor -->
             <div id="modalVerExpositorNuevo"
-                class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+                class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden p-4">
                 <div class="bg-white rounded-lg shadow-lg max-w-3xl w-full p-6 relative">
                     <button onclick="cerrarModal('modalVerExpositorNuevo')"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-800">&times;</button>

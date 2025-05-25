@@ -1,34 +1,39 @@
 @extends('layouts.principal')
 
 @section('content')
-<section class="content" style="padding: 15px;">
-    <div class="container mx-auto px-4 py-6">
+<section class="content">
+    <div class="container mx-auto px-4 py-4">
 
         <!-- Encabezado y Botón de Filtros -->
-        <div class="flex items-center justify-between mb-4">
-            <h1 class="text-3xl font-bold">Calendario de Eventos del Bicentenario 🇧🇴</h1>
-            <button id="openFilters" class="bg-teal-950 text-white font-bold px-4 py-2 rounded hover:bg-teal-700 transition">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 pt-0 sm:pt-2 space-y-2 sm:space-y-0">
+            <h1 class="text-2xl sm:text-3xl font-bold text-center sm:text-left">
+                Calendario de Eventos del Bicentenario 🇧🇴
+            </h1>
+            <button id="openFilters" class="bg-teal-950 text-white font-bold px-4 py-2 rounded hover:bg-teal-700 transition w-full sm:w-auto">
                 Filtros
             </button>
         </div>
 
         <!-- Navegador de Meses -->
-        <div class="flex justify-center space-x-2 mb-6">
-            @foreach(range(1,12) as $m)
-                @php
-                    $nombreMes = \Carbon\Carbon::createFromDate(null, $m, null)
-                                
-                                ->isoFormat('MMMM');
-                @endphp
-                <a href="{{ route('agendaEventos', array_merge(request()->except('page'), ['mes' => $m])) }}"
-                    class="px-4 py-2 rounded-full 
-                        {{ $mes == $m ? 'bg-teal-950 text-white' : 'bg-gray-200' }}
-                        hover:bg-teal-900 hover:bg-opacity-80
-                        transition transform hover:scale-105 duration-300">
-                    {{ ucfirst($nombreMes) }}
-                </a>
-            @endforeach
+        <div class="mb-6 overflow-x-auto">
+            <div class="flex justify-start sm:justify-center space-x-2 w-max sm:w-full px-2">
+                @foreach(range(1,12) as $m)
+                    @php
+                        $nombreMes = \Carbon\Carbon::createFromDate(null, $m, null)->isoFormat('MMMM');
+                    @endphp
+                    <a href="{{ route('agendaEventos', array_merge(request()->except('page'), ['mes' => $m])) }}"
+                        class="whitespace-nowrap px-4 py-2 rounded-full 
+                            {{ $mes == $m ? 'bg-teal-950 text-white' : 'bg-gray-200' }}
+                            hover:bg-teal-900 hover:bg-opacity-80
+                            transition transform hover:scale-105 duration-300">
+                        {{ ucfirst($nombreMes) }}
+                    </a>
+                @endforeach
+            </div>
         </div>
+
+
+
 
         <!-- Grid de Tarjetas de Eventos -->
         
@@ -78,8 +83,8 @@
     </div>
 
     <!-- Modal de Filtros -->
-    <div id="filterModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-        <div class="bg-white p-6 rounded-lg w-full max-w-lg overflow-y-auto max-h-[90vh]">
+    <div id="filterModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
+        <div class="bg-white p-6 rounded-lg w-full max-w-lg overflow-y-auto max-h-[90vh] space-y-4">
             <form method="GET" action="{{ route('agendaEventos') }}">
                 <input type="hidden" name="mes" value="{{ $mes }}">
 
