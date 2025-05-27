@@ -22,6 +22,11 @@ use App\Http\Controllers\PatrocinadorController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\GraficoControlador;
+use App\Http\Controllers\InicioController;
+use App\Http\Controllers\GaleriaController;
+use App\Http\Controllers\NovedadController;
+use App\Http\Controllers\VistasRandomController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -95,8 +100,8 @@ Route::resource('historias', HistoriaController::class);
 Route::delete('/historias/{id}', [HistoriaController::class, 'destroy'])->name('historias.destroy');
 
 //RUTA VISTAS
-Route::get('ultimo1', function () {
-    return view('ultimo1');
+Route::get('ultimo', function () {
+    return view('ultimo');
 });
 
 //Route::get('videos', function () {
@@ -161,4 +166,28 @@ Route::put('/asistencias/{id}', [AsistenciaController::class, 'update'])->name('
 
 //OPCIONAL
 //Route::get('/eventos/qr/{id}', [EventoController::class, 'generarQR']);
+
+Route::get('/quienesSomos', function () {
+    return view('quienesSomos');
+})->name('quienes.somos');
+
+
+//vista principal
+Route::get('/', [InicioController::class, 'index'])->name('home');
+
+// Mostrar formulario
+Route::get('/galeria/create', [GaleriaController::class, 'create'])->name('galeria.create');
+
+// Guardar imagen
+Route::post('/galeria', [GaleriaController::class, 'store'])->name('galeria.store');
+Route::get('/galeria', [GaleriaController::class, 'index'])->name('galeria.index');
+Route::get('/galeria/{id}', [GaleriaController::class, 'show'])->name('galeria.show');
+
+Route::resource('novedades', NovedadController::class);
+Route::get('/novedades/ver/{id}', [NovedadController::class, 'show1'])->name('novedades.show1');
+
+//vistas random
+Route::get('/ultimo', [VistasRandomController::class, 'index'])->name('ultimo');
+
+
 

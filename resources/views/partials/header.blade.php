@@ -43,7 +43,12 @@
 
                         <li id="menu-item-66046"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66046"><a
-                                href="{{ 'videos' }}">Multimedia</a></li>
+                                href="{{ 'videos' }}">Multimedia-Videos</a>
+                        </li>
+                        <li id="menu-item-66046"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66046"><a
+                                href="{{ 'galeria' }}">Galeria-fotos</a>
+                        </li>
                         <li id="menu-item-66047"
                             class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66047"><a
                                 href="{{ 'expositores' }}">Expositores
@@ -51,7 +56,7 @@
                         </li>
                         <li id="menu-item-66047"
                             class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66047"><a
-                                href="{{ 'patrocinadores' }}">Patrocinadores
+                                href="{{ 'eventos' }}">Patrocinadores
                             </a>
                         </li>
                     </ul>
@@ -60,39 +65,25 @@
 
             <section class="links">
                 <section class="group">
-                    <div class="separator">Guías digitales</div>
-                    <a href="https://www.mexicodesconocido.com.mx/viajes-por-carretera">Viajes por carretera</a>
-                    <a href="https://pueblosmagicos.mexicodesconocido.com.mx/" target="_blank" rel="noopener">Pueblos
-                        Mágicos</a>
-                    <a href="https://disfrutatuciudad.mx/" target="_blank" rel="noopener">Ciudad de México</a>
-                    <a href="https://hazturismoencoahuila.mx/" target="_blank" rel="noopener">Coahuila</a>
-                    <a href="https://paraisosindigenas.com/" target="_blank" rel="noopener">Paraísos
-                        Indígenas</a>
-                    <a href="https://experienciaedomexmagazine.com/edicion-1/" target="_blank"
-                        rel="noopener">Experiencia Edomex</a>
-                </section>
-                <section class="group">
                     <div class="separator">Información</div>
-                    <a href="https://revistadigital.mx/mexicodesconocido-mayo2024/" target="_blank"
-                        rel="noopener">Revista Digital</a>
-                    <a href="https://g21.com.mx/mexico-desconocido/" target="_blank" rel="noopener">Anúnciate con
-                        nosotros</a>
-                    <a href="https://g21.com.mx/mexico-desconocido/" target="_blank" rel="noopener">Media Kit</a>
-                    <a href="https://www.mexicodesconocido.com.mx/contacto">Contacto</a>
+                    <a href="{{ route('quienes.somos') }}" target="_blank"
+                        rel="noopener">Quienes somos</a>
+                    <a href="{{ route('ultimo') }}" target="_blank"
+                        rel="noopener">Novedades</a>
                 </section>
-                <section class="group">
+                <section class="">
                     <div class="separator">Síguenos</div>
-                    <a href="https://www.facebook.com/mexicodesconocido" target="_blank" rel="noopener noreferrer"
-                        class="icon"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a>
-                    <a href="https://twitter.com/mexdesconocido" target="_blank" rel="noopener noreferrer"
-                        class="icon"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a>
-                    <a href="https://www.instagram.com/mexicodesconocido/" target="_blank" rel="noopener noreferrer"
-                        class="icon"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>
-                    <a href="https://www.youtube.com/user/MEXICODESCONOCIDOTV" target="_blank"
-                        rel="noopener noreferrer" class="icon"><i class="fab fa-youtube" aria-hidden="true"></i>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="icon flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors duration-300"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="icon flex items-center gap-2 text-gray-700 hover:text-teal-600 transition-colors duration-300"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="icon flex items-center gap-2 text-gray-700 hover:text-purple-600 transition-colors duration-300"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>
+                    <a href="#" target="_blank"
+                        rel="noopener noreferrer" class="icon flex items-center gap-2 text-gray-700 hover:text-red-600 transition-colors duration-300"><i class="fab fa-youtube" aria-hidden="true"></i>
                         YouTube</a>
-                    <a href="https://www.pinterest.com.mx/mexdesconocido/" target="_blank" rel="noopener noreferrer"
-                        class="icon"><i class="fab fa-pinterest" aria-hidden="true"></i> Pinterest</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="icon flex items-center gap-2 text-gray-700 hover:text-rose-600 transition-colors duration-300"><i class="fab fa-pinterest" aria-hidden="true"></i> Pinterest</a>
                 </section>
             </section>
         </section>

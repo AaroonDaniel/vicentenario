@@ -598,7 +598,7 @@ nav .close span:before,nav .close span:after{background:#fff}
 .video_top .secondary{ margin:0 0 10%}
 
 
-.especiales_home{background: #000000;padding: 8% 0 2%;position: relative;}
+.especiales_home{background: #283d31df;padding: 8% 0 2%;position: relative;}
 .especiales_home .cover{opacity: .3;}
 
 .destinations{position:relative;padding: 5% 0;background: #e4e4e4;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;}
@@ -622,6 +622,12 @@ nav .close span:before,nav .close span:after{background:#fff}
 .scroll_notes article{display:grid;grid-template-columns:1fr 1fr 1fr;width: 100%;grid-gap: 20px;}
 .scroll_notes.apps article{grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;grid-gap: 12px;}
 .scroll_notes.apps a.especial{height:100px;min-height: 432px;}
+
+
+
+
+
+
 
 
 /* Modificacioneas a la zona de 2 x 4 Estados,Actividades, Destnos etc   */
@@ -684,7 +690,7 @@ left: 15px;
 z-index: 2;
 font-weight: bold;
 font-size: 0.8em;
-background: #038e73;
+background: #63f5c0;
 }
 .scroll_notes .itemmix .especial.activity figcaption {
 padding: 1em;
@@ -723,7 +729,7 @@ text-shadow: 0 0 20px rgb(0 0 0 / 80%), 0 0 20px rgb(0 0 0 / 80%);
 position: absolute;
 top: 0;
 left: 0;
-z-index: 1;
+z-index: 0;
 font-style: normal;
 font-weight: 900;
 color: #fff;
@@ -2997,9 +3003,7 @@ font-size: 1.6em!important;
   border-radius: 4px;
   margin: 0 auto;
 }
-.link-to{
-  /* font-style: italic; */
-}
+
 .card-krn div:last-child{
   display: flex;
 }
@@ -3056,5 +3060,6 @@ a.button-link {
   align-items: center;
   gap: 0.5rem;
 }
+
 
 

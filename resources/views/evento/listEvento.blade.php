@@ -265,11 +265,11 @@
         <div x-data="modalEdit()">
 
             <!-- Vista de la lista de eventos -->
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-6">
+            <div class="p-4 sm:p-6 max-w-full overflow-x-auto">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-2">
                     <h1 class="text-2xl font-bold text-gray-800">Listado de Eventos</h1>
                     <button onclick="abrirModal('modalNuevo')"
-                        class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded">
+                        class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded  w-full sm:w-auto">
                         + Nuevo
                     </button>
                 </div>
@@ -280,131 +280,116 @@
                     </div>
                 @endif
 
-                <div class="overflow-x-auto table-responsive">
-                    <table id="eventosTable" class="min-w-full bg-white text-sm text-left text-gray-800 rounded-lg shadow">
-                        <thead class="bg-gray-100 text-gray-600 uppercase text-xs font-semibold">
-                            <tr>
-                                <th class="px-4 py-3">ID</th>
-                                <th class="px-4 py-3">Imagen</th>
-                                <th class="px-4 py-3">Nombre</th>
-                                <th class="px-4 py-3">Tipo</th>
-                                <th class="px-4 py-3">Descripción</th>
-                                <th class="px-4 py-3">Departamento</th>
-                                <th class="px-4 py-3">Dirección</th>
-                                <th class="px-4 py-3">Fecha</th>
-                                <th class="px-4 py-3">Hora</th>
-                                <th class="px-4 py-3">Modalidad</th>
-                                <th class="px-4 py-3">Enlace</th>
-                                <th class="px-4 py-3">Enlace del formulario:</th>
-                                <th class="px-4 py-3">Acciones</th>
+                <div class="overflow-x-auto  w-full">
+                <table id="funcionesTable" class="display min-w-[1000px] w-full bg-white text-sm text-left text-gray-800 rounded-lg shadow">
+                    <thead class="bg-gray-100 text-gray-600 uppercase text-xs font-semibold">
+                        <tr>
+                            <th class="px-4 py-3">ID</th>
+                            <th class="px-4 py-3">Imagen</th>
+                            <th class="px-4 py-3 max-w-[200px]">Nombre</th>
+                            <th class="px-4 py-3">Tipo</th>
+                            <th class="px-4 py-3 max-w-[200px]">Descripción</th>
+                            <th class="px-4 py-3">Departamento</th>
+                            <th class="px-4 py-3 max-w-[200px]">Dirección</th>
+                            <th class="px-4 py-3">Fecha</th>
+                            <th class="px-4 py-3">Hora</th>
+                            <th class="px-4 py-3 max-w-[200px]">Modalidad</th>
+                            <th class="px-4 py-3 max-w-[200px]">Enlace</th>
+                            <th class="px-4 py-3 max-w-[200px]">Enlace del formulario:</th>
+                            <th class="px-4 py-3">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($eventos as $evento)
+                            <tr class="border-t hover:bg-gray-50">
+                                <td class="px-4 py-2">{{ $evento->id_evento }}</td>
+
+                                {{-- Imagen --}}
+                                <td class="px-4 py-2">
+                                    @if ($evento->imagen_ruta)
+                                        <img src="{{ Storage::url($evento->imagen_ruta) }}" alt="{{ $evento->nombre }}" class="h-16 w-16 object-cover rounded">
+                                    @else
+                                        <span class="text-gray-400 text-sm">Sin imagen</span>
+                                    @endif
+                                </td>
+
+                                <td class="px-4 py-2 truncate max-w-[200px]">{{ $evento->nombre }}</td>
+                                <td class="px-4 py-2">{{ ucfirst($evento->tipo) }}</td>
+                                <td class="px-4 py-2 truncate max-w-[200px]">{{ $evento->descripcion }}</td>
+                                <td class="px-4 py-2">{{ $evento->departamento }}</td>
+                                <td class="px-4 py-2 truncate max-w-[200px]">{{ $evento->direccion }}</td>
+                                <td class="px-4 py-2">{{ $evento->fecha->format('Y-m-d') }}</td>
+                                <td class="px-4 py-2">{{ $evento->hora }}</td>
+                                <td class="px-4 py-2 truncate max-w-[200px]">{{ $evento->modalidad }}</td>
+                                <td class="px-4 py-2 truncate max-w-[200px]">{{ $evento->enlace }}</td>
+                                <td class="px-4 py-2 truncate max-w-[200px]">{{ $evento->enlaceFormulario }}</td>
+
+                                <td class="px-4 py-2 flex space-x-2">
+                                    {{-- Ver --}}
+                                    <button
+                                        @click="openViewModal({
+                                            nombre: '{{ addslashes($evento->nombre) }}',
+                                            descripcion: `{!! addslashes($evento->descripcion) !!}`,
+                                            tipo: '{{ ucfirst($evento->tipo) }}',
+                                            fecha: '{{ $evento->fecha->format('Y-m-d') }}',
+                                            departamento: '{{ addslashes($evento->departamento) }}',
+                                            direccion: '{{ addslashes($evento->direccion) }}',
+                                            imagenUrl: '{{ $evento->imagen_ruta ? Storage::url($evento->imagen_ruta) : asset('images/default-event.png') }}',
+                                            hora: '{{ substr($evento->hora, 0, 5) }}',
+                                            modalidad: '{{ $evento->modalidad }}',
+                                            enlace: '{{ $evento->enlace }}',
+                                            enlaceFormulario: '{{ $evento->enlaceFormulario }}'
+                                        })"
+                                        class="text-blue-600 hover:text-blue-800">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+
+                                    {{-- Editar --}}
+                                    <button
+                                        @click="openEditModal({
+                                            id: {{ $evento->id_evento }},
+                                            nombre: '{{ addslashes($evento->nombre) }}',
+                                            descripcion: `{!! addslashes($evento->descripcion) !!}`,
+                                            tipo: '{{ $evento->tipo }}',
+                                            fecha: '{{ $evento->fecha->format('Y-m-d') }}',
+                                            departamento: '{{ addslashes($evento->departamento) }}',
+                                            direccion: '{{ addslashes($evento->direccion) }}',
+                                            hora: '{{ substr($evento->hora, 0, 5) }}',
+                                            modalidad: '{{ $evento->modalidad }}',
+                                            enlace: '{{ $evento->enlace }}',
+                                            enlaceFormulario: '{{ $evento->enlaceFormulario }}'
+                                        })"
+                                        class="text-yellow-500 hover:text-yellow-700">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+
+                                    {{-- Eliminar --}}
+                                    <button
+                                        onclick="confirmarEliminar({{ $evento->id_evento }}, '{{ addslashes($evento->titulo) }}')"
+                                        class="text-red-600 hover:text-red-800">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($eventos as $evento)
-                                <tr class="border-t hover:bg-gray-50">
-                                    <td class="px-4 py-2">{{ $evento->id_evento }}</td>
+                        @empty
+                            <tr>
+                                <td colspan="13" class="text-center text-gray-500 py-4">
+                                    No hay eventos registrados actualmente.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
 
-                                    {{-- Imagen --}}
-                                    <td class="px-4 py-2">
-                                        @if ($evento->imagen_ruta)
-                                            <img src="{{ Storage::url($evento->imagen_ruta) }}"
-                                                alt="{{ $evento->nombre }}" class="h-16 w-16 object-cover rounded">
-                                        @else
-                                            <span class="text-gray-400 text-sm">Sin imagen</span>
-                                        @endif
-                                    </td>
-
-                                    {{-- Nombre y Tipo --}}
-                                    <td class="px-4 py-2">{{ $evento->nombre }}</td>
-                                    <td class="px-4 py-2">{{ ucfirst($evento->tipo) }}</td>
-
-                                    {{-- Descripción --}}
-                                    <td class="px-4 py-2">{{ $evento->descripcion }}</td>
-
-                                    {{-- Departamento --}}
-                                    <td class="px-4 py-2">{{ $evento->departamento }}</td>
-
-                                    {{-- Dirección --}}
-                                    <td class="px-4 py-2">{{ $evento->direccion }}</td>
-
-                                    {{-- Fecha --}}
-                                    <td class="px-4 py-2">{{ $evento->fecha->format('Y-m-d') }}</td>
-
-                                    {{-- Hora --}}
-                                    <td class="px-4 py-2">{{ $evento->hora }}</td>
-
-                                    {{-- Modalidad --}}
-                                    <td class="px-4 py-2">{{ $evento->modalidad }}</td>
-
-                                    {{-- Enlace --}}
-                                    <td class="px-4 py-2">{{ $evento->enlace }}</td>
-
-                                    {{-- Enlace --}}
-                                    <td class="px-4 py-2">{{ $evento->enlaceFormulario }}</td>                                    
-
-                                    {{-- Acciones --}}
-                                    <td class="px-4 py-2 flex space-x-2">
-                                        {{-- Ver --}}
-                                        <button
-                                            @click="openViewModal({
-                                                nombre: '{{ addslashes($evento->nombre) }}',
-                                                descripcion: `{!! addslashes($evento->descripcion) !!}`,
-                                                tipo: '{{ ucfirst($evento->tipo) }}',
-                                                fecha: '{{ $evento->fecha->format('Y-m-d') }}',
-                                                departamento: '{{ addslashes($evento->departamento) }}',
-                                                direccion: '{{ addslashes($evento->direccion) }}',
-                                                imagenUrl: '{{ $evento->imagen_ruta ? Storage::url($evento->imagen_ruta) : asset('images/default-event.png') }}',
-                                                hora: '{{ substr($evento->hora, 0, 5) }}',
-                                                modalidad: '{{ $evento->modalidad }}',
-                                                enlace: '{{ $evento->enlace }}',
-                                                enlaceFormulario: '{{ $evento->enlaceFormulario }}'
-                                            })"
-                                            class="text-blue-600 hover:text-blue-800">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-
-                                        {{-- Editar --}}
-                                        <button
-                                            @click="openEditModal({
-                                                id: {{ $evento->id_evento }},
-                                                nombre: '{{ addslashes($evento->nombre) }}',
-                                                descripcion: `{!! addslashes($evento->descripcion) !!}`,
-                                                tipo: '{{ $evento->tipo }}',
-                                                fecha: '{{ $evento->fecha->format('Y-m-d') }}',
-                                                departamento: '{{ addslashes($evento->departamento) }}',
-                                                direccion: '{{ addslashes($evento->direccion) }}',
-                                                hora: '{{ substr($evento->hora, 0, 5) }}',
-                                                modalidad: '{{ $evento->modalidad }}',
-                                                enlace: '{{ $evento->enlace }}',
-                                                enlaceFormulario: '{{ $evento->enlaceFormulario }}'
-                                            })"
-                                            class="text-yellow-500 hover:text-yellow-700">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-
-                                        {{-- Eliminar --}}
-                                        <button
-                                            onclick="confirmarEliminar({{ $evento->id_evento }}, '{{ addslashes($evento->titulo) }}')"
-                                            class="text-red-600 hover:text-red-800">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-
-
-
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
 
                 </div>
             </div>
 
             <!-- Modal EDITAR -->
             <div x-show="showEdit" x-transition x-cloak x-on:keydown.escape.window="closeEdit()" @click.away="closeEdit()"
-                class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+                class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
                 <div
-                    class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative overflow-y-auto max-h-[90vh] relative">
+                    class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative overflow-y-auto max-h-[90vh] space-y-4">
                     <!-- Botón cerrar -->
                     <button @click="closeEdit()"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl">&times;
@@ -441,11 +426,11 @@
                         </div>
 
                         <!-- Tipo -->
-                        <div class="mb-4">
+                        <div class="mb-4 max-w-full">
                             <label class="block font-semibold mb-1">Categoría del Evento</label>
-                            <select name="tipo" class="w-full border border-gray-300 rounded px-3 py-2" required>
+                            <select name="tipo" class="w-full max-w-full border border-gray-300 rounded px-3 py-2" required>
                                 <option value="" disabled {{ old('tipo', $evento->tipo) == '' ? 'selected' : '' }}>
-                                    -- Selecciona una categoría --
+                                    Seleccionar categoría
                                 </option>
 
                                 <optgroup label="Cultura">
@@ -504,7 +489,7 @@
                                 class="w-full bg-gray-100 border rounded px-3 py-2" required>
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-4 max-w-full">
                             <label class="block font-semibold mb-1">Modalidad</label>
                             <select name="modalidad" class="w-full border border-gray-300 rounded px-3 py-2" required>
                                 <option value="Presencial"
@@ -530,9 +515,9 @@
                         </div>
 
                         <!-- Departamento -->
-                        <div class="mb-4">
+                        <div class="mb-4 max-w-full">
                             <label class="block font-semibold mb-1">Departamento</label>
-                            <select name="departamento" class="w-full border border-gray-300 rounded px-3 py-2" required>
+                            <select name="departamento" class="w-full max-w-full border border-gray-300 rounded px-3 py-2" required>
                                 <option value="La Paz"
                                     {{ old('departamento', $evento->departamento) == 'La Paz' ? 'selected' : '' }}>La Paz
                                 </option>
@@ -571,7 +556,7 @@
                         </div>
 
                         <!-- Botones -->
-                        <div class="flex justify-end gap-2">
+                        <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                             <button type="button" @click="closeEdit()"
                                 class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
                                 Cancelar
@@ -585,9 +570,9 @@
             </div>
 
             <!-- Modal Eliminar -->
-            <div id="eliminarEventoModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50">
+            <div id="eliminarEventoModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 p-4">
                 <div class="flex items-center justify-center min-h-screen">
-                    <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+                    <div class="bg-white rounded-lg shadow-lg w-full sm:max-w-md p-6 space-y-4">
                         <div class="flex justify-between items-center border-b pb-2 mb-4">
                             <h2 class="text-lg font-bold text-black-600">
                                 <i class="fas fa-trash-alt"></i> Eliminar Evento
@@ -604,13 +589,13 @@
                         <form id="formEliminarEvento" method="POST">
                             @csrf
                             @method('DELETE')
-                            <div class="flex justify-end space-x-2">
+                            <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                                 <button type="button" onclick="cerrarModalEliminar()"
-                                    class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded">
+                                    class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded w-full sm:w-auto">
                                     Cancelar
                                 </button>
                                 <button type="submit"
-                                    class="bg-pink-600 hover:bg-black-700 text-white px-4 py-2 rounded">
+                                    class="bg-pink-600 hover:bg-pink-800 text-white px-4 py-2 rounded w-full sm:w-auto">
                                     Eliminar
                                 </button>
                             </div>
@@ -621,8 +606,8 @@
 
             <!-- Modal CREAR un nuevo evento-->
             <div id="modalNuevo"
-                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
-                <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative">
+                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden p-4">
+                <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] relative space-y-4">
                     <button onclick="cerrarModal('modalNuevo')"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
                     <h2 class="text-2xl font-bold mb-4">Registrar nuevo evento</h2>
@@ -647,11 +632,10 @@
                                 class="w-full border border-gray-300 rounded px-3 py-2" required>
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-4 max-w-full">
                             <label class="block font-semibold mb-1">Categoría del Evento</label>
-                            <select name="tipo" class="w-full border border-gray-300 rounded px-3 py-2" required>
-                                <option value="" disabled {{ old('tipo') ? '' : 'selected' }}>-- Selecciona una
-                                    categoría --</option>
+                            <select name="tipo" class="w-full max-w-full border border-gray-300 rounded px-3 py-2" required>
+                                <option value="" disabled {{ old('tipo') ? '' : 'selected' }}>Seleccionar categoría</option>
 
                                 <optgroup label="Cultura">
                                     <option value="música" {{ old('tipo') == 'música' ? 'selected' : '' }}>Música</option>
@@ -723,10 +707,10 @@
                                 class="w-full bg-gray-100 border rounded px-3 py-2" required>
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-4 max-w-full">
                             <label class="block font-semibold mb-1">Departamento</label>
-                            <select name="departamento" class="w-full border border-gray-300 rounded px-3 py-2" required>
-                                <option value="" disabled selected>-- Selecciona un departamento --</option>
+                            <select name="departamento" class="w-full max-w-full border border-gray-300 rounded px-3 py-2" required>
+                                <option value="" disabled selected>Seleccionar departamento</option>
                                 <option value="La Paz" {{ old('departamento') == 'La Paz' ? 'selected' : '' }}>La Paz
                                 </option>
                                 <option value="Cochabamba" {{ old('departamento') == 'Cochabamba' ? 'selected' : '' }}>
@@ -753,7 +737,7 @@
                             <input type="file" name="imagen" class="w-full bg-gray-100 border rounded px-3 py-2">
                         </div>
 
-                        <div class="text-right space-x-2">
+                        <div class="flex flex-col sm:flex-row justify-end gap-2 mt-4">
                             <button type="button" onclick="cerrarModal('modalNuevo')"
                                 class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600">
                                 Cancelar
@@ -769,9 +753,9 @@
             </div>
 
             <!-- Modal VER -->
-            <div x-show="showView" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+            <div x-show="showView" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4"
                 x-cloak x-on:keydown.escape.window="closeView()" @click.away="closeView()">
-                <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
+                <div class="bg-white rounded-lg shadow-lg w-full sm:max-w-2xl p-6 relative overflow-y-auto max-h-[90vh] space-y-4">
                     <button @click="closeView"
                         class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
 
@@ -843,7 +827,7 @@
                     </div>
 
                     <div class="text-right mt-4">
-                        <button @click="closeView" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded">
+                        <button @click="closeView" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded w-full sm:w-auto">
                             Cerrar
                         </button>
                     </div>

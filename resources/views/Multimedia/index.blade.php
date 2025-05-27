@@ -105,7 +105,7 @@
 
 
     <!-- FORMULARIO CRUD -->
-    <section class=" bg-dark bg-opacity-75">
+    <section class=" bg-white">
         <div>
             <div class="p-6">
                 <div class="flex justify-between items-center mb-6">

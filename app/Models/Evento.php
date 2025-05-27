@@ -124,6 +124,12 @@ class Evento extends Model
     {
         return $this->hasMany(Video::class, 'evento_id', 'id_evento');
     }
+    /* relacion 1:N un evento tiene muchos fotos*/
+    public function galeria()
+    {
+        return $this->hasMany(Galeria::class, 'evento_id', 'id_evento');
+    }
+
 
 
 }
