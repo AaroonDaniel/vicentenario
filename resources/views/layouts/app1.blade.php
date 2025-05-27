@@ -58,6 +58,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 
+        <!-- Bootstrap JS MENU PERSONAL-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
+    </script>
+
+    
+
     <!-- Desplegador de menu -->
     <script type="text/javascript"
         src="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/js/assets.js?ver=3.3.3.2.32" id="assets-js">
@@ -65,6 +72,33 @@
 
     <!-- Google Analytics clásico -->
     <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+        <!-- Lazy Loading Scripts -->
+    <script type="text/javascript" id="flying-scripts">
+        const loadScriptsTimer = setTimeout(loadScripts, 10 * 1000);
+        const userInteractionEvents = ['click', 'mousemove', 'keydown', 'touchstart', 'touchmove', 'wheel'];
+        userInteractionEvents.forEach(function(event) {
+            window.addEventListener(event, triggerScriptLoader, {
+                passive: true
+            });
+        });
+
+        function triggerScriptLoader() {
+            loadScripts();
+            clearTimeout(loadScriptsTimer);
+            userInteractionEvents.forEach(function(event) {
+                window.removeEventListener(event, triggerScriptLoader, {
+                    passive: true
+                });
+            });
+        }
+
+        function loadScripts() {
+            document.querySelectorAll("script[data-type='lazy']").forEach(function(elem) {
+                elem.setAttribute("src", elem.getAttribute("data-src"));
+            });
+        }
+    </script>
 
     <!-- Inicialización de DataTables -->
     <script>

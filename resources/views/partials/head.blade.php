@@ -3,7 +3,7 @@
 <title>@yield('title', 'Vicentenario Bolivia')</title>
 <meta name="description"
     content="Descubre Bolivia y sus destinos: ciudades, pueblos mágicos, zonas arqueológicas, gastronomía y cultura..">
-<link rel="canonical" href="https://www.mexicodesconocido.com.mx/">
+
 <meta property="og:locale" content="es_ES">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vicentenario Bolivia">
@@ -22,8 +22,6 @@
 <!-- mmmm-->
 <!-- trackins & more -->
 <link rel="stylesheet" href="{{ asset('css/raya.css') }}">
-<!--<link rel="stylesheet" id="raya-css" href="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/css/raya.css?ver=1.4.4.21" media="all"> -->
-<link rel="stylesheet" id="fontawesome-css" href="https://www.mexicodesconocido.com.mx/wp-content/themes/md2020/css/font-awesome-all.css?ver=6.7.2" media="all">
 
 <!-- icon -->
 <link rel="icon" href="{{ asset('images/favicon_32x32.png') }}" sizes="32x32">
